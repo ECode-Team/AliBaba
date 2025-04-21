@@ -8,4 +8,7 @@ urlpatterns = [
 
     path('hotel/', HotelView.as_view(), name="hotel"),
     path('hotel/<int:pk>', HotelView.as_view(), name="hotel"),
+
+    path('room/', RoomView.as_view(), name="room"),
+    path('room/<int:pk>', RoomView.as_view(), name="room"),
 ]
