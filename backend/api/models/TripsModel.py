@@ -1,44 +1,45 @@
+from random import choices
+
 from django.db import models
+from rest_framework import serializers
+
+TRANSFER_TYPES = [
+    ("Train", "Train"),
+    ("Bus", "Bus"),
+    ("Flight", "Flight")
+]
+
+PASSENGERS_TYPES = [
+    ("Economy", "Economy"),
+    ("Business", "Business"),
+    ("First class", "First")
+]
+
+CITIES = [
+    ("Tehran", "Tehran"),
+    ("Shiraz", "Shiraz"),
+    ("Mashhad", "Mashhad"),
+    ("Gheshm", "Gheshm"),
+    ("London", "London"),
+    ("Dortmund", "Dortmund"),
+    ("Gamburg", "Gamburg"),
+]
 
 
 class Trip(models.Model):
-    TransferType = models.CharField(
-        choices=[
-            ("Train", "Train"),
-            ("Bus", "Bus"),
-            ("Domestic Flight", "Domestic Flight"),
-            ("International Flight", "International Flight"),
-        ],
-        max_length=30,
-        db_index=True,
-    )
-    From = models.CharField(
-        choices=[
-            ("Tehran", "Tehran"),
-            ("Shiraz", "Shiraz"),
-            ("Mashhad", "Mashhad"),
-            ("Gheshm", "Gheshm"),
-        ],
-        max_length=30,
-        db_index=True,
-    )
-    To = models.CharField(
-        choices=[
-            ("Tehran", "Tehran"),
-            ("Shiraz", "Shiraz"),
-            ("Mashhad", "Mashhad"),
-            ("Gheshm", "Gheshm"),
-            ("London", "London"),
-        ],
-        max_length=30,
-        db_index=True,
-    )
-    passenger = models.CharField(
-        choices=[("First Class", "First Class"), ("Economy", "Economy")],
-        max_length=30,
-        db_index=True,
-    )
-    Price = models.DecimalField(
-        max_digits=10, decimal_places=2, blank=False, null=False, db_index=True
-    )
-    Date = models.DateTimeField()
+    transfer_type = models.CharField(choices=TRANSFER_TYPES, max_length=30)
+    passengers_type = models.CharField(choices=PASSENGERS_TYPES, max_length=30)
+    passengers_max = models.IntegerField(max_length=10, blank=True, null=True)
+
+    depart = models.CharField(choices=CITIES, max_length=30)
+    arrive = models.CharField(choices=CITIES,max_length=30)
+    depart_time = models.DateTimeField()
+    arrive_time = models.DateTimeField()
+
+    Price = models.DecimalField(max_digits=10, decimal_places=2)
+
+
+class TripSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Trip
+        fields = '__all__'
