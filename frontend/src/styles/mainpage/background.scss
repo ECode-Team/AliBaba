@@ -1,0 +1,21 @@
+$domesticflight-light: "../../assets/images/domesticflight-light.webp";
+$foreignflight-light: "../../assets/images/foreignflight-light.webp";
+$train-light: "../../assets/images/train-light.webp";
+$bus-light: "../../assets/images/bus-light.webp";
+$hotel-light: "../../assets/images/hotel-light.webp";
+$tour-light: "../../assets/images/tour-light.webp";
+$villa-light: "../../assets/images/villa-light.webp";
+
+.background-container {
+    margin: 0 auto; // centers the image horizontally
+    max-width: 1450px;
+    aspect-ratio: 1450 / 320;
+
+    .background-image {
+        background-image: url($villa-light);
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+    }
+}
