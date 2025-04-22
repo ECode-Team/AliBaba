@@ -3,10 +3,10 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from .views import *
-from .views import Tripsview
+from .views import TripsView
 
 router = DefaultRouter()
-router.register("trips", Tripsview)
+router.register("trips", TripsView)
 
 urlpatterns = [
     path("basic_model/", BasicModelView.as_view(), name="basic_model"),
