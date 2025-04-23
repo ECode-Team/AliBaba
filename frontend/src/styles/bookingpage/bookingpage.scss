@@ -1,16 +1,14 @@
-$primary-color: #007bff;
-$secondary-color: #6c757d;
-$tertiary-color: #f8f9fa;
-$quaternary-color: #f8f9fa;
-$border-color: #eee;
+@import './variables.scss';
 .booking-page {
   display: flex;
+  flex-direction: row;
   min-height: 100vh;
   padding: 20px;
   background-color: #f9f5f9f9;
-
-  .booking-page-container {
-    flex: 1;
+  margin-inline: auto;
+  max-width: 1200px;
+  &-container {
+    width: 70%;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -20,22 +18,27 @@ $border-color: #eee;
       display: flex;
       justify-content: flex-end;
       color: #777;
+      
+    }
+    .alarm-1-svg{
+      display: flex;
+      align-items: center;
+      padding: 15px;
     }
     h1 {
       margin-bottom: 20px;
       color: #333;
     }
-
-    .train-cart-item {
+    .booking-cart-item {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 95%;
       border-radius: 10px;
-      padding-inline: 10px;
       margin: 15px;
       border: 1px solid $border-color;
+      box-shadow: 0 2px 4px rgba(0, 10, 10, 0.3);
       &-container {
         display: flex;
         flex-direction: row-reverse;
@@ -138,6 +141,12 @@ $border-color: #eee;
                     font-weight: bold;
                     color: darken($primary-color, 20%);
                     cursor: pointer;
+                    &-text {
+                      padding: 5px;
+                      &.active {
+                        border-bottom: 2px solid $primary-color;
+                      }
+                    }
                   }
                 }
               }
@@ -187,31 +196,49 @@ $border-color: #eee;
               }
             }
           }
+          &-price {
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: bold;
+          &-container {
+            font-size: 16px;
+            color: darken($danger-color, 20%);
+            font-weight: bold;
+          }
         }
       }
     }
-  }
+    .dropdown-container {
+      display: none;
+      background-color: white;
+      height: auto;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      &.active {
+        display: block;
+      }
+    }
+  }}
 
-  .booking-page-sidebar {
+  &-sidebar {
     .natayej {
       display: flex;
       color: #888;
       font-size: 20px;
       justify-content: flex-end;
     }
-    display: flex;
+    max-width: 300px;
+    flex: 1;
     flex-direction: column;
-    width: 300px;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
     h2 {
       margin-bottom: 10px;
       color: #333;
     }
-
     p {
       color: #666;
     }

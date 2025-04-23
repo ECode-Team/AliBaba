@@ -1,5 +1,6 @@
 import "../../../../styles/bookingpage/bookingpage.scss";
-export const TrainCartItem = () => {
+
+export const FlightsCloseCartItem = ({ setIsOpen }) => {
   return (
     <div className="booking-cart-item">
       <div className="booking-cart-item-container">
@@ -8,13 +9,13 @@ export const TrainCartItem = () => {
             <div className="booking-cart-item-container-right-side-image-text-container">
               <div className="booking-cart-item-container-right-side-image-text-title">
                 <p className="booking-cart-item-container-right-side-image-text-title-text1">
-                  کوپه‌ای 6 نفره
+                سیستمی
                 </p>
-                <p className="booking-cart-item-container-right-side-image-text-title-text2">
-                  سه ستاره 6 تخته مهديس
+                <p className="booking-cart-item-container-right-side-image-text-title-text1">
+                اکونومی
                 </p>
-                <p className="booking-cart-item-container-right-side-image-text-title-text2">
-                  مهتاب سير جم
+                <p className="booking-cart-item-container-right-side-image-text-title-text1">
+                Bombardier CRJ 200
                 </p>
               </div>
               <div className="booking-cart-item-container-right-side-image-text-subject">
@@ -42,28 +43,14 @@ export const TrainCartItem = () => {
               />
             </div>
           </div>
-          <ul className="booking-cart-item-container-right-side-ul-list">
-            <li className="booking-cart-item-container-right-side-ul-list-item">
-              <a >اطلاعات قطار</a>
-            </li>
-            <li className="booking-cart-item-container-right-side-ul-list-item">
-              <a>ایستگاه‌ها</a>
-            </li>
-            <li className="booking-cart-item-container-right-side-ul-list-item">
-              <a>قوانین استرداد</a>
-            </li>
-          </ul>
         </div>
         <div className="booking-cart-item-container-left">
-          <p className="booking-cart-item-container-left-button-container">
-            تومان<span className="price">10000</span>
+          <p className="booking-cart-item-container-left-price-container">
+          تکمیل ظرفیت  
           </p>
           <button className="booking-cart-item-container-left-button">
-            انتخاب بلیط
+            انتخاب پرواز
           </button>
-          <span className="booking-cart-item-container-left-price">
-            صندلی های باقی مانده: 10
-          </span>
         </div>
       </div>
     </div>
