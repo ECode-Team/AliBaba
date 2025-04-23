@@ -3,15 +3,15 @@ from rest_framework.response import Response
 from rest_framework.exceptions import NotFound, status
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..models import BasicModel, BasicModelSerializer
+from backend.api.models import Room, RoomSerializer
 
 
-class BasicModelView(APIView):
+class RoomView(APIView):
     @staticmethod
     def get_one(request, pk):
         try:
-            model = BasicModel.objects.get(id=pk)
-            serializer = BasicModelSerializer(model)
+            model = Room.objects.get(id=pk)
+            serializer = RoomSerializer(model)
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         except ObjectDoesNotExist:
@@ -19,19 +19,19 @@ class BasicModelView(APIView):
 
     @staticmethod
     def get_all(request):
-        model = BasicModel.objects.all()
-        return Response(BasicModelSerializer(model, many=True).data, status=status.HTTP_200_OK)
+        model = Room.objects.all()
+        return Response(RoomSerializer(model, many=True).data, status=status.HTTP_200_OK)
 
     @staticmethod
     def get(request, pk = None):
         if pk:
-            return BasicModelView.get_one(request, pk)
+            return RoomView.get_one(request, pk)
         else:
-            return BasicModelView.get_all(request)
+            return RoomView.get_all(request)
 
     @staticmethod
     def post(request, pk = None):
-        serializer = BasicModelSerializer(data=request.data)
+        serializer = RoomSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -42,10 +42,10 @@ class BasicModelView(APIView):
     @staticmethod
     def put(request, pk = None):
         try:
-            model = BasicModel.objects.get(id=pk)
-            serializer_init = BasicModelSerializer(model)
+            model = Room.objects.get(id=pk)
+            serializer_init = RoomSerializer(model)
 
-            serializer_new = BasicModelSerializer(model, data={
+            serializer_new = RoomSerializer(model, data={
                 **serializer_init.data,
                 **request.data
             })
@@ -63,7 +63,7 @@ class BasicModelView(APIView):
     @staticmethod
     def delete(request, pk = None):
         try:
-            model = BasicModel.objects.get(id=pk)
+            model = Room.objects.get(id=pk)
             model.delete()
             return Response(status.HTTP_200_OK, status=status.HTTP_200_OK)
 

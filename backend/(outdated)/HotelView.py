@@ -3,15 +3,15 @@ from rest_framework.response import Response
 from rest_framework.exceptions import NotFound, status
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..models import Room, RoomSerializer
+from backend.api.models import Hotel, HotelSerializer
 
 
-class RoomView(APIView):
+class HotelView(APIView):
     @staticmethod
     def get_one(request, pk):
         try:
-            model = Room.objects.get(id=pk)
-            serializer = RoomSerializer(model)
+            model = Hotel.objects.get(id=pk)
+            serializer = HotelSerializer(model)
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         except ObjectDoesNotExist:
@@ -19,19 +19,19 @@ class RoomView(APIView):
 
     @staticmethod
     def get_all(request):
-        model = Room.objects.all()
-        return Response(RoomSerializer(model, many=True).data, status=status.HTTP_200_OK)
+        model = Hotel.objects.all()
+        return Response(HotelSerializer(model, many=True).data, status=status.HTTP_200_OK)
 
     @staticmethod
     def get(request, pk = None):
         if pk:
-            return RoomView.get_one(request, pk)
+            return HotelView.get_one(request, pk)
         else:
-            return RoomView.get_all(request)
+            return HotelView.get_all(request)
 
     @staticmethod
     def post(request, pk = None):
-        serializer = RoomSerializer(data=request.data)
+        serializer = HotelSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -42,10 +42,10 @@ class RoomView(APIView):
     @staticmethod
     def put(request, pk = None):
         try:
-            model = Room.objects.get(id=pk)
-            serializer_init = RoomSerializer(model)
+            model = Hotel.objects.get(id=pk)
+            serializer_init = HotelSerializer(model)
 
-            serializer_new = RoomSerializer(model, data={
+            serializer_new = HotelSerializer(model, data={
                 **serializer_init.data,
                 **request.data
             })
@@ -63,7 +63,7 @@ class RoomView(APIView):
     @staticmethod
     def delete(request, pk = None):
         try:
-            model = Room.objects.get(id=pk)
+            model = Hotel.objects.get(id=pk)
             model.delete()
             return Response(status.HTTP_200_OK, status=status.HTTP_200_OK)
 

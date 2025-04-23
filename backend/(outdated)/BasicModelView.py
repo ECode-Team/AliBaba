@@ -3,15 +3,15 @@ from rest_framework.response import Response
 from rest_framework.exceptions import NotFound, status
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..models import Hotel, HotelSerializer
+from backend.api.models import BasicModel, BasicModelSerializer
 
 
-class HotelView(APIView):
+class BasicModelView(APIView):
     @staticmethod
     def get_one(request, pk):
         try:
-            model = Hotel.objects.get(id=pk)
-            serializer = HotelSerializer(model)
+            model = BasicModel.objects.get(id=pk)
+            serializer = BasicModelSerializer(model)
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         except ObjectDoesNotExist:
@@ -19,19 +19,19 @@ class HotelView(APIView):
 
     @staticmethod
     def get_all(request):
-        model = Hotel.objects.all()
-        return Response(HotelSerializer(model, many=True).data, status=status.HTTP_200_OK)
+        model = BasicModel.objects.all()
+        return Response(BasicModelSerializer(model, many=True).data, status=status.HTTP_200_OK)
 
     @staticmethod
     def get(request, pk = None):
         if pk:
-            return HotelView.get_one(request, pk)
+            return BasicModelView.get_one(request, pk)
         else:
-            return HotelView.get_all(request)
+            return BasicModelView.get_all(request)
 
     @staticmethod
     def post(request, pk = None):
-        serializer = HotelSerializer(data=request.data)
+        serializer = BasicModelSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -42,10 +42,10 @@ class HotelView(APIView):
     @staticmethod
     def put(request, pk = None):
         try:
-            model = Hotel.objects.get(id=pk)
-            serializer_init = HotelSerializer(model)
+            model = BasicModel.objects.get(id=pk)
+            serializer_init = BasicModelSerializer(model)
 
-            serializer_new = HotelSerializer(model, data={
+            serializer_new = BasicModelSerializer(model, data={
                 **serializer_init.data,
                 **request.data
             })
@@ -63,7 +63,7 @@ class HotelView(APIView):
     @staticmethod
     def delete(request, pk = None):
         try:
-            model = Hotel.objects.get(id=pk)
+            model = BasicModel.objects.get(id=pk)
             model.delete()
             return Response(status.HTTP_200_OK, status=status.HTTP_200_OK)
 
