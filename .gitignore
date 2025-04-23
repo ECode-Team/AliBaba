@@ -1,1 +1,4 @@
 .qodo
+/backend/api/migrations/
+/backend/db.sqlite3
+/.gitignore
