@@ -36,7 +36,7 @@ class LoginView(generics.GenericAPIView):
                 'user': UserSerializer(user).data,
                 'token': token.key
             }, status=status.HTTP_200_OK)  
-        logger.warning(f"Failed login attempt for email: {email}")
+        # logger.warning(f"Failed login attempt for email: {email}")
         return Response({'error': 'Incorrect email or password.'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
