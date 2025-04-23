@@ -1,19 +1,19 @@
 from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 
-from api.models.TripsModel import Trip
-from api.models.Tripserializers import Tripserializer
+from ..models import Trip, TripSerializer
 
 
-class Tripsview(viewsets.ModelViewSet):
+class TripsView(viewsets.ModelViewSet):
     queryset = Trip.objects.all()
-    serializer_class = Tripserializer
+    serializer_class = TripSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [
-        "TransferType",
-        "From",
-        "To",
-        "passenger",
+        "transfer_type",
+        "passengers_type",
+        "depart",
+        "arrive",
+        "depart_time",  # Exact date
+        "arrive_time",
         "Price",  # Exact price
-        "Date",  # Exact date
     ]
