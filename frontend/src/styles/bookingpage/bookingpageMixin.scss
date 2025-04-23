@@ -1,0 +1,212 @@
+@import "../variables.scss";
+
+@mixin card-item {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid $border-color;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-inline: auto;
+    width: 92%;
+    margin: 15px;
+  
+}
+@mixin booking-cart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    border-radius: 10px;
+    margin: 15px;
+    border: 1px solid $border-color;
+    box-shadow: 0 2px 4px rgba(0, 10, 10, 0.3);
+    &-container {
+      display: flex;
+      flex-direction: row-reverse;
+      width: 100%;
+      &-right {
+        display: flex;
+        flex: 3;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        justify-content: flex-end;
+        width: 100%;
+        &-side {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          justify-content: flex-end;
+          width: 100%;
+          &-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70px;
+            height: 70px;
+            background-color: lighten($primary-color, 40%);
+            border-radius: 9999px;
+            border: 3px solid $border-color;
+            &-image{
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%;
+            }
+            &-text {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              &-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                margin-inline: 20px;
+              }
+              &-title {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+                &-text1 {
+                  font-size: 16px;
+                  margin-left: 10px;
+                  padding: 5px;
+                  border-radius: 10px;
+                  background-color: lighten($dark-color, 20%);
+                  font-weight: 600;
+                  color: darken($dark-color, 35%);
+                }
+                &-text2 {
+                  font-size: 16px;
+                  margin-left: 10px;
+                  color: darken($dark-color, 10%);
+                  margin-inline: 20px;
+                  font-weight: bold;
+                }
+              }
+              &-subject {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                margin-top: -25px;
+                width: 100%;
+                &-text {
+                  font-size: 20px;
+                  margin-inline: 10px;
+                  color: darken($dark-color, 60%);
+                }
+                &-time {
+                  font-size: 22px;
+                  font-weight: bold;
+                  margin-inline: 20px;
+                  color: darken($dark-color, 80%);
+                }
+              }
+            }
+          }
+          &-ul {
+              &-list {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                width: 100%;
+                &-item {
+                  margin-inline: 15px;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: flex-end;
+                  font-weight: bold;
+                  color: darken($primary-color, 20%);
+                  cursor: pointer;
+                  &-text {
+                    padding: 5px;
+                    &.active {
+                      border-bottom: 2px solid $primary-color;
+                    }
+                  }
+                }
+              }
+            }
+        }
+      }
+      &-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        flex: 1;
+        border-right: 1px solid $border-color;
+        &-button {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          width: 75%;
+          background-color: $primary-color;
+          color: white;
+          border-radius: 5px;
+          padding: 10px;
+          margin-right: 10px;
+          cursor: pointer;
+          border: none;
+          font-size: 16px;
+          font-weight: 600;
+          margin-bottom: 10px;
+          transition: background-color 0.3s ease;
+          &:hover {
+            background-color: darken($primary-color, 10%);
+          }
+          &-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            .price {
+              font-weight: Bold;
+              color: inherit;
+              font-size: 25px;
+              color: $primary-color;
+              margin-bottom: 2px;
+              margin-right: 10px;
+            }
+          }
+        }
+        &-price {
+          margin-bottom: 10px;
+          font-size: 16px;
+          font-weight: bold;
+        &-container {
+          font-size: 16px;
+          color: darken($danger-color, 20%);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .dropdown-container {
+    display: none;
+    background-color: white;
+    height: auto;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    &.active {
+      display: block;
+    }
+  }
+}

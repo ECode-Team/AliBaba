@@ -1,0 +1,34 @@
+@import "../../../../styles/variables.scss";
+.booking-page-full {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  border: none;
+  &-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: darken($dark-color, 35%);
+  }
+  &-info {
+    font-size: 16px;
+    font-weight: 600;
+    color: darken($dark-color, 35%);
+    margin-inline: auto;
+    &-title {
+
+      color: darken($dark-color, 100%);
+    }
+    &-description {
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: -15px;
+      color: darken($dark-color, 35%);
+    }
+  }
+  &-image {
+    object-fit: cover;
+  }
+  
+}

@@ -1,0 +1,1 @@
+from .BasicModel import BasicModel, BasicModelSerializer
