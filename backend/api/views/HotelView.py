@@ -70,3 +70,4 @@ class HotelView(APIView):
         except ObjectDoesNotExist:
             err = NotFound.default_detail if pk else NotFound.default_detail + " Primary key field is empty"
             return Response(err, status=status.HTTP_404_NOT_FOUND)
+        

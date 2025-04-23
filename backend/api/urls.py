@@ -6,11 +6,16 @@ from .views import *
 from .views import Tripsview
 
 router = DefaultRouter()
-router.register("trips", Tripsview)
+router.register("trips", Tripsview,basename="trips")
 
 urlpatterns = [
     path("basic_model/", BasicModelView.as_view(), name="basic_model"),
     path("basic_model/<int:pk>", BasicModelView.as_view(), name="basic_model"),
+
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('profile/', ProfileView.as_view(), name='profile'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 
     path('hotel/', HotelView.as_view(), name="hotel"),
     path('hotel/<int:pk>', HotelView.as_view(), name="hotel"),

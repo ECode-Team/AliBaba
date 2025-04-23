@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 
-from ..models.Tripserializers import Tripserializer
-from ..models.TripsModel import Trip
+from api.models.TripsModel import Trip
+from api.models.Tripserializers import Tripserializer
 
 
 class Tripsview(viewsets.ModelViewSet):
