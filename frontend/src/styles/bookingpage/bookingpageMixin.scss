@@ -32,7 +32,6 @@
         display: flex;
         flex: 3;
         flex-direction: column;
-        align-items: center;
         padding: 10px;
         justify-content: flex-end;
         width: 100%;
@@ -91,9 +90,9 @@
                 &-text2 {
                   font-size: 16px;
                   margin-left: 10px;
-                  color: darken($dark-color, 10%);
+                  color: darken($dark-color, 40%);
                   margin-inline: 20px;
-                  font-weight: bold;
+                  font-weight:bolder;
                 }
               }
               &-subject {
@@ -209,4 +208,7 @@
       display: block;
     }
   }
+}
+.header-title{
+  margin-right: 15px;
 }

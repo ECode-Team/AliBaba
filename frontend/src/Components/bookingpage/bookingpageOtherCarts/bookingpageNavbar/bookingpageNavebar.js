@@ -1,9 +1,19 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./bookingpageNavbar.scss";
 export const BookingPageNavbar = () => {
   const [activeDate, setActiveDate] = useState(null);
   const navbarRef = useRef(null);
   const itemsRef = useRef(null);
+  const [itemWidth, setItemWidth] = useState(0);
+
+  useEffect(() => {
+    if (navbarRef.current) {
+      const firstItem = navbarRef.current.querySelector('.booking-page-navbar-items-item');
+      if (firstItem) {
+        setItemWidth(firstItem.offsetWidth);
+      }
+    }
+  }, []);
 
   const handleDateClick = (date) => {
     setActiveDate(date);
@@ -11,7 +21,6 @@ export const BookingPageNavbar = () => {
 
   const handleScrollRight = () => {
     if (navbarRef.current) {
-      const itemWidth = 100; // 120px width + 5px margin on each side
       navbarRef.current.scrollBy({
         left: itemWidth,
         behavior: "smooth",
@@ -21,7 +30,6 @@ export const BookingPageNavbar = () => {
 
   const handleScrollLeft = () => {
     if (navbarRef.current) {
-      const itemWidth = 90; // 120px width + 5px margin on each side
       navbarRef.current.scrollBy({
         left: -itemWidth,
         behavior: "smooth",

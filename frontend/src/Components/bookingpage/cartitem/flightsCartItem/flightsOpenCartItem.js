@@ -4,8 +4,8 @@ import "../../../../styles/bookingpage/bookingpage.scss";
 export const FlightsOpenCartItem = ({ setIsOpen }) => {
   const [activeLink, setActiveLink] = useState(null);
 
-  const handleLinkClick = (linkName) => {
-    setActiveLink(activeLink === linkName ? null : linkName);
+  const handleLinkClick = (link) => {
+    setActiveLink(activeLink === link ? null : link);
   };
 
   const handleClose = () => {

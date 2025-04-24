@@ -5,12 +5,12 @@ import { Bus } from "./Pages/bookingpage/bus/bus";
 import { Flights } from "./Pages/bookingpage/flights/flights";
 import { Hotel } from "./Pages/bookingpage/hotel/hotel";
 import { International } from "./Pages/bookingpage/international/international";
+import { Train } from './Pages/bookingpage/train/train';
 import { Vila } from "./Pages/bookingpage/vila/vila";
 import { Detail } from "./Pages/detailpage";
 import { Homepage } from './Pages/homepage';
 import { Payment } from "./Pages/paymentpage";
 import { Userpage } from "./Pages/userpage";
-import { Train } from './Pages/bookingpage/train/train';
 
 function App() {
     return (

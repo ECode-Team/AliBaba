@@ -1,1 +1,11 @@
-@import '../../../styles/bookingpage/variables.scss';
+@import '../../../../styles/variables.scss';
+.grey{
+    color: darken($border-color, 35%);
+    font-weight:bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-1{
+        margin-right: -50px;
+    }
+}

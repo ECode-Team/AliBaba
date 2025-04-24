@@ -1,1 +1,162 @@
-@import '../../../styles/bookingpage/variables.scss';
+@import "../../../../styles/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  &-image {
+    width: 240px;
+    height: 100%;
+    border-radius: 0px 10px 10px 0px;
+    background-color: $primary-color;
+    &-1 {
+      width: 240px;
+      height: 100%;
+      background-color: darken($primary-color, 10%);
+      object-fit: cover;
+    }
+  }
+  &-text {
+    margin-right: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    &-1 {
+      padding: 5px 10px;
+      background-color: lighten($border-color, 25%);
+      border-radius: 10px;
+      font-size: 12px;
+      &-2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        font-weight: bold;
+        font-size: 22px;
+        color: darken($border-color, 100%);
+        &-3 {
+          font-weight: bold;
+          font-size: 15px;
+          padding: 5px;
+        }
+        &-4 {
+          padding: 5px;
+
+          color: lighten($border-color, 20%);
+        }
+        &-5 {
+          padding: 5px;
+
+          font-size: 15px;
+          font-weight: bold;
+          color: darken($primary-color, 10%);
+          &-5 {
+            font-size: 12px;
+          }
+        }
+        &-6 {
+          padding: 5px;
+          font-size: 15px;
+          color: darken($border-color, 20%);
+        }
+      }
+    }
+    &-flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      &-p {
+        padding-inline: 5px;
+        font-size: 15px;
+        color: darken($border-color, 20%);
+      }
+    }
+  }
+  // &-right-padding{
+  //     padding:0px;
+  // }
+}
+
+.container-text {
+  .booking-cart-item-container-right-side-ul-list {
+    margin-right: -50px !important;
+  }
+}
+
+.booking-cart-item-container-right {
+  padding: 0 !important;
+}
+
+.padding {
+  padding: 0;
+}
+.dropdown1 {
+  border-top: 1px solid $border-color;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  align-items: center;
+  justify-content: center;
+  &-item1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 10px;
+    background-color: $primary-color;
+    margin: 15px;
+    height: 100%;
+  }
+  &-i0-item2 {
+    width: 100%;
+    height: 100%;
+    
+    &-item {
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: lighten($primary-color, 30%);
+      }
+      
+      &.active {
+        background-color: lighten($primary-color, 30%);
+        color: white;
+      }
+    }
+  }
+  &-item2 {
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    &-p {
+      font-size: 16px;
+      color: darken($border-color, 100%);
+      font-weight: bold;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  }
+  &-flex {
+    padding: 5px;
+    margin-top: -20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    &-item {
+      padding: 5px;
+      font-size: 15px;
+      color: darken($border-color, 20%);
+      &-1 {
+        color: darken($border-color, 20%);
+        margin-right: auto;
+      }
+    }
+  }
+}

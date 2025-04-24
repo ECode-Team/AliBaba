@@ -1,6 +1,6 @@
-import "./bookingpageauto.scss"
+import "./bookingpagefull.scss"
 
-export const Bookingpagefull = ({ src }) => {
+export const BookingpageFull = ({ src }) => {
   return (
     <div className="card-item booking-page-full">
       <div className="card-item-image booking-page-full-image">

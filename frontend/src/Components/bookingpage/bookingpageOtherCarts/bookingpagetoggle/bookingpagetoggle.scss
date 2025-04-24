@@ -1,0 +1,24 @@
+@import "../../../../styles/variables.scss";
+.booking-page-toggle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    &-title {
+      font-size: 20px;
+      font-weight: bolder;
+      margin-right: -65px;
+      color: darken($success-color, 35%);
+    }
+    &-description { 
+        font-size: 16px;
+        font-weight: 600;
+        color: darken($dark-color, 35%);
+    }
+  }
+}

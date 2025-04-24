@@ -1,62 +1,44 @@
 import { useState } from "react";
 import "./bookingpagesort.scss";
 
-export const BookingPageSort = () => {
-  const [activeSort, setActiveSort] = useState(null);
+export const BookingPageSort = ({ 
+  sortOptions = [
+    { id: "cheapest", label: "گرانترین" },
+    { id: "expensive", label: "ارزان‌ترین" },
+    { id: "earliest", label: "دیرترین" },
+    { id: "latest", label: "زودترین" },
+    { id: "suggest", label: "پیشنهاد علی‌بابا" }
+  ],
+  onSortChange,
+  initialSort = null
+}) => {
+  const [activeSort, setActiveSort] = useState(initialSort);
 
   const handleSortClick = (sortType) => {
     setActiveSort(sortType);
+    if (onSortChange) {
+      onSortChange(sortType);
+    }
   };
 
   return (
     <div className="booking-page-sort">
       <h2 className="booking-page-sort-title">مرتب‌سازی:</h2>
       <ul className="booking-page-sort-list">
-        <li className="booking-page-sort-list-item border">
-          <a 
-            className={`booking-page-sort-list-item-link ${activeSort === "cheapest" ? "active" : ""}`}
-            onClick={() => handleSortClick("cheapest")}
-            tabIndex={0}
+        {sortOptions.map((option, index) => (
+          <li 
+            key={option.id} 
+            className={`booking-page-sort-list-item ${index < sortOptions.length - 1 ? 'border' : ''}`}
           >
-            گرانترین
-          </a>
-        </li>
-        <li className="booking-page-sort-list-item border">
-          <a 
-            className={`booking-page-sort-list-item-link ${activeSort === "expensive" ? "active" : ""}`}
-            onClick={() => handleSortClick("expensive")}
-            tabIndex={0}
-          >
-            ارزان‌ترین
-          </a>
-        </li>
-        <li className="booking-page-sort-list-item border">
-          <a 
-            className={`booking-page-sort-list-item-link ${activeSort === "earliest" ? "active" : ""}`}
-            onClick={() => handleSortClick("earliest")}
-            tabIndex={0}
-          >
-            دیرترین
-          </a>
-        </li>
-        <li className="booking-page-sort-list-item border">
-          <a 
-            className={`booking-page-sort-list-item-link ${activeSort === "latest" ? "active" : ""}`}
-            onClick={() => handleSortClick("latest")}
-            tabIndex={0}
-          >
-            زودترین
-          </a>
-        </li>
-        <li className="booking-page-sort-list-item ">
-          <a 
-            className={`booking-page-sort-list-item-link ${activeSort === "suggest" ? "active" : ""}`}
-            onClick={() => handleSortClick("suggest")}
-            tabIndex={0}
-          >
-            پیشنهاد علی‌بابا
-          </a>
-        </li>
+            <a 
+              className={`booking-page-sort-list-item-link ${activeSort === option.id ? "active" : ""}`}
+              onClick={() => handleSortClick(option.id)}
+              tabIndex={0}
+            >
+              {option.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );
