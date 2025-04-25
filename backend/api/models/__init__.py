@@ -5,3 +5,4 @@ from .User import User,UserManager, UserSerializer,LoginSerializer,RegisterSeria
 from .Trip import Trip, TripSerializer
 from .TripBook import TripBook, TripBookSerializer
 from .RoomBook import RoomBook, RoomBookSerializer
+from .Review import Review, ReviewSerializer
