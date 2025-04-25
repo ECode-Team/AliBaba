@@ -10,6 +10,7 @@ routes = [
     ("hotel", HotelView),
     ("room", RoomView),
     ("trip", TripsView),
+    ("trip_book", TripBookView),
 ]
 
 for route, view in routes:
