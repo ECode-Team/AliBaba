@@ -2,10 +2,14 @@ from django.db import models
 from django.db.models import JSONField
 from rest_framework import serializers
 
+HOTEL_TYPES = [
+    ("Vila", "Vila"),
+    ("Hotel", "Hotel")
+]
 
 class Hotel(models.Model):
     name = models.CharField(max_length=50)
-    type = models.CharField(max_length=10) # vila | hotel
+    type = models.CharField(max_length=10, choices=HOTEL_TYPES) # vila | hotel
     phone = models.CharField(max_length=15, blank=True, null=True)
     country = models.CharField(max_length=50)
     city = models.CharField(max_length=50)

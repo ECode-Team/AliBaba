@@ -27,14 +27,14 @@ CITIES = [
 class Trip(models.Model):
     transfer_type = models.CharField(choices=TRANSFER_TYPES, max_length=30)
     passengers_type = models.CharField(choices=PASSENGERS_TYPES, max_length=30)
-    passengers_max = models.IntegerField(max_length=10, blank=True, null=True)
+    passengers_max = models.PositiveIntegerField(blank=True, null=True)
 
     depart = models.CharField(choices=CITIES, max_length=30)
     arrive = models.CharField(choices=CITIES,max_length=30)
     depart_time = models.DateTimeField()
     arrive_time = models.DateTimeField()
 
-    Price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
 
 
 class TripSerializer(serializers.ModelSerializer):

@@ -3,6 +3,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from .views import *
+from .views.ReviewView import ReviewView
 
 router = DefaultRouter()
 routes = [
@@ -10,6 +11,9 @@ routes = [
     ("hotel", HotelView),
     ("room", RoomView),
     ("trip", TripsView),
+    ("trip_book", TripBookView),
+    ("room_book", RoomBookView),
+    ("review", ReviewView),
 ]
 
 for route, view in routes:

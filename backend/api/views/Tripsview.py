@@ -15,5 +15,5 @@ class TripsView(viewsets.ModelViewSet):
         "arrive",
         "depart_time",  # Exact date
         "arrive_time",
-        "Price",  # Exact price
+        "price",  # Exact price
     ]
