@@ -11,6 +11,7 @@ routes = [
     ("room", RoomView),
     ("trip", TripsView),
     ("trip_book", TripBookView),
+    ("room_book", RoomBookView),
 ]
 
 for route, view in routes:
