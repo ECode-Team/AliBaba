@@ -1,0 +1,38 @@
+@import '../../../../styles/bookingpage/variables.scss';
+.booking-page-navbar {
+    display: flex;
+    margin-inline: auto;
+    width: 90%;
+    flex-direction:row;
+    align-items: center;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border: 2px solid $border-color;
+    border-radius: 10px;
+    justify-content: center;
+    &-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        list-style-type: none;
+        border-left: 1px solid $border-color;
+        justify-content: center;
+        &-date{
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            color: $dark-color;
+        }
+        &-price{
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: darken($dark-color, 20%);
+            margin-left: 10px;
+        }
+    }
+
+} 

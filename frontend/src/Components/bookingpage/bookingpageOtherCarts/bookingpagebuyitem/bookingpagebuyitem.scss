@@ -1,0 +1,54 @@
+@import "../../../../styles/bookingpage/variables.scss";
+
+.card-item{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    
+    justify-content: space-between;
+    border: 2px solid $border-color;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-inline: auto;
+    width: 95%;
+    &-image{
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        background-color: $border-color;
+    }
+    &-info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+    &-price{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        padding: 0px 0px;
+        color: darken($primary-color,10%);
+        &:hover{
+          padding: 0px;
+          border: 2px solid lighten($primary-color, 20%);
+            background-color: lighten($primary-color, 40%);
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        &-title{
+          padding: 0px;
+        }
+    }
+    
+}
+
+.booking-cart-item-container-right {
+    &.active {
+        background-color: lighten($dark-color, 25%);
+    }
+}
