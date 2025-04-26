@@ -4,6 +4,7 @@ export const Detail = () => {
             <h1>Detail page </h1>
             <h1>Detail page </h1>
             <h1>Detail page </h1>
+            <h1>Detail page </h1>
         </div>
     )
 }
