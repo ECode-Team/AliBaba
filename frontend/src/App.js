@@ -11,6 +11,7 @@ import { Homepage } from './Pages/homepage';
 import { Payment } from "./Pages/paymentpage";
 import { Userpage } from "./Pages/userpage";
 import { Train } from './Pages/bookingpage/train/train';
+import "../src/styles/general.scss";
 
 function App() {
     return (

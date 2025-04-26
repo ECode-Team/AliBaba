@@ -1,6 +1,8 @@
+import "../styles/mainpage/footer.scss"
+
 export const Footer = () => {
     return (
-        <div>
+        <div className="footer-container">
             <h1>this is footer</h1>
         </div>
     )
