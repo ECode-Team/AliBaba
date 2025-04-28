@@ -3,15 +3,12 @@ import "./bookingpagesort.scss";
 
 export const BookingPageSort = ({ 
   sortOptions = [
-    { id: "cheapest", label: "گرانترین" },
-    { id: "expensive", label: "ارزان‌ترین" },
-    { id: "earliest", label: "دیرترین" },
-    { id: "latest", label: "زودترین" },
-    { id: "suggest", label: "پیشنهاد علی‌بابا" }
-  ],
-  onSortChange,
-  initialSort = null
-}) => {
+    // { id: "expensive", label: "گرانترین" },
+    // { id: "cheapest", label: "ارزان‌ترین" },
+    // { id: "latest", label: "دیرترین" },
+    // { id: "fastest", label: "زودترین" },
+    // { id: "suggest", label: "پیشنهاد علی‌بابا" }
+  ],onSortChange,initialSort = null}) => {
   const [activeSort, setActiveSort] = useState(initialSort);
 
   const handleSortClick = (sortType) => {

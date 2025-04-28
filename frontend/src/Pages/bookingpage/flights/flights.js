@@ -20,10 +20,10 @@ export const Flights = () => {
   };
 
   const sortOptions = [
-    { id: "cheapest", label: "گرانترین" },
-    { id: "expensive", label: "ارزان‌ترین" },
-    { id: "earliest", label: "دیرترین" },
-    { id: "latest", label: "زودترین" },
+    { id: "expensive", label: "گرانترین" },
+    { id: "cheapest", label: "ارزان‌ترین" },
+    { id: "latest", label: "دیرترین" },
+    { id: "fastest", label: "زودترین" },
     { id: "suggest", label: "پیشنهاد علی‌بابا" }
   ];
 

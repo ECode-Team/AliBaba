@@ -5,11 +5,11 @@ import "./hotelCartItem.scss";
 export const HotelCartItem = ({ setIsOpen }) => {
   const [activeLink, setActiveLink] = useState(null);
   const [activeLocation, setActiveLocation] = useState(null);
-
+  //مشاهده روی نقشه
   const handleLinkClick = (link) => {
     setActiveLink(activeLink === link ? null : link);
   };
-
+  //انتخاب مکان
   const handleLocationClick = (location) => {
     setActiveLocation(location);
   };
@@ -67,11 +67,8 @@ export const HotelCartItem = ({ setIsOpen }) => {
                 <p className="container-text">خدمات اينترنت بی‌س</p>
               </div>
               <ul className="booking-cart-item-container-right-side-ul-list">
-                <li className="booking-cart-item-container-right-side-ul-list-item a">
-                  <a
-                    className={` ${activeLink === "stations" ? "active" : ""}`}
-                    onClick={() => handleLinkClick("stations")}
-                  >
+                <li className="booking-cart-item-container-right-side-ul-list-item">
+                  <a className={` ${activeLink === "stations" ? "active" : ""}`} onClick={() => handleLinkClick("stations")}>
                     مشاهده روی نقشه
                   </a>
                 </li>

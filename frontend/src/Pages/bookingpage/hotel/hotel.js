@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Bookingpagebuyitem } from "../../../Components/bookingpage/bookingpageOtherCarts/bookingpagebuyitem/bookingpagebuyitem";
 import { BookingPageNavbar } from "../../../Components/bookingpage/bookingpageOtherCarts/bookingpageNavbar/bookingpageNavebar";
 import { BookingPageSort } from "../../../Components/bookingpage/bookingpageOtherCarts/bookingpagesort/bookingpagesort";
-import "../../../styles/bookingpage/bookingpage.scss";
+import PriceRangeSlider from "../../../Components/bookingpage/bookingpageSideBar/priceRangeSlider/PriceRangeSlider";
 import { HotelCartItem } from "../../../Components/bookingpage/cartitem/hotelCartItem/hotelCartItem";
+import "../../../styles/bookingpage/bookingpage.scss";
+
 export const Hotel = () => {
   const [currentSort, setCurrentSort] = useState(null);
 
@@ -14,16 +16,16 @@ export const Hotel = () => {
   };
 
   const sortOptions = [
-    { id: "expensive", label: "پیش فرض" },
-    { id: "latest", label: "کمترین قیمت" },
-    { id: "suggest", label: "بیشترین قیمت" },
+    { id: "suggest", label: "پیش فرض" },
+    { id: "cheapest", label: "کمترین قیمت" },
+    { id: "expensive", label: "بیشترین قیمت" },
   ];
 
   return (
     <div className="booking-page">
       <div className="booking-page-sidebar">
         <h2 className="natayej">نتایج: 10</h2>
-        <p>Select your train journey</p>
+        <PriceRangeSlider/>
       </div>
       <div className="booking-page-container">
         <div className="booking-page-container-navbar">

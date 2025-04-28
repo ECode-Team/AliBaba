@@ -1,0 +1,121 @@
+@import '../../../../styles/variables.scss';
+
+// Mixins
+@mixin slider-thumb {
+  width: 20px;
+  height: 20px;
+  background: $white-color;
+  border: 2px solid $primary-color;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+// Variables
+$slider-height: 4px;
+$thumb-size: 20px;
+$slider-container-height: 40px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 20px;
+
+.price-range-slider {
+  width: 100%;
+  padding: $spacing-md;
+  font-family: Arial, sans-serif;
+
+  // Title styles
+  .slider-title {
+    margin: 0 0 $spacing-md;
+    font-size: $spacing-md;
+    color: darken($dark-color, 20%);
+  }
+
+  // Container styles
+  .slider-container {
+    position: relative;
+    width: 100%;
+    height: $slider-container-height;
+    margin: $spacing-lg 0;
+  }
+
+  // Track styles
+  .slider-track {
+    position: absolute;
+    width: 100%;
+    height: $slider-height;
+    background: lighten($border-color, 10%);
+    border-radius: $slider-height / 2;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  // Range styles
+  .slider-range {
+    position: absolute;
+    height: 100%;
+    background: $primary-color;
+    border-radius: $slider-height / 2;
+    top: 0;
+    transition: all 0.2s ease;
+  }
+
+  // Input styles
+  .slider-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    // Webkit thumb styles
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      @include slider-thumb;
+      margin-top: -($thumb-size / 2 - $slider-height / 2);
+    }
+
+    // Firefox thumb styles
+    &::-moz-range-thumb {
+      @include slider-thumb;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  // Input positioning
+  .min-input {
+    z-index: 3;
+  }
+
+  .max-input {
+    z-index: 4;
+  }
+
+  // Price values display
+  .price-values {
+    @include flex-between;
+    margin-top: $spacing-sm;
+    color: darken($dark-color, 30%);
+    font-size: 14px;
+  }
+
+  // Slider marks
+  .slider-marks {
+    @include flex-between;
+    margin-top: $spacing-sm;
+    color: darken($dark-color, 10%);
+    font-size: 12px;
+  }
+} 

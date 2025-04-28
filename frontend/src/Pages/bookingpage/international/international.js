@@ -16,10 +16,10 @@ export const International = () => {
 
   const sortOptions = [
     { id: "suggest", label: "پیشنهاد علی‌بابا" },
-    { id: "expensive", label: "ارزان‌ترین" },
-    { id: "cheapest", label: "سریع ترین" },
+    { id: "cheapest", label: "ارزان‌ترین" },
+    { id: "fastest", label: "سریع ترین" },
     { id: "latest", label: "زودترین" },
-    { id: "earliest", label: "دیرترین" },
+    { id: "latest", label: "دیرترین" },
   ];
   return (
     <div className="booking-page">

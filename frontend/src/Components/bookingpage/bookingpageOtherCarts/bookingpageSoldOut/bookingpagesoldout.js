@@ -1,4 +1,4 @@
-import { useState } from "react";
+import "../../../../styles/bookingpage/bookingpage.scss";import { useState } from "react";
 import "./bookingpagesoldout.scss";
 
 export const Bookingpagesoldout = ({ src }) => {

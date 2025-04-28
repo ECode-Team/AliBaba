@@ -1,4 +1,4 @@
-import "./bookingpagebuyitem.scss";
+import "../../../../styles/bookingpage/bookingpage.scss";import "./bookingpagebuyitem.scss";
 export const Bookingpagebuyitem = ({ src }) => {
   return (
     <div className="card-item">

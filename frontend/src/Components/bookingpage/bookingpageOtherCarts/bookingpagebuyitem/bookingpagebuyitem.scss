@@ -1,7 +1,10 @@
 @import "../../../../styles/variables.scss";
 @import "../../../../styles/bookingpage/bookingpageMixin.scss";
 .card-item {
-  @include card-item;
+  @include card-item(
+    $border: 1px solid $border-color,
+    $borderr: 1px solid $border-color
+  );
   &-image {
     width: 100px;
     height: 100px;
@@ -14,17 +17,16 @@
     align-items: center;
     margin-left: auto;
     justify-content: end;
-    margin-right: 0px;
+    margin-right: 15px;
     &-title {
       font-size: 1.4rem;
       font-weight: bold;
-      color: darken($dark-color, 100%);
-      margin-right: -15px;
+      color: darken($dark-color, 100%);        margin-right: 45px;
+    
     }
     &-description {
       font-weight: 500;
       margin-right: 25px;
-      color: darken($dark-color, 50%);
     }
   }
   &-price {

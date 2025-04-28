@@ -15,8 +15,8 @@ export const Train = () => {
       };
     
       const sortOptions = [
-        { id: "expensive", label: "کمترین قیمت" },
-        { id: "latest", label: "زودترین زمان حرکت" },
+        { id: "cheapest", label: "کمترین قیمت" },
+        { id: "fastest", label: "زودترین زمان حرکت" },
         { id: "suggest", label: "پیشنهاد علی‌بابا" }
       ];
     return (

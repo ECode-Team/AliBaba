@@ -5,156 +5,182 @@
 }
 .booking-cart-item {
   border-bottom: 1px solid $border-color;
-  .dropdown-container {
-    display: none;
-    background-color: blue;
-    height: auto;
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    &.active {
-      display: block;
+  &-container {
+    &-left {
     }
-    &-item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      &-title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        width: 100%;
-        margin-top: -170px;
-        flex: 1;
-        &-text{
-          font-size: 16px;
-          color:darken($dark-color, 20%);
-          font-weight: bold;
-          &-1{
-            font-size: 16px;
-            font-weight: bold;
-            color:darken($dark-color, 20%);
-            border-bottom: 1px solid lighten($border-color, 20%);
-            padding: 10px;
-            margin-bottom: 10px;
-          }
-        }
-      }
-      &-subtitle {
-        border-top: 1px solid $border-color;
-        display: flex;
-        flex: 3;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        justify-content: flex-end;
-        width: 100%;
-        border-left: 1px solid $border-color;
-        h5{
-          font-size: 16px;
-          color:darken($dark-color, 20%);
-        }
-        h4{
-          font-size: 15px;
-          font-weight: bold;
-        }
-        &-container-item{
-          display: grid;
-          grid-template-columns: repeat(4,1fr);
-          gap: 10px;
-          justify-content: space-between;
-          &-value{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-          }
-        }
-      }
-      &-subtitle1{
-        border-top: 1px solid $border-color;
-        display: flex;
-        flex: 3;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        justify-content: flex-start;
-        width: 100%;
-        border-left: 1px solid $border-color;
-        &-item1-container1{
+    &-right {
+      &-side {
+        &-image {
           display: flex;
-          flex-direction: column;
-          &-item1{
-            display: flex;
-            justify-content: flex-start;
-            &-text{
-              display: flex;
-              color: darken($dark-color,10%);
-              margin-right: 0px;
-              font-weight: bold;
-              justify-content: flex-end;
-              flex-direction: row-reverse;
-              &-svg{
-                display: flex;
-                align-items: center;
-                padding: 10px;
-                margin-top: -5px;
-                flex-direction: row;
+          flex-direction: row;
+          &-image {
+            margin-top: 25px;
+          }
+          &-text-container {
+            margin-top: 25px;
+            &-title {
+              &-text1 {
               }
             }
-          }
-          &-item2{
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            &-item1{
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: flex-end;
-              padding-inline: 10px;
-              &-1{
-                border-left: 1px solid $border-color;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-              }
-              &.padding-inline{
-                padding-inline: 10px;
-              }
-              &-text1{
-                font-size: 25px;
-                font-weight: bold;
-                color:darken($danger-color, 20%);
-              }
-              &-text2{
-                margin-top: -10px;
-                display: flex;
-                align-self: flex-start;
-                font-size: 16px;
-                padding-inline: 10px;
-                font-weight: bold;
-                color:darken($dark-color, 20%);
-              }
-            }
-          }
-        }
-      }
-    }
-    &-right-side-ul-list {
-      &-item {
-        &-text {
-          &.active {
-            border-bottom: 5px solid #007bff;
-            color: #007bff;
           }
         }
       }
     }
   }
 }
-.item-close{
-  color:darken($primary-color, 10%);
+.dropdown-container {
+  display: none;
+  background-color: blue;
+  height: auto;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  &.active {
+    display: block;
+  }
+  &-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    &-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+
+      margin-top: -170px;
+      flex: 1;
+      &-text {
+        font-size: 16px;
+        color: darken($dark-color, 20%);
+        font-weight: bold;
+        &-1 {
+          font-size: 16px;
+          font-weight: bold;
+          color: darken($dark-color, 20%);
+          border-bottom: 1px solid lighten($border-color, 20%);
+          padding: 10px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+    &-subtitle {
+      border-top: 1px solid $border-color;
+      display: flex;
+      flex: 3;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      border-left: 1px solid $border-color;
+      h5 {
+        font-size: 16px;
+        color: darken($dark-color, 20%);
+      }
+      h4 {
+        font-size: 15px;
+        font-weight: bold;
+      }
+      &-container {
+        margin-right: 15px;
+        &-item {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+          justify-content: space-between;
+          &-value {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+    &-subtitle1 {
+      border-top: 1px solid $border-color;
+      display: flex;
+      flex: 3;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      border-left: 1px solid $border-color;
+      &-item1-container1 {
+        margin-right: 15px;
+        display: flex;
+        flex-direction: column;
+        &-item1 {
+          display: flex;
+          justify-content: flex-start;
+          &-text {
+            display: flex;
+            color: darken($dark-color, 10%);
+            margin-right: 0px;
+            font-weight: bold;
+            justify-content: flex-end;
+            flex-direction: row-reverse;
+            &-svg {
+              display: flex;
+              align-items: center;
+              padding: 10px;
+              margin-top: -5px;
+              flex-direction: row;
+            }
+          }
+        }
+        &-item2 {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          &-item1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-inline: 10px;
+            &-1 {
+              border-left: 1px solid $border-color;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+            }
+            &.padding-inline {
+              padding-inline: 10px;
+            }
+            &-text1 {
+              font-size: 25px;
+              font-weight: bold;
+              color: darken($danger-color, 20%);
+            }
+            &-text2 {
+              margin-top: -10px;
+              display: flex;
+              align-self: flex-start;
+              font-size: 16px;
+              padding-inline: 10px;
+              font-weight: bold;
+              color: darken($dark-color, 20%);
+            }
+          }
+        }
+      }
+    }
+  }
+  &-right-side-ul-list {
+    &-item {
+      &-text {
+        &.active {
+          border-bottom: 5px solid #007bff;
+          color: #007bff;
+        }
+      }
+    }
+  }
+}
+.item-close {
+  color: darken($primary-color, 10%);
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -162,4 +188,3 @@
   margin-inline: auto;
   justify-content: center;
 }
-
