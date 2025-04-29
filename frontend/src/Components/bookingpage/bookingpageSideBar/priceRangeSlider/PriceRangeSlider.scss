@@ -1,5 +1,11 @@
 @import '../../../../styles/variables.scss';
-
+// Variables
+$slider-height: 4px;
+$thumb-size: 20px;
+$slider-container-height: 40px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 20px;
 // Mixins
 @mixin slider-thumb {
   width: 20px;
@@ -15,20 +21,10 @@
   display: flex;
   justify-content: space-between;
 }
-
-// Variables
-$slider-height: 4px;
-$thumb-size: 20px;
-$slider-container-height: 40px;
-$spacing-sm: 8px;
-$spacing-md: 16px;
-$spacing-lg: 20px;
-
 .price-range-slider {
   width: 100%;
-  padding: $spacing-md;
   font-family: Arial, sans-serif;
-
+  border: 1px solid lighten($border-color, 20%);
   // Title styles
   .slider-title {
     margin: 0 0 $spacing-md;
@@ -38,8 +34,12 @@ $spacing-lg: 20px;
 
   // Container styles
   .slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    width: 100%;
+    margin: 0 auto;
+    width: 95%;
     height: $slider-container-height;
     margin: $spacing-lg 0;
   }
@@ -106,13 +106,16 @@ $spacing-lg: 20px;
   // Price values display
   .price-values {
     @include flex-between;
-    margin-top: $spacing-sm;
+    margin-top: -3*$spacing-sm;
+    width: 95%;
     color: darken($dark-color, 30%);
     font-size: 14px;
   }
 
   // Slider marks
   .slider-marks {
+    width: 95%;
+    margin-bottom: 2*$spacing-sm;
     @include flex-between;
     margin-top: $spacing-sm;
     color: darken($dark-color, 10%);

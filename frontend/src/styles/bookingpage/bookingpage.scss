@@ -42,13 +42,15 @@
       display: flex;
       color: $border-color;
       font-size: 20px;
+      margin-right: 10px;
       justify-content: flex-start;
     }
+    height: fit-content;
     max-width: 300px;
     flex: 1;
     flex-direction: column;
     background-color: white;
-    padding: 20px;
+    border: 1px solid lighten($border-color, 20%);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     h2 {
