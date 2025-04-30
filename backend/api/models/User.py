@@ -4,6 +4,9 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 
+from .Trip import  TripSerializer
+
+
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **extra_fields):
 
@@ -68,9 +71,28 @@ class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
 
+
 class UserSerializer(serializers.ModelSerializer):
+    tripbook_count = serializers.SerializerMethodField()
+    trips = serializers.SerializerMethodField()
+
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'phone']
+        fields = ['id', 'username', 'email', 'phone', 'tripbook_count','trips']
+
+    def get_tripbook_count(self, obj):
+        return obj.trip_bookings.count()
+    
+    def get_trips(self, obj):
+       
+        trip_books = obj.trip_bookings.all()
+    
+        trips = [trip_book.trip for trip_book in trip_books]
+
+        unique_trips = list({trip.id: trip for trip in trips}.values())
+
+        return TripSerializer(unique_trips, many=True).data
+        
+            
 
         

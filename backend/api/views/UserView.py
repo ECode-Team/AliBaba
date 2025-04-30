@@ -4,6 +4,10 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from django.contrib.auth.models import User
+from django.db.models import Count
+
+
 
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
@@ -15,14 +19,15 @@ class RegisterView(generics.CreateAPIView):
             token, created = Token.objects.get_or_create(user=user)
             return Response({
                 'user': UserSerializer(user).data,
-                'token': token.key
+                'token': token.key,
+                
             }, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 class LoginView(generics.GenericAPIView):
     serializer_class = LoginSerializer
-    permission_classes = [AllowAny]  
+    permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -35,10 +40,8 @@ class LoginView(generics.GenericAPIView):
             return Response({
                 'user': UserSerializer(user).data,
                 'token': token.key
-            }, status=status.HTTP_200_OK)  
-        # logger.warning(f"Failed login attempt for email: {email}")
+            }, status=status.HTTP_200_OK)
         return Response({'error': 'Incorrect email or password.'}, status=status.HTTP_401_UNAUTHORIZED)
-
 
 class ProfileView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
@@ -46,6 +49,11 @@ class ProfileView(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+    
+    def tripbook_count(self):
+        users = User.objects.annotate(tripbook_count=Count('trip_bookings')).filter(tripbook_count__gt=0)
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
 
 class LogoutView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
