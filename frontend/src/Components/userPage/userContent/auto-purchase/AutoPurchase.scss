@@ -1,0 +1,16 @@
+.parent{
+  width: clamp(300px , 856px , 950px);
+}
+
+.auto-purchase{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img{
+    width: 8rem;
+    height: 8rem;
+  }
+
+}

@@ -1,0 +1,7 @@
+export { default as  UserDashboard} from "./user-dashboard/UserDashboard"
+export { default as  Favorites} from "./favorites/Favorites"
+export { default as  MyTrips} from "./my-trips/MyTrips"
+export { default as  AutoPurchase} from "./auto-purchase/AutoPurchase"
+export { default as  PassengersList} from "./passengers-list/PassengersList"
+export { default as  RequestSupport} from "./request-support/RequestSupport"
+export { default as  AccountBalance} from "./account-balance/AccountBalance"

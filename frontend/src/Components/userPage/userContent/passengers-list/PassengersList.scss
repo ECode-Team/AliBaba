@@ -1,0 +1,31 @@
+@import "../../../../styles/variables";
+
+.passenger-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search{
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid $border-color;
+  width: 800px;
+  direction: rtl;
+  margin-top: 20px;
+  outline: none;
+
+  &::placeholder{
+    font-size: 16px;
+  }
+
+}
+
+.no-passenger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+}
+
