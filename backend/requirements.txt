@@ -3,4 +3,5 @@ djangorestframework
 django-filter
 sqlparse
 wheel
+mysqlclient
 django-cors-headers
