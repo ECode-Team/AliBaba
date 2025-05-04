@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap');
+@import './variables.scss';
+
+body {
+    margin: 0;
+    font-family: "Noto Sans Arabic", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $text-color;
+}
