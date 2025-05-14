@@ -54,7 +54,12 @@ class ProfileView(generics.RetrieveAPIView):
         users = User.objects.annotate(tripbook_count=Count('trip_bookings')).filter(tripbook_count__gt=0)
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
-
+    
+    def roombook_count(self):
+        users = User.objects.annotate(roombook_count=Count('room_bookings')).filter(roombook_count__gt=0)
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
+    
 class LogoutView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
 

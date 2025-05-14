@@ -5,6 +5,7 @@ from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 
 from .Trip import  TripSerializer
+from .Room import RoomSerializer
 
 
 class UserManager(BaseUserManager):
@@ -75,10 +76,12 @@ class LoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     tripbook_count = serializers.SerializerMethodField()
     trips = serializers.SerializerMethodField()
+    roombook_count = serializers.SerializerMethodField()
+    rooms = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'phone', 'tripbook_count','trips']
+        fields = ['id', 'username', 'email', 'phone', 'tripbook_count','trips','roombook_count','rooms']
 
     def get_tripbook_count(self, obj):
         return obj.trip_bookings.count()
@@ -92,6 +95,19 @@ class UserSerializer(serializers.ModelSerializer):
         unique_trips = list({trip.id: trip for trip in trips}.values())
 
         return TripSerializer(unique_trips, many=True).data
+    
+    def get_roombook_count(self, obj):
+        return obj.room_bookings.count()
+    
+    def get_rooms(self, obj):
+       
+        room_books = obj.room_bookings.all()
+    
+        rooms = [room_book.room for room_book in room_books]
+
+        unique_rooms = list({room.id: room for room in rooms}.values())
+
+        return RoomSerializer(unique_rooms, many=True).data
         
             
 
