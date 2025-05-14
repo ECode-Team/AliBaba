@@ -1,5 +1,7 @@
 import "./UserSidebar.scss"
 import "../../../styles/general.scss"
+import {use} from "react";
+import {AppContext, useGlobalContext} from "../../../context/Context";
 
 const sideBarData = [
     {text: "حساب کاربری" , icon: "/icons/user01.png" , link: "user-dashboard"},
@@ -11,20 +13,23 @@ const sideBarData = [
     {text: "موجودی و اعتبار من" , icon: "/icons/dollar-sign.png" , link: "account-balance"},
 ]
 
-const UserSidebar = ({ setActiveSection }) => (
-    <>
+const DesktopSidebar = () => {
+
+    const {setActiveSection} = useGlobalContext()
+
+    return (
         <ul className="parent-sidebar">
             {
                 sideBarData.map(({text , icon , link}) => (
                     <li key={text} className="sidebar-item">
                         <span
-                           className="sidebar-link"
-                           onClick={() => setActiveSection(link)}>{text}</span>
+                            className="sidebar-link"
+                            onClick={() => setActiveSection(link)}>{text}</span>
                         <img src={icon} alt=""/>
                     </li>
                 ))
             }
         </ul>
-    </>
-)
-export default UserSidebar;
+    )
+}
+export default DesktopSidebar;

@@ -38,6 +38,23 @@
     margin-right: 10px;
     color: $text-color;
     cursor: pointer;
-
   }
 }
+
+
+
+.mobile-sidebar{
+  width: 100%;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 0 16px;
+
+  ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+

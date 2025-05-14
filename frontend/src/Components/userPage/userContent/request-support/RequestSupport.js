@@ -1,6 +1,12 @@
+import "./RequestSupport.scss"
+import UserContentHelperComponent from "../UserContentHelperComponent";
+import DesktopRequestSupport from "./DesktopRequestSupport";
+import MobileRequestSupport from "./MobileRequestSupport";
+import useIsMobile from "../../../../context/useIsMobile";
 
 const RequestSupport = () => {
-  return "req support"
+    const isMobile = useIsMobile()
+    return isMobile ? <MobileRequestSupport /> : <DesktopRequestSupport />
 }
 
 export default RequestSupport;

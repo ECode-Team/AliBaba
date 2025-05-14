@@ -1,23 +1,11 @@
-import UserContentHelperComponent from "../UserContentHelperComponent";
 import "./AutoPurchase.scss"
+import MobileAutoPurchase from "./MobileAutoPurchase";
+import DesktopAutoPurchase from "./DesktopAutoPurchase";
+import useIsMobile from "../../../../context/useIsMobile";
 
 const AutoPurchase = () => {
-  return (
-              <UserContentHelperComponent
-                  title="خریدهای خودکار"
-                  icon="/icons/calendar.png"
-                  editIcon=""
-                  editTitle=""
-                  editPasswordBtn=""
-              >
-                 <div className="parent">
-                     <div className="auto-purchase">
-                         <img src="/images/4/calendar01.svg" alt=""/>
-                         <h4>هیچ خرید خودکاری فعالی وجود ندارد</h4>
-                     </div>
-                 </div>
-              </UserContentHelperComponent>
-  )
+    const isMobile = useIsMobile()
+    return isMobile ? <MobileAutoPurchase /> : <DesktopAutoPurchase />
 }
 
 export default AutoPurchase;

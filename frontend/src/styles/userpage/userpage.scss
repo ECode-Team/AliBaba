@@ -1,6 +1,24 @@
+@import "../../styles/mixins";
+
 .userpage-container{
   display: flex;
   align-items: flex-start;
   justify-content: center;
   gap: 20px;
+
+  @include respond-to(sm){
+    flex-direction: column;
+    width: 100%;
+  }
 }
+
+
+
+.userpage-mobile-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+

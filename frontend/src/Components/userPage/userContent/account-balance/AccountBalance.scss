@@ -1,0 +1,200 @@
+@import "../../../../styles/variables";
+
+*{
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+
+  .account-balance {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding: 10px 20px;
+    border: 1px solid $border-color;
+    width: 864px;
+    border-radius: 10px;
+
+    .inventory-increase-decrease {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 10px;
+
+      p {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+
+        span {
+          color: green;
+        }
+      }
+
+      .increase , .decrease{
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row-reverse;
+        gap: 5px;
+        border-radius: 10px;
+        font-size: 16px;
+      }
+
+      .increase{
+        background: $link-color;
+        color: white;
+        border: 1px solid $link-color;
+        transition: 300ms;
+        &:hover{
+          background: darken($link-color , 5%);
+        }
+      }
+
+      .decrease{
+        color: $link-color;
+        background: white;
+        border: 1px solid $link-color;
+      }
+
+    }
+
+  }
+
+  .payment-history{
+    direction: rtl;
+    border: 1px solid $border-color;
+    border-radius: 10px;
+    padding: 0 20px;
+
+    .options{
+      display: flex;
+      justify-content: space-between;
+
+      .buttons {
+        display: flex;
+
+        .tab-button {
+          background: transparent;
+          border: 1px solid $border-color;
+          padding: 5px 15px;
+          font-size: 14px;
+          border-radius: 0;
+          cursor: pointer;
+
+          &:first-child {
+            border-left: none;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+          }
+
+          &:last-child {
+            border-right: none;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+          }
+
+          span{
+            border-radius: 5px;
+            padding: 0 14px;
+            &.active{
+              background: $link-color;
+              color: white;
+
+            }
+          }
+
+        }
+      }
+
+      .export-filter{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+
+        .export-btn , .filter-btn{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+          color: $link-color;
+          border: none;
+          background: transparent;
+          font-size: 17px;
+          cursor: pointer;
+          img{
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+      }
+
+    }
+
+    .no-payment{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+  }
+
+}
+
+.my-account-balance-mobile-container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .account-balance-mobile{
+    margin-top: 20px;
+    border-radius: 8px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    border: 1px solid $border-color;
+
+    p{
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      gap: 5px;
+      span{
+        color: forestgreen;
+      }
+    }
+  }
+
+  .transactions-transferRequest{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 0 10px;
+
+    .transactions , .transferRequest{
+       display: flex;
+       padding: 0 10px;
+       align-items: center;
+       flex-direction: row-reverse;
+       justify-content: space-between;
+     }
+
+    .separator{
+      height: 0.1px;
+      background: $border-color;
+    }
+
+
+  }
+
+}

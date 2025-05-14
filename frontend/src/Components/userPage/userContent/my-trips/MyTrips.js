@@ -19,7 +19,7 @@ const MyTrips = () => {
             <div className="trip-inputs">
                 <div className="inputs">
                     <label htmlFor="">جستجوی سفارش</label>
-                    <input type="text" placeholder="شماره سفارش"/>
+                    <input type="text" placeholder="شماره سفارش" className="with-icon"/>
                 </div>
                 <div className="inputs">
                     <label htmlFor="">نوع سفارش</label>

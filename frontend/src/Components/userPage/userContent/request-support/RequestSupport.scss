@@ -1,31 +1,10 @@
 @import "../../../../styles/variables";
 
-*{
-  font-family: "Noto Sans Arabic", sans-serif;
+.Req-support-container{
+  width: 864px;
 }
 
-.passenger-container{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.search{
-  padding: 8px 15px;
-  border-radius: 10px;
-  border: 1px solid $border-color;
-  width: 800px;
-  direction: rtl;
-  margin-top: 20px;
-  outline: none;
-
-  &::placeholder{
-    font-size: 16px;
-  }
-
-}
-
-.no-passenger {
+.no-request-support {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -52,26 +31,33 @@
   }
 }
 
-.no-passenger-mobile{
+.empty-message-box{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
 
+  p{
+    opacity: 0.7;
+  }
+
 }
 
-.add-passenger-btn{
+.request-btn{
+  color: $link-color;
+  border: none;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row-reverse;
-  color: $link-color;
-  font-size: 15px;
+  gap: 5px;
+  cursor: pointer;
 
   img{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
   }
 
 }

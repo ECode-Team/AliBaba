@@ -1,6 +1,7 @@
 @import "../../../styles/variables";
 
 .user-content-container{
+  width: 864px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -61,6 +62,11 @@
   }
 }
 
+.test{
+  display: flex;
+  flex-direction: column;
+}
+
 .user-number{
   display: flex;
   flex-direction: row-reverse;
@@ -106,7 +112,7 @@
   align-items: center;
   background: transparent;
   outline: $link-color;
-  border-color: $link-color;
+  border: 2px solid $link-color;
   border-radius: 5px;
   padding: 5px 10px;
   color: $link-color;
@@ -125,3 +131,120 @@ a {
 li > a {
   color: initial !important;
 }
+
+.mobile-dashboard {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 16px;
+  gap: 16px;
+
+  .user-card {
+    width: 100%;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+
+    .user-phone{
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 10px;
+    }
+
+    .edit-details{
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 10px;
+    }
+
+    //.user-info {
+    //  display: flex;
+    //  align-items: center;
+    //  gap: 12px;
+    //
+    //  .avatar {
+    //    width: 40px;
+    //    height: 40px;
+    //    border-radius: 50%;
+    //    background: #ccc;
+    //  }
+    //
+    //  .phone-edit {
+    //    display: flex;
+    //    flex-direction: column;
+    //
+    //    p {
+    //      font-weight: bold;
+    //    }
+    //
+    //    .edit-link {
+    //      color: #007bff;
+    //      font-size: 0.9rem;
+    //      text-decoration: none;
+    //    }
+    //  }
+    }
+  }
+
+  .account-balance-card {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+    .balance{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      align-items: center;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 10px;
+
+      .amount{
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        gap: 5px;
+        span{
+          color: forestgreen;
+        }
+      }
+    }
+
+    .balance-item{
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      flex-direction: row-reverse;
+      gap: 10px;
+    }
+
+  }
+
+  .plus-card {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row-reverse;
+    gap: 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-align: right;
+
+    img{
+      width: 30px;
+      height: 30px;
+    }
+
+  }
+
