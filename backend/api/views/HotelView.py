@@ -1,7 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, filters
+from rest_framework import viewsets, filters, response, exceptions
 
-from ..models import Hotel, HotelSerializer
+from ..models import Hotel, HotelSerializer, Room, RoomSerializer
 
 FILTER_FIELDS = [
     "name",
@@ -18,3 +18,18 @@ class HotelView(viewsets.ModelViewSet):
     filterset_fields = FILTER_FIELDS
     ordering_fields = FILTER_FIELDS
 
+
+    def get_hotel_rooms(self, hotel_id):
+        return RoomSerializer(Room.objects.filter(hotel=hotel_id), many=True).data
+
+
+    def retrieve(self, request, *args, **kwargs):
+        hotel_data = super().retrieve(request, *args, **kwargs).data
+        rooms_data = self.get_hotel_rooms(hotel_data.get("id"))
+
+        return response.Response(
+            data={
+                **hotel_data,
+                "rooms": rooms_data
+            }
+        )
