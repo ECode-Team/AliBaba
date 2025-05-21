@@ -11,3 +11,13 @@
     @media (max-width: $breakpoint-lg) { @content; }
   }
 }
+
+@mixin input-base-style($width: 100% , $bg-color: white){
+  border-radius: 6px;
+  padding: 3px 7px;
+  outline: none;
+  font-size: 17px;
+  border: 1px solid $border-color;
+  text-align: right;
+  direction: rtl;
+}

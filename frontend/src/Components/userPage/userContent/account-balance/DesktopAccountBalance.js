@@ -26,8 +26,8 @@ const DesktopAccountBalance = ({ active , setActive }) => (
                     </button>
                     <button
                         className="tab-button"
-                        onClick={() => setActive("transferRequest")}>
-                        <span className={`${active === 'transferRequest' && "active"}`}>درخواست های انتقال موجودی</span>
+                        onClick={() => setActive("transfer")}>
+                        <span className={`${active === 'transfer' && "active"}`}>درخواست های انتقال موجودی</span>
                     </button>
                 </div>
                 {

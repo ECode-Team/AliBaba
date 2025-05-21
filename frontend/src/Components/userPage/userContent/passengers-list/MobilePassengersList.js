@@ -1,6 +1,6 @@
 import MobileContentHelper from "../MobileContentHelper";
 
-const Button = ({children}) => (
+const Button = ({children = "افزودن مسافر جدید"}) => (
     <div className="add-passenger-btn">
         <img src="/icons/user-add-mobile.png" alt=""/>
         {children}

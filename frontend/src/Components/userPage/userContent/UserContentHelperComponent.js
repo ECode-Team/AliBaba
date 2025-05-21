@@ -47,14 +47,16 @@ const UserContentHelperComponent = (
         editPasswordBtn: Button = null ,
         editIcon ,
         children ,
-        isContent = 'no-content'
+        isContent = 'no-content',
+        isEdit = null
     }
 ) => (
     <div className="user-content-template">
         <div className="titles">
             <div className="edit-title">
                 <div className="edit-title-icon">
-                    <a href="">{editTitle}</a>
+                    <h4 style={{color: "#0077cc" , cursor: "pointer"}}
+                        onClick={() => isEdit && isEdit()}>{editTitle}</h4>
                     {editIcon && <img width={20} height={20} src={editIcon} alt={editIcon}/>}
                 </div>
                 {

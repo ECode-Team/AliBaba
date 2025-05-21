@@ -10,7 +10,7 @@ const AccountBalance = () => {
   const isMobile = useIsMobile()
 
   return isMobile
-      ? <MobileAccountBalance active={active} setActive={setActive}/>
+      ? <MobileAccountBalance />
       : <DesktopAccountBalance active={active} setActive={setActive}/>
 }
 
