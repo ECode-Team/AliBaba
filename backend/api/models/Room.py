@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import JSONField, ForeignKey
-from rest_framework import serializers, exceptions, re
+from rest_framework import serializers, exceptions
 from . import Hotel, HotelSerializer
 
 
