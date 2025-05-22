@@ -11,7 +11,7 @@ class Room(models.Model):
     size = models.CharField(max_length=50, blank=True, null=True)
     max_people = models.PositiveIntegerField()
 
-    features = models.JSONField(default=dict)
+    features = models.JSONField(default=list)
     images = JSONField(default=list)
 
     hotel = ForeignKey(Hotel, on_delete=models.CASCADE)

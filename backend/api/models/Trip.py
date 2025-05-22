@@ -31,8 +31,8 @@ class Trip(models.Model):
 
     depart = models.CharField(choices=CITIES, max_length=30)
     arrive = models.CharField(choices=CITIES,max_length=30)
-    depart_time = models.DateTimeField()
-    arrive_time = models.DateTimeField()
+    depart_time = models.TimeField()
+    arrive_time = models.TimeField()
 
     price = models.DecimalField(max_digits=10, decimal_places=2)
 

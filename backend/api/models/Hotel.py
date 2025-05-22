@@ -28,13 +28,16 @@ class Hotel(models.Model):
     country = models.CharField(max_length=50, choices=COUNTRIES)
     city = models.CharField(max_length=50, choices=CITIES)
     street = models.CharField(max_length=50)
-    geolocation = models.CharField(max_length=50)
+    # geolocation = models.CharField(max_length=50)
+
+    arrive_time = models.TimeField(default="12")
+    depart_time = models.TimeField(default="10")
 
     faq = models.JSONField(default=dict)
-    features = models.JSONField(default=dict)
+    features = models.JSONField(default=list)
     description = models.JSONField(default=dict)
     images = JSONField(default=list)
-    places = JSONField(default=list)
+    # places = JSONField(default=list)
     rules = JSONField(default=dict)
 
 
