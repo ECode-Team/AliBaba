@@ -1,4 +1,4 @@
-import UserContentHelperComponent from "../UserContentHelperComponent";
+import UserContentHelperComponent from "../common/userContentHelper/UserContentHelperComponent";
 
 const DesktopRequestSupport = () => (
     <div className="Req-support-container">

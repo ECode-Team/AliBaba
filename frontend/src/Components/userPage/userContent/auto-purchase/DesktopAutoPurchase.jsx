@@ -1,4 +1,4 @@
-import UserContentHelperComponent from "../UserContentHelperComponent";
+import UserContentHelperComponent from "../common/userContentHelper/UserContentHelperComponent";
 
 const DesktopAutoPurchase = () => {
   return (

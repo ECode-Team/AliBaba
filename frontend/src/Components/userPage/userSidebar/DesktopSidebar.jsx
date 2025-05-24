@@ -1,7 +1,6 @@
 import "./UserSidebar.scss"
 import "../../../styles/general.scss"
-import {use} from "react";
-import {AppContext, useGlobalContext} from "../../../context/Context";
+import {useGlobalContext} from "../../../context/Context";
 
 const sideBarData = [
     {text: "حساب کاربری" , icon: "/icons/user01.png" , link: "user-dashboard"},

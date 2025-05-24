@@ -48,17 +48,22 @@ const UserContentHelperComponent = (
         editIcon ,
         children ,
         isContent = 'no-content',
-        isEdit = null
+        isEdit = null,
+        isEditing = false
     }
 ) => (
     <div className="user-content-template">
         <div className="titles">
             <div className="edit-title">
-                <div className="edit-title-icon">
-                    <h4 style={{color: "#0077cc" , cursor: "pointer"}}
-                        onClick={() => isEdit && isEdit()}>{editTitle}</h4>
-                    {editIcon && <img width={20} height={20} src={editIcon} alt={editIcon}/>}
-                </div>
+                {
+                    !isEditing && (
+                        <div className="edit-title-icon">
+                            <h4 style={{color: "#0077cc" , cursor: "pointer"}}
+                                onClick={isEdit}>{editTitle}</h4>
+                            {editIcon && <img width={20} height={20} src={editIcon} alt={editIcon}/>}
+                        </div>
+                    )
+                }
                 {
                     Button && <div><Button /></div>
                 }
@@ -70,7 +75,7 @@ const UserContentHelperComponent = (
                 </div>
             </div>
         </div>
-        <div className={isContent === "no-content" ? "no-content"  : "user-content" }>
+        <div className={isContent !== "no-content" && "user-content" }>
                 {children}
         </div>
     </div>

@@ -1,4 +1,4 @@
-import MobileContentHelper from "../../MobileContentHelper";
+import MobileContentHelper from "../../common/mobileContentHelper/MobileContentHelper";
 import {useEffect, useRef, useState} from "react";
 
 const TransferRequestTab = ({onClose}) => {

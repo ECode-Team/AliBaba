@@ -1,4 +1,4 @@
-import MobileContentHelper from "../MobileContentHelper";
+import MobileContentHelper from "../common/mobileContentHelper/MobileContentHelper";
 import {useState} from "react";
 import TransactionTab from "./MobileTabs/TransactionTab";
 import TransferRequestTab from "./MobileTabs/TransferRequestTab";

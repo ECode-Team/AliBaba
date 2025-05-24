@@ -12,12 +12,18 @@
   }
 }
 
-@mixin input-base-style($width: 100% , $bg-color: white){
-  border-radius: 6px;
-  padding: 3px 7px;
-  outline: none;
-  font-size: 17px;
-  border: 1px solid $border-color;
+@mixin input-base-style($width: fit-content){
+  width: $width;
+  font-size: 16px;
+  padding: 7px 15px;
+  border: 2px solid $border-color;
   text-align: right;
-  direction: rtl;
+  background-color: transparent;
+  outline: 2px solid transparent;
+  border-radius: 7px;
+
+  &:focus{
+    border-color: #000 !important;
+  }
+
 }

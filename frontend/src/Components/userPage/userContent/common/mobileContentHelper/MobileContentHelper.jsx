@@ -1,4 +1,4 @@
-import {useGlobalContext} from "../../../context/Context";
+import {useGlobalContext} from "../../../../../context/Context";
 import "./MobileContentHelper.scss"
 
 const MobileContentHelper = ({ title , btn: HeaderButton , extraButtons = null }) => {

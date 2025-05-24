@@ -1,5 +1,5 @@
 import "./RequestSupport.scss"
-import UserContentHelperComponent from "../UserContentHelperComponent";
+import UserContentHelperComponent from "../common/userContentHelper/UserContentHelperComponent";
 import DesktopRequestSupport from "./DesktopRequestSupport";
 import MobileRequestSupport from "./MobileRequestSupport";
 import useIsMobile from "../../../../context/useIsMobile";

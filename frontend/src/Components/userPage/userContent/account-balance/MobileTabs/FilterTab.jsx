@@ -1,5 +1,5 @@
 import AccordionItem from "./accordion/AccordionItem";
-import MobileContentHelper from "../../MobileContentHelper";
+import MobileContentHelper from "../../common/mobileContentHelper/MobileContentHelper";
 
 const transactionFilters = [
     "همه",

@@ -1,5 +1,5 @@
 import "./Favorites.scss"
-import UserContentHelperComponent from "../UserContentHelperComponent";
+import UserContentHelperComponent from "../common/userContentHelper/UserContentHelperComponent";
 import DesktopFavorites from "./DesktopFavorites";
 import MobileFavorites from "./MobileFavorites";
 import useIsMobile from "../../../../context/useIsMobile";

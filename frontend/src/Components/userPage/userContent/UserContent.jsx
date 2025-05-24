@@ -9,7 +9,6 @@ import {
     AutoPurchase
 } from "../userContent";
 import {useGlobalContext} from "../../../context/Context";
-import MobileAccountBalance from "./account-balance/MobileAccountBalance";
 
 
 const UserContent = () => {
