@@ -27,7 +27,7 @@ class RoomSerializer(serializers.ModelSerializer):
         hotel = validated_data.get('hotel')
         hotel = Hotel.objects.get(id=hotel) if isinstance(hotel, int) else hotel
 
-        if hotel.type == 'Hotel' or Room.objects.filter(hotel=hotel):
+        if hotel.type == 'Hotel' or len(Room.objects.filter(hotel=hotel)) == 0:
             return super().create({
                 **validated_data,
                 'hotel': hotel
