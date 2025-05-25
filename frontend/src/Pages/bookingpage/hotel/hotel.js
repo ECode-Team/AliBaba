@@ -44,6 +44,7 @@ export const Hotel = () => {
                   title: "Deluxe Room",
                   subtitle: "2 Adults, 1 King Bed",
                 },
+
                 vila: {
                   vila: "vila",
                   subvila: "subvila",
