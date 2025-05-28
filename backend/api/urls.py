@@ -3,7 +3,6 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from .views import *
-from .views.ReviewView import ReviewView
 
 router = DefaultRouter()
 routes = [
@@ -14,6 +13,7 @@ routes = [
     ("trip_book", TripBookView),
     ("room_book", RoomBookView),
     ("review", ReviewView),
+    ("user", UserView)
 ]
 
 for route, view in routes:
@@ -22,8 +22,8 @@ for route, view in routes:
 urlpatterns = [
     path("", include(router.urls)),
 
-    path('user/register/', RegisterView.as_view(), name='register'),
-    path('user/login/', LoginView.as_view(), name='login'),
-    path('user/profile/', ProfileView.as_view(), name='profile'),
-    path('user/logout/', LogoutView.as_view(), name='logout'),
+    # path('user/register/', RegisterView.as_view(), name='register'),
+    # path('user/login/', LoginView.as_view(), name='login'),
+    # path('user/profile/', ProfileView.as_view(), name='profile'),
+    # path('user/logout/', LogoutView.as_view(), name='logout'),
 ]
