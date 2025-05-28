@@ -34,15 +34,13 @@ class TripBookSerializer(serializers.ModelSerializer):
 
 
     def create(self, validated_data):
-        trip: Trip = Trip.objects.get(id=validated_data.get('trip'))
-
         if not self.check_trip(
-            trip=trip,
+            trip=validated_data.get('trip'),
             passengers=validated_data.get('passengers')
         ):
             raise exceptions.NotAcceptable("The trip is full")
 
         return super().create({
             **validated_data,
-            "price": validated_data.get('passengers') * trip.price
+            "price": validated_data.get('passengers') * validated_data.get('trip').price
         })
