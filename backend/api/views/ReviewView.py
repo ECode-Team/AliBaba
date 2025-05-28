@@ -5,8 +5,11 @@ from ..models import Review, ReviewSerializer
 
 FILTER_FIELDS = [
     "date",
-    "mark",
     "hotel",
+]
+ORDER_FIELDS = [
+    "mark",
+    "date",
 ]
 
 class ReviewView(viewsets.ModelViewSet):
@@ -14,7 +17,7 @@ class ReviewView(viewsets.ModelViewSet):
     serializer_class = ReviewSerializer
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
     filterset_fields = FILTER_FIELDS
-    ordering_fields = FILTER_FIELDS
+    ordering_fields = ORDER_FIELDS
 
 
     @decorators.action(detail=False, methods=['delete'])

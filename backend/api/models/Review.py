@@ -3,33 +3,45 @@ from rest_framework import serializers
 from . import Hotel, RoomBook
 
 
+stars = [
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5),
+]
+
 class Review(models.Model):
     text = models.TextField(blank=True, null=True)
     likes = models.CharField(max_length=1024, blank=True, null=True)
     dislikes = models.CharField(max_length=1024, blank=True, null=True)
     date = models.DateTimeField(auto_created=True, auto_now=True)
 
-    mark = models.DecimalField(max_digits=5, decimal_places=1)
-    categories = models.JSONField()
+    position = models.PositiveIntegerField(choices=stars)
+    staff = models.PositiveIntegerField(choices=stars)
+    comfort = models.PositiveIntegerField(choices=stars)
+    food = models.PositiveIntegerField(choices=stars)
 
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
     room_book = models.ForeignKey(RoomBook, on_delete=models.CASCADE)
 
+    @property
+    def score(self):
+        return (self.position + self.staff + self.comfort + self.food) / 4
+
+    @property
+    def user(self):
+        user = self.room_book.user
+        return {
+            "id": user.id,
+            "username": user.username,
+        }
+
 
 class ReviewSerializer(serializers.ModelSerializer):
-    mark = serializers.DecimalField(max_digits=5, decimal_places=1, read_only=True)
+    user = serializers.JSONField(read_only=True)
+    score = serializers.FloatField(read_only=True)
 
     class Meta:
         model = Review
         fields = '__all__'
-
-
-    def create(self, validated_data):
-        mark = sum(validated_data.get('categories').values()) / len(validated_data.get('categories'))
-
-        room_book = Review.objects.create(
-            **validated_data,
-            mark = mark
-        )
-
-        return room_book
