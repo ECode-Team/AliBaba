@@ -6,10 +6,13 @@ from . import User, Room
 class RoomBook(models.Model):
     begin = models.DateTimeField()
     end = models.DateTimeField()
-    duration = models.FloatField()
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
+
+    @property
+    def duration(self):
+        return (self.end - self.begin).days
 
 
 class RoomBookSerializer(serializers.ModelSerializer):
@@ -23,7 +26,7 @@ class RoomBookSerializer(serializers.ModelSerializer):
         books : list[RoomBook] = RoomBook.objects.filter(room=room_id)
 
         for book in books:
-            if book.begin < begin < book.end or  book.begin < end < book.end:
+            if book.begin <= begin < book.end or  book.begin < end <= book.end:
                 return False
 
         return True
@@ -34,16 +37,6 @@ class RoomBookSerializer(serializers.ModelSerializer):
                 begin=validated_data.get('begin'),
                 end=validated_data.get('end')
         ):
-            raise exceptions.NotAcceptable()
+            raise exceptions.NotAcceptable("Room is already booked")
 
-        duration = validated_data.get('end') - validated_data.get('begin')
-
-        return super().create({
-            **validated_data,
-            duration: duration.days
-        })
-
-
-
-
-
+        return super().create({**validated_data})
