@@ -6,10 +6,13 @@ from . import Trip, User
 
 class TripBook(models.Model):
     passengers = models.PositiveIntegerField()
-    price = models.FloatField()
 
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    @property
+    def price(self):
+        return self.trip.price * self.passengers
 
 
 class TripBookSerializer(serializers.ModelSerializer):
@@ -40,7 +43,4 @@ class TripBookSerializer(serializers.ModelSerializer):
         ):
             raise exceptions.NotAcceptable("The trip is full")
 
-        return super().create({
-            **validated_data,
-            "price": validated_data.get('passengers') * validated_data.get('trip').price
-        })
+        return super().create(validated_data)
