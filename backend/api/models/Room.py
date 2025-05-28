@@ -16,8 +16,17 @@ class Room(models.Model):
 
     hotel = ForeignKey(Hotel, on_delete=models.CASCADE)
 
+    @property
+    def books(self):
+        from . import RoomBook
+
+        books = RoomBook.objects.filter(room=self.id).order_by("begin")
+        return [(book.begin, book.end) for book in books]
+
 
 class RoomSerializer(serializers.ModelSerializer):
+    books = serializers.ListField(read_only=True)
+
     class Meta:
         model = Room
         fields = '__all__'

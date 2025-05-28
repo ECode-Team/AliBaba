@@ -4,8 +4,8 @@ from . import User, Room
 
 
 class RoomBook(models.Model):
-    begin = models.DateTimeField()
-    end = models.DateTimeField()
+    begin = models.DateField()
+    end = models.DateField()
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
