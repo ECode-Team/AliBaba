@@ -40,13 +40,30 @@ class Hotel(models.Model):
     # places = JSONField(default=list)
     rules = JSONField(default=dict)
 
+    @property
+    def rooms(self):
+        from . import Room, RoomSerializer
+
+        return RoomSerializer(Room.objects.filter(hotel=self.id), many=True).data
 
 class HotelSerializer(serializers.ModelSerializer):
     room = serializers.JSONField(default=None, allow_null=True, write_only=True)
+    rooms = serializers.ListField(read_only=True)
 
     class Meta:
         model = Hotel
         fields = '__all__'
+
+
+    def create_room(self, hotel, validated_data):
+        from . import RoomSerializer
+
+        room_serializer = RoomSerializer(data={"hotel": hotel.id, **validated_data})
+        if room_serializer.is_valid():
+            room_serializer.save()
+        else:
+            hotel.delete()
+            raise exceptions.ParseError(room_serializer.errors)
 
 
     def create(self, validated_data):
@@ -55,8 +72,7 @@ class HotelSerializer(serializers.ModelSerializer):
         hotel = super().create(validated_data)
 
         if room_data:
-            from . import RoomSerializer
-            RoomSerializer().create({"hotel": hotel, **room_data})
+            self.create_room(hotel, room_data)
 
         return hotel
 

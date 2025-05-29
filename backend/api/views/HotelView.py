@@ -21,21 +21,6 @@ class HotelView(viewsets.ModelViewSet):
     ordering_fields = FILTER_FIELDS
 
 
-    def get_hotel_rooms(self, hotel_id):
-        return RoomSerializer(Room.objects.filter(hotel=hotel_id), many=True).data
-
-
-    def retrieve(self, request, *args, **kwargs):
-        hotel_data = super().retrieve(request, *args, **kwargs).data
-        rooms_data = self.get_hotel_rooms(hotel_data.get("id"))
-
-        return response.Response(
-            data={
-                **hotel_data,
-                "rooms": rooms_data
-            }
-        )
-
     @decorators.action(detail=False, methods=['delete'])
     def wipe(self, request, *args, **kwargs):
         objects = Hotel.objects.all()
