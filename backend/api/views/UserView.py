@@ -44,5 +44,5 @@ class UserView(viewsets.ModelViewSet):
                 status=exceptions.status.HTTP_401_UNAUTHORIZED
             )
 
-        return Response("Ok", status=exceptions.status.HTTP_200_OK)
+        return Response(UserSerializer(user).data, status=exceptions.status.HTTP_200_OK)
 
