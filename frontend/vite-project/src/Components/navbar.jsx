@@ -7,25 +7,14 @@ import dropdownIcon from "../assets/icons/down-arrow.png";
 import logo from "../assets/icons/logo.png";
 import { useState } from "react";
 import Dropdown from "./mainpage/dropdown";
+import { useTranslation } from "react-i18next";
 
 export const Navbar = () => {
     const [persian, setPersian] = useState(false);
-    const ticketDropdownEn = ["Domestic flight", "Foreign flight", "Train", "Bus"];
-    const ticketDropdownFa = ["پرواز داخلی", "پرواز خارجی", "قطار", "اتوبوس"]; 
-    const residenceDropdown = [
-        { en: "Hotel", fa: "هتل" },
-        { en: "Villa and residence", fa: "ویلا و اقامتگاه" }
-    ];
-    const moreDropdown = [
-        { en: "Alibaba plus", fa: "علی‌بابا پلاس" },
-        { en: "Alibaba Magazine", fa: "مجله علی‌بابا" },
-        { en: "Travel insurance", fa: "بیمه مسافرتی" },
-        { en: "Installment travel", fa: "سفر اقساطی" }
-    ];
-
+    const { t } = useTranslation();
     return (
         <div className="header">
-            <Dropdown items={persian ? ticketDropdownFa : ticketDropdownEn} />
+            {/* <Dropdown items={persian ? ticketDropdownFa : ticketDropdownEn} /> */}
             <div className="navbar-container" style={{ flexDirection: persian ? 'row-reverse' : 'row' }}>
                 <div className="navbar-left" dir={persian ? 'rtl' : 'ltr'}>
                     <div className={persian ? 'navbar-logo fa' : 'navbar-logo'} dir={persian ? 'rtl' : 'rtl'}>
@@ -34,24 +23,24 @@ export const Navbar = () => {
                     </div>
                     <div className={persian ? "navbar-left-items fa" : "navbar-left-items"}>
                         <div className="navbar-left-item ticket">
-                            <span>{persian ? 'بلیط' : 'Ticket'}</span>
+                            <span>{t('ticket')}</span>
                             <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
                         </div>
                         <div className="navbar-left-item residence">
-                            <span>{persian ? 'اقامت' : 'Residence'}</span>
+                            <span>{t('residence')}</span>
                             <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
                         </div>
                         <div className="navbar-left-item tour">
-                            <span>{persian ? 'تور' : 'Tour'}</span>
+                            <span>{t('tour')}</span>
                         </div>
                         <div className="navbar-left-item visa">
-                            <span>{persian ? 'ویزا' : 'Visa'}</span>
+                            <span>{t('visa')}</span>
                         </div>
                         <div className="navbar-left-item agency">
-                            <span>{persian ? 'پنل آژانسی' : 'Agency Panel'}</span>
+                            <span>{t('agency_panel')}</span>
                         </div>
                         <div className="navbar-left-item more">
-                            <span>{persian ? 'بیشتر' : 'More'}</span>
+                            <span>{t('more')}</span>
                             <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
                         </div>
                     </div>
@@ -59,15 +48,15 @@ export const Navbar = () => {
                 <div className="navbar-right" dir={persian ? 'rtl' : 'ltr'}>
                     <div className="navbar-right-items" >
                         <div className="navbar-right-item support" >
-                            <span>{persian ? 'مرکز پشتیبانی آنلاین' : 'Support Center'}</span>
+                            <span>{t('support_center')}</span>
                             <img className="icon support" src={supportIcon} alt="support" />
                         </div>
                         <div className="navbar-right-item my-travels" >
-                            <span>{persian ? 'سفر های من' : 'My Travels'}</span>
+                            <span>{t('my_travels')}</span>
                             <img className="icon travels" src={travelsIcon} alt="travels" />
                         </div>
                         <div className="navbar-right-item user" >
-                            <span>{persian ? 'ورود یا ثبت نام' : 'Login or Register'}</span>
+                            <span>{t('login_or_register')}</span>
                             <img className="icon user" src={userIcon} alt="user" />
                         </div>
                         <div className="navbar-right-item toggle" style={{ marginRight: persian ? '-20px' : '2px', marginLeft: persian ? '2px' : '-20px' }}>
