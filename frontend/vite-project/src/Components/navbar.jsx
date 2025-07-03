@@ -12,9 +12,10 @@ import { useTranslation } from "react-i18next";
 export const Navbar = () => {
     const [persian, setPersian] = useState(false);
     const { t } = useTranslation();
+    const languageDropdown = ['en', 'de', 'fr', 'es', 'fa', 'ar', 'zh'];
+
     return (
         <div className="header">
-            {/* <Dropdown items={persian ? ticketDropdownFa : ticketDropdownEn} /> */}
             <div className="navbar-container" style={{ flexDirection: persian ? 'row-reverse' : 'row' }}>
                 <div className="navbar-left" dir={persian ? 'rtl' : 'ltr'}>
                     <div className={persian ? 'navbar-logo fa' : 'navbar-logo'} dir={persian ? 'rtl' : 'rtl'}>
@@ -39,7 +40,7 @@ export const Navbar = () => {
                         <div className="navbar-left-item agency">
                             <span>{t('agency_panel')}</span>
                         </div>
-                        <div className="navbar-left-item more">
+                        <div className="navbar-left-item more"> 
                             <span>{t('more')}</span>
                             <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
                         </div>
@@ -64,10 +65,7 @@ export const Navbar = () => {
                                 <input type="checkbox" id="checkboxInput1" />
                                 <label htmlFor="checkboxInput1" className="toggleSwitch1"></label>
                             </div>
-                            <div className="language-toggle">
-                                <input type="checkbox" id="checkboxInput2" onChange={() => setPersian(!persian)} />
-                                <label htmlFor="checkboxInput2" className="toggleSwitch2"></label>
-                            </div>
+                            {/* <Dropdown items={languageDropdown} /> */}
                         </div>
                     </div>
                     {/* <div className="language-toggle">

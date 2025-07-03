@@ -8,7 +8,7 @@ i18n
   .use(HttpBackend)
   .use(initReactI18next)
   .init({
-    lng: 'fa', //ِDefault language
+    lng: 'fr', //ِDefault language
     fallbackLng: 'en', //If language is not found
     debug: true,
     ns: ['navbar'],
