@@ -83,15 +83,16 @@
   gap: 1.5rem;
   width: 100%;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1000px) {
     grid-template-columns: repeat(3, 1fr);
-    width: 80%;
+    width: 70%;
     gap: 2rem;
+    margin-left: auto;
   }
 }
 
 .nav-column {
-  text-align: left;
+  text-align: right;
 }
 
 .column-heading {
@@ -107,7 +108,7 @@
   margin: 0;
 
   li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 
     &:last-child {
       margin-bottom: 0;
@@ -221,4 +222,3 @@
     text-align: left;
   }
 }
-
