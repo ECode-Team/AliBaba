@@ -1,0 +1,6 @@
+{
+    "ticketDropdown": ["Domestic Flight", "International Flight", "Train", "Bus"],
+    "residence": ["Hotel", "Villas & Apartments"],
+    "more": ["Alibaba Plus", "Alibaba Magazine", "Travel Insurance", "Installment Travel"],
+    "user": ["Account Information", "Notifications", "Request Support", "Log Out of Account"]
+}  

@@ -38,11 +38,19 @@
 
         .navbar-right {
             .navbar-right-items {
-                @include navbar-styles(34px);
+                @include navbar-styles(6px);
             }
 
             .navbar-right-item {
                 @include navbar-item-styles;
+                border-radius: 6px;
+                padding: 4px 12px;
+                transition: background-color 0.15s ease;
+            }
+
+            .navbar-right-item:hover {
+                background-color: $hover-color;
+                cursor: pointer;
             }
         }
 
@@ -81,35 +89,25 @@
             }
 
             .navbar-left-items {
-                @include navbar-styles(22px);
+                @include navbar-styles(6px);
 
                 .navbar-left-item {
                     @include navbar-item-styles;
-                    padding-left: 15px;
-                    margin-right: -5px;
-                    margin-left: 0px;
-                    border-left: 1px solid $border-color;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 6px;
+                    padding: 4px 12px;
+                    transition: background-color 0.15s ease;
+                }
+
+                .navbar-left-item:hover {
+                    background-color: $hover-color;
+                    cursor: pointer;
                 }
 
                 .navbar-left-item:first-child {
                     border-right: none;
-                }
-
-                &.fa {
-                    .navbar-left-item {
-                        padding-left: 20px;
-                        padding-right: 0;
-                        margin-right: 0;
-                    }
-
-                    .navbar-left-item:last-child {
-                        border-left: none;
-                    }
-
-                    .navbar-left-item:first-child {
-                        border-right: 1px solid $border-color;
-                        padding-right: 20px;
-                    }
                 }
             }
         }

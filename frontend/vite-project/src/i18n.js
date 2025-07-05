@@ -8,10 +8,10 @@ i18n
   .use(HttpBackend)
   .use(initReactI18next)
   .init({
-    lng: 'fr', //ِDefault language
+    lng: 'fa', //ِDefault language
     fallbackLng: 'en', //If language is not found
     debug: true,
-    ns: ['navbar'],
+    ns: ['navbar', 'dropdown'],
     defaultNS: 'navbar',
     interpolation: {
       escapeValue: false,

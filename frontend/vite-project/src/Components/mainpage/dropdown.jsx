@@ -1,15 +1,20 @@
 import "../../styles/mainpage/dropdown.scss"
 
 const Dropdown = (props) => {
-    return (
-        <div className="dropdown-container">
-            <ul className="dropdown-menu">
-                {props.items.map(element => {
-                    return <li key={element}><button className="dropdown-button">{element}</button></li>
-                })}
-            </ul>
-        </div>
-    );
+    if (props.open) {
+        return (
+            <div className="dropdown-container" style={{ marginTop: props.marginTop }}>
+                <ul className="dropdown-menu">
+                    {props.items.map(element => {
+                        return <li key={element}>{element}</li>
+                    })}
+                </ul>
+            </div>
+        );
+    }
+    else {
+        return null;
+    }
 }
 
 export default Dropdown;
