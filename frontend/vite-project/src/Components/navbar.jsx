@@ -16,6 +16,7 @@ export const Navbar = () => {
     const languageDropdown = ['en', 'de', 'fr', 'es', 'fa', 'ar', 'zh'];
     const [showDropdown, setShowDropdown] = useState(null);
 
+    // Hide the dropdown when clicking anywhere
     useEffect(() => {
         if (showDropdown === null) return;
         console.log('bug');
@@ -89,7 +90,7 @@ export const Navbar = () => {
                         }}>
                             <span>{t('login_or_register')}</span>
                             <img className="icon user" src={userIcon} alt="user" />
-                            <Dropdown items={t('dropdown:user', { returnObjects: true })} open={showDropdown === 'user'} marginTop={'195px'} />
+                            <Dropdown items={t('dropdown:user', { returnObjects: true })} open={showDropdown === 'user'} marginTop={'195px'} marginLeft={'-12.5px'} />
                         </div>
                             <div className="navbar-right-item language" onClick={(e) => {
                             e.stopPropagation();
