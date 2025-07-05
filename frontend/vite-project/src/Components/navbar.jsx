@@ -7,19 +7,19 @@ import dropdownIcon from "../assets/icons/down-arrow.png";
 import logo from "../assets/icons/logo.png";
 import { useEffect, useState } from "react";
 import Dropdown from "./mainpage/dropdown";
+import i18n from "../i18n";
 import { useTranslation } from "react-i18next";
 import { Languages, ChevronDown } from "lucide-react";
 
 export const Navbar = () => {
-    const [rtlLang, setRtl] = useState(true);
+    const [rtlLang, setRtl] = useState(false);
     const { t } = useTranslation();
-    const languageDropdown = ['en', 'de', 'fr', 'es', 'fa', 'ar', 'zh'];
+    const languageDropdown = ['en', 'de', 'fr', 'es', 'zh', 'fa', 'ar' ];
     const [showDropdown, setShowDropdown] = useState(null);
 
     // Hide the dropdown when clicking anywhere
     useEffect(() => {
         if (showDropdown === null) return;
-        console.log('bug');
 
         const handleClickAnywhere = () => {
             setShowDropdown(null);
@@ -30,6 +30,12 @@ export const Navbar = () => {
         }
     }, [showDropdown]);
 
+    // Change language
+    const handleLanguageSelect = (language) => {
+        i18n.changeLanguage(language);
+        setRtl(language === 'fa' || language === 'ar');
+    }
+
     return (
         <div className="header">
             <div className="navbar-container" style={{ flexDirection: rtlLang ? 'row' : 'row-reverse' }}>
@@ -39,21 +45,25 @@ export const Navbar = () => {
                         <img className="logo" src={logo} alt="logo" />
                     </div>
                     <div className={rtlLang ? "navbar-left-items fa" : "navbar-left-items"}>
-                        <div className="navbar-left-item ticket" onClick={(e) => {
-                            e.stopPropagation();
-                            setShowDropdown(showDropdown === 'ticket' ? null : 'ticket')
-                        }}>
-                            <span>{t('ticket')}</span>
-                            <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
-                            <Dropdown items={t('dropdown:ticketDropdown', { returnObjects: true })} open={showDropdown === 'ticket'} marginTop={'195px'} />
+                        <div>
+                            <div className="navbar-left-item ticket" onClick={(e) => {
+                                e.stopPropagation();
+                                setShowDropdown(showDropdown === 'ticket' ? null : 'ticket')
+                            }}>
+                                <span>{t('ticket')}</span>
+                                <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
+                            </div>
+                            <Dropdown items={t('dropdown:ticketDropdown', { returnObjects: true })} open={showDropdown === 'ticket'} />
                         </div>
-                        <div className="navbar-left-item residence" onClick={(e) => {
-                            e.stopPropagation();
-                            setShowDropdown(showDropdown === 'residence' ? null : 'residence')
-                        }}>
-                            <span>{t('residence')}</span>
-                            <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
-                            <Dropdown items={t('dropdown:residence', { returnObjects: true })} open={showDropdown === 'residence'} marginTop={'122px'} />
+                        <div>
+                            <div className="navbar-left-item residence" onClick={(e) => {
+                                e.stopPropagation();
+                                setShowDropdown(showDropdown === 'residence' ? null : 'residence')
+                            }}>
+                                <span>{t('residence')}</span>
+                                <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
+                            </div>
+                            <Dropdown items={t('dropdown:residence', { returnObjects: true })} open={showDropdown === 'residence'} />
                         </div>
                         <div className="navbar-left-item tour">
                             <span>{t('tour')}</span>
@@ -64,13 +74,15 @@ export const Navbar = () => {
                         <div className="navbar-left-item agency">
                             <span>{t('agency_panel')}</span>
                         </div>
-                        <div className="navbar-left-item more" onClick={(e) => {
-                            e.stopPropagation();
-                            setShowDropdown(showDropdown === 'more' ? null : 'more')
-                        }}>
-                            <span>{t('more')}</span>
-                            <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
-                            <Dropdown items={t('dropdown:more', { returnObjects: true })} open={showDropdown === 'more'} marginTop={'195px'} />
+                        <div>
+                            <div className="navbar-left-item more" onClick={(e) => {
+                                e.stopPropagation();
+                                setShowDropdown(showDropdown === 'more' ? null : 'more')
+                            }}>
+                                <span>{t('more')}</span>
+                                <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
+                            </div>
+                            <Dropdown items={t('dropdown:more', { returnObjects: true })} open={showDropdown === 'more'} />
                         </div>
                     </div>
                 </div>
@@ -84,23 +96,27 @@ export const Navbar = () => {
                             <span>{t('my_travels')}</span>
                             <img className="icon travels" src={travelsIcon} alt="travels" />
                         </div>
-                        <div className="navbar-right-item user" onClick={(e) => {
-                            e.stopPropagation();
-                            setShowDropdown(showDropdown === 'user' ? null : 'user')
-                        }}>
-                            <span>{t('login_or_register')}</span>
-                            <img className="icon user" src={userIcon} alt="user" />
-                            <Dropdown items={t('dropdown:user', { returnObjects: true })} open={showDropdown === 'user'} marginTop={'195px'} marginLeft={'-12.5px'} />
+                        <div>
+                            <div className="navbar-right-item user" onClick={(e) => {
+                                e.stopPropagation();
+                                setShowDropdown(showDropdown === 'user' ? null : 'user')
+                            }}>
+                                <span>{t('login_or_register')}</span>
+                                <img className="icon user" src={userIcon} alt="user" />
+                            </div>
+                            <Dropdown items={t('dropdown:user', { returnObjects: true })} open={showDropdown === 'user'} />
                         </div>
+                        <div>
                             <div className="navbar-right-item language" onClick={(e) => {
-                            e.stopPropagation();
-                            setShowDropdown(showDropdown === 'language' ? null : 'language')
-                        }}>
-                            <Languages size={20} />
-                            <ChevronDown size={20} />
-                            <Dropdown items={languageDropdown} open={showDropdown === 'language'} marginTop={'302px'} />
+                                e.stopPropagation();
+                                setShowDropdown(showDropdown === 'language' ? null : 'language')
+                            }}>
+                                <Languages size={20} />
+                                <ChevronDown size={20} />
+                            </div>
+                            <Dropdown items={languageDropdown} open={showDropdown === 'language'} select={handleLanguageSelect} />
                         </div>
-                        <div className="navbar-right-item toggle" style={{ marginRight: rtlLang ? '-20px' : '2px', marginLeft: rtlLang ? '2px' : '-20px' }}>
+                        <div className="navbar-right-item toggle">
                             <div className="darkmode-toggle">
                                 <input type="checkbox" id="checkboxInput1" />
                                 <label htmlFor="checkboxInput1" className="toggleSwitch1"></label>

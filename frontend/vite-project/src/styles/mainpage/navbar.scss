@@ -38,7 +38,7 @@
 
         .navbar-right {
             .navbar-right-items {
-                @include navbar-styles(6px);
+                @include navbar-styles(0px);
             }
 
             .navbar-right-item {
@@ -65,11 +65,10 @@
             .navbar-logo {
                 display: flex;
                 align-items: center;
-                margin-right: 15px;
 
                 &.fa {
                     margin-right: 0;
-                    margin-left: 5px;
+                    margin-left: 0px;
                 }
 
                 .logo-text {
@@ -93,7 +92,7 @@
             }
 
             .navbar-left-items {
-                @include navbar-styles(6px);
+                @include navbar-styles(0px);
 
                 .navbar-left-item {
                     @include navbar-item-styles;

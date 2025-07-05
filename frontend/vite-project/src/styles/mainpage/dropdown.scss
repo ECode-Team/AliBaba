@@ -15,7 +15,7 @@
     .dropdown-menu {
         list-style: none;
         margin: 0;
-        padding: 0;
+        padding: 4px;
         text-align: center;
 
         li {
@@ -26,10 +26,14 @@
             cursor: pointer;
             border-radius: 4px;
             border-bottom: 1px solid $border-color;
-            transition: background-color 0.15s ease;
+            transition: background-color 0.15s ease, box-shadow 0.2s ease;
 
             &:hover {
                 background-color: $hover-color;
+            }
+
+            &:active {
+                box-shadow: inset 0 0px 6px rgba(0, 0, 0, 0.2);
             }
 
             &:last-child {
