@@ -19,7 +19,6 @@ const ShareIcon = ({ className }) => (
     <line x1="12" y1="2" x2="12" y2="15" />
   </svg>
 );
-
 const Star = ({ className, ...props }) => (
   <svg
     className={className}
@@ -385,6 +384,20 @@ const VerifiedIcon = ({ className }) => (
   </svg>
 );
 
+const AccordionItem = ({ title, children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="accordion-item">
+      <button className="accordion-header" onClick={() => setIsOpen(!isOpen)}>
+        <span>{title}</span>
+        {isOpen ? <Minus /> : <Plus />}
+      </button>
+      {isOpen && <div className="accordion-content">{children}</div>}
+    </div>
+  );
+};
+
 export default function App() {
   const [review, setReview] = useState("");
   const [isLoadingReview, setIsLoadingReview] = useState(false);
@@ -398,6 +411,7 @@ export default function App() {
   const [itineraryError, setItineraryError] = useState(null);
   const dropdownRef = useRef(null);
 
+  // --- DATA (Existing) ---
   const galleryImages = [
     "https://placehold.co/800x600/334155/ffffff?text=Hotel+View+1",
     "https://placehold.co/600x400/334155/ffffff?text=Bedroom",
@@ -467,7 +481,6 @@ export default function App() {
       { label: "کیفیت صبحانه یا غذا", score: 4.5 },
     ],
   };
-
   const hotelDescription = {
     title: "درباره هتل مدینه الرضا مشهد",
     paragraphs: [
@@ -483,7 +496,6 @@ export default function App() {
       text: "هتل مدینه الرضا دارای امکانات رفاهی کاملی از جمله رستوران گردان با چشم اندازی بی نظیر از حرم، کافی شاپ، استخر، سونا، جکوزی، سالن بدنسازی، سالن های همایش و کنفرانس، پارکینگ و اینترنت رایگان می باشد. همچنین این هتل با ارائه خدمات ویژه ای نظیر ترانسفر فرودگاهی، خدمات CIP و خدمات ویژه معلولین، اقامتی خاطره انگیز را برای شما رقم خواهد زد.",
     },
   };
-
   const latestReviewsData = {
     title: "آخرین نظرات این هتل (۸۱ نظر)",
     reviews: [
@@ -515,7 +527,6 @@ export default function App() {
       },
     ],
   };
-
   const hotelRulesData = {
     title: "قوانین و مقررات هتل",
     notes: {
@@ -539,7 +550,6 @@ export default function App() {
       ],
     },
   };
-
   const suggestedHotelsData = {
     title: "هتل های پیشنهادی مشهد",
     subtitle: "۱۲ تیر تا ۱۳ تیر | ۱ شب",
@@ -570,6 +580,33 @@ export default function App() {
     ],
   };
 
+  // --- NEW FAQ Data ---
+  // This data is for the new accordion/dropdown section.
+  const faqData = [
+    {
+      question: "هزینه رزرو هتل مدینه الرضا مشهد چقدر است؟",
+      answer:
+        "هزینه رزرو هتل مدینه الرضا به نوع اتاق و امکانات و تاریخی که رزرو می‌کنید بستگی دارد. برای مشاهده جدیدترین قیمت‌ها و ارزان‌ترین اتاق این هتل، بخش «اتاق‌های هتل» را در واحد مسافر بررسی کنید.",
+    },
+    {
+      question: "آیا امکان کنسلی رزرو هتل مدینه الرضا مشهد وجود دارد؟",
+      answer:
+        "بله، امکان کنسلی رزرو هتل مدینه الرضا مشهد با توجه به قوانین و مقررات هتل وجود دارد. با این حال، توجه داشته باشید که قوانین کنسلی در ایام پیک و تعطیلات ممکن است متفاوت باشد. بهتر است قبل از رزرو، قوانین مربوط به کنسلی را به دقت مطالعه کنید.",
+    },
+    {
+      question: "هتل مدینه الرضا مشهد چند ستاره است؟",
+      answer:
+        "هتل مدینه الرضا مشهد یک هتل پنج ستاره لوکس و مجلل است که خدمات و امکانات کاملی را به مهمانان خود ارائه می‌دهد.",
+    },
+    {
+      question:
+        "هتل مدینه الرضا در کدام منطقه مشهد قرار دارد و موقعیت جغرافیایی آن کجاست؟",
+      answer:
+        "هتل مدینه الرضا در ابتدای خیابان شیرازی، نبش شارستان رضوی قرار دارد. این هتل نزدیک‌ترین هتل پنج ستاره به حرم مطهر امام رضا (ع) است و دسترسی بسیار آسانی به مراکز خرید و جاذبه‌های گردشگری دارد.",
+    },
+  ];
+
+  // --- HANDLERS & EFFECTS (Existing) ---
   const handleGenerateReview = async () => {
     /* ...felan hichi... */
   };
@@ -667,43 +704,30 @@ export default function App() {
                     onFocus={(e) => (e.target.type = "date")}
                     onBlur={(e) => (e.target.type = "text")}
                   />
-                  <input
-                    type="text"
-                    placeholder="تاریخ خروج"
-                    className="date-input"
-                    onFocus={(e) => (e.target.type = "date")}
-                    onBlur={(e) => (e.target.type = "text")}
-                  />
                 </div>
                 <div style={{ position: "relative" }}>
                   <button
                     className="guest-select-btn"
                     onClick={() => setDropdownOpen(!isDropdownOpen)}
                   >
-                    <span>{`${adults} بزرگسال, ${children} کودک, ${rooms} اتاق`}</span>
+                    <span>{`${adults} بزرگسال, ${children} کودک`}</span>
                     <ChevronDown />
                   </button>
                   {isDropdownOpen && (
                     <div className="guest-dropdown">
                       <Counter
-                        label="بزرگسالان"
+                        label="بزرگسال(۱۲ سال به بالا)"
                         value={adults}
                         onIncrease={() => setAdults((a) => a + 1)}
                         onDecrease={() => setAdults((a) => (a > 1 ? a - 1 : 1))}
                       />
                       <Counter
-                        label="کودکان"
+                        label="کودک(تا ۱۲ سال)"
                         value={children}
                         onIncrease={() => setChildren((c) => c + 1)}
                         onDecrease={() =>
                           setChildren((c) => (c > 0 ? c - 1 : 0))
                         }
-                      />
-                      <Counter
-                        label="اتاق"
-                        value={rooms}
-                        onIncrease={() => setRooms((r) => r + 1)}
-                        onDecrease={() => setRooms((r) => (r > 1 ? r - 1 : 1))}
                       />
                     </div>
                   )}
@@ -1107,6 +1131,16 @@ export default function App() {
                     <li key={index}>{point}</li>
                   ))}
                 </ul>
+              </div>
+
+              {/* --- NEW FAQ Section --- */}
+              <div className="faq-section">
+                <h3>پرسش‌های متداول</h3>
+                {faqData.map((faq, index) => (
+                  <AccordionItem key={index} title={faq.question}>
+                    <p>{faq.answer}</p>
+                  </AccordionItem>
+                ))}
               </div>
 
               <div className="suggested-hotels">
