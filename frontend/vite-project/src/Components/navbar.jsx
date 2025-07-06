@@ -10,12 +10,20 @@ import Dropdown from "./mainpage/dropdown";
 import i18n from "../i18n";
 import { useTranslation } from "react-i18next";
 import { Languages, ChevronDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
     const [rtlLang, setRtl] = useState(false);
     const { t } = useTranslation();
-    const languageDropdown = ['en', 'de', 'fr', 'es', 'zh', 'fa', 'ar' ];
+    const languageDropdown = ['en', 'de', 'fr', 'es', 'zh', 'fa', 'ar'];
     const [showDropdown, setShowDropdown] = useState(null);
+    const navigate = useNavigate();
+
+    // Route path for dropdown items
+    const englishTicketItems = ["DomesticFlight", "InternationalFlight", "Train", "Bus"];
+    const englishResidenceItems = ["Hotel", "Villas&Apartments"];
+    const englishMoreItems = ["AlibabaMagazine", "TravelInsurance"];
+    const englishUserItems = ["Account Information", "Notifications", "Request Support", "Log Out of Account"];
 
     // Hide the dropdown when clicking anywhere
     useEffect(() => {
@@ -53,7 +61,7 @@ export const Navbar = () => {
                                 <span>{t('ticket')}</span>
                                 <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
                             </div>
-                            <Dropdown items={t('dropdown:ticketDropdown', { returnObjects: true })} open={showDropdown === 'ticket'} />
+                            <Dropdown items={t('dropdown:ticketDropdown', { returnObjects: true })} path={englishTicketItems} open={showDropdown === 'ticket'} />
                         </div>
                         <div>
                             <div className="navbar-left-item residence" onClick={(e) => {
@@ -63,12 +71,16 @@ export const Navbar = () => {
                                 <span>{t('residence')}</span>
                                 <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
                             </div>
-                            <Dropdown items={t('dropdown:residence', { returnObjects: true })} open={showDropdown === 'residence'} />
+                            <Dropdown items={t('dropdown:residence', { returnObjects: true })} path={englishResidenceItems} open={showDropdown === 'residence'} />
                         </div>
-                        <div className="navbar-left-item tour">
+                        <div className="navbar-left-item tour" onClick={() => {
+                            navigate('/tour');
+                        }}>
                             <span>{t('tour')}</span>
                         </div>
-                        <div className="navbar-left-item visa">
+                        <div className="navbar-left-item visa" onClick={() => {
+                            navigate('/visa');
+                        }}>
                             <span>{t('visa')}</span>
                         </div>
                         <div className="navbar-left-item agency">
@@ -82,7 +94,7 @@ export const Navbar = () => {
                                 <span>{t('more')}</span>
                                 <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
                             </div>
-                            <Dropdown items={t('dropdown:more', { returnObjects: true })} open={showDropdown === 'more'} />
+                            <Dropdown items={t('dropdown:more', { returnObjects: true })} path={englishMoreItems} open={showDropdown === 'more'} />
                         </div>
                     </div>
                 </div>
@@ -104,7 +116,7 @@ export const Navbar = () => {
                                 <span>{t('login_or_register')}</span>
                                 <img className="icon user" src={userIcon} alt="user" />
                             </div>
-                            <Dropdown items={t('dropdown:user', { returnObjects: true })} open={showDropdown === 'user'} />
+                            <Dropdown items={t('dropdown:user', { returnObjects: true })} path={englishUserItems} open={showDropdown === 'user'} />
                         </div>
                         <div>
                             <div className="navbar-right-item language" onClick={(e) => {
@@ -114,7 +126,7 @@ export const Navbar = () => {
                                 <Languages size={20} />
                                 <ChevronDown size={20} />
                             </div>
-                            <Dropdown items={languageDropdown} open={showDropdown === 'language'} select={handleLanguageSelect} />
+                            <Dropdown items={languageDropdown} open={showDropdown === 'language'} select={handleLanguageSelect} isLangDropdown={true} />
                         </div>
                         <div className="navbar-right-item toggle">
                             <div className="darkmode-toggle">

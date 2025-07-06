@@ -1,6 +1,6 @@
 {
     "ticketDropdown": ["Inlandsflug", "Auslandsflug", "Zug", "Bus"],
     "residence": ["Hotel", "Villen & Apartments"],
-    "more": ["Alibaba Plus", "Alibaba Magazin", "Reiseversicherung", "Ratenzahlung Reise"],
+    "more": ["Alibaba Magazin", "Reiseversicherung"],
     "user": ["Kontoinformationen", "Benachrichtigungen", "Support anfragen", "Abmelden"]
 }  

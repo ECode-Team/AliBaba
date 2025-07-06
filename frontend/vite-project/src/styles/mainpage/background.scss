@@ -13,7 +13,8 @@ $villa-light: "../../assets/images/villa-light.webp";
     aspect-ratio: 1450 / 320;
 
     .background-image {
-        background-image: url($villa-light);
+        position: absolute;
+        overflow: hidden;
         background-size: cover;
         background-position: center;
         width: 100%;

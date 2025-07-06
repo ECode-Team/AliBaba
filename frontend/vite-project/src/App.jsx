@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { Footer } from "./Components/footer";
 import { Navbar } from "./Components/navbar";
 import { Bus } from "./Pages/bookingpage/bus/bus";
@@ -12,8 +12,31 @@ import { Payment } from "./Pages/paymentpage";
 import { Userpage } from "./Pages/userpage";
 import { Train } from "./Pages/bookingpage/train/train";
 import { FetchAPI } from "./Components/fetch";
-import "../src/styles/general.scss";
 import { useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+
+import "../src/styles/general.scss";
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  return (
+    <AnimatePresence>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/:mode" element={<Homepage />} />
+          <Route path="/Booking/bus" element={<Bus />} />
+          <Route path="/Booking/train" element={<Train />} />
+          <Route path="/Booking/hotel" element={<Hotel />} />
+          <Route path="/Booking/flights" element={<Flights />} />
+          <Route path="/Booking/international" element={<International />} />
+          <Route path="/Booking/vila" element={<Vila />} />
+          <Route path="/DetailPage" element={<Detail />} />
+          <Route path="/Payment" element={<Payment />} />
+          <Route path="/UserPage" element={<Userpage />} />
+        </Routes>
+      </AnimatePresence>
+  )
+}
 
 function App() {
   useEffect(() => {
@@ -21,22 +44,11 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/Booking/bus" element={<Bus />} />
-        <Route path="/Booking/train" element={<Train />} />
-        <Route path="/Booking/hotel" element={<Hotel />} />
-        <Route path="/Booking/flights" element={<Flights />} />
-        <Route path="/Booking/international" element={<International />} />
-        <Route path="/Booking/vila" element={<Vila />} />
-        <Route path="/DetailPage" element={<Detail />} />
-        <Route path="/Payment" element={<Payment />} />
-        <Route path="/UserPage" element={<Userpage />} />
-      </Routes>
+      <AnimatedRoutes />
       <Footer />
-    </BrowserRouter>
+    </Router>
   );
 }
 
