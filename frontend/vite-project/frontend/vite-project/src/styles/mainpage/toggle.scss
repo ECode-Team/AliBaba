@@ -1,0 +1,59 @@
+@mixin toggle-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: rgb(82, 82, 82);
+    border-radius: 20px;
+    cursor: pointer;
+    transition-duration: .2s;
+}
+
+@mixin toggle-switch-after {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    left: 5px;
+    background-color: transparent;
+    border-radius: 50%;
+    transition-duration: .2s;
+    box-shadow: 2px 2px 7px rgba(8, 8, 8, 0.26);
+    border: 5px solid white;
+}
+
+@mixin toggle-checked {
+    transform: translateX(180%);
+    transition-duration: .2s;
+    background-color: white;
+}
+
+.navbar-right-item.toggle {
+    display: flex;
+    flex-direction: column;
+
+    .darkmode-toggle {
+        #checkboxInput1 {
+            display: none;
+        }
+
+        .toggleSwitch1 {
+            @include toggle-switch;
+        }
+
+        .toggleSwitch1::after {
+            @include toggle-switch-after;
+        }
+
+        #checkboxInput1:checked+.toggleSwitch1::after {
+            @include toggle-checked;
+        }
+
+        #checkboxInput1:checked+.toggleSwitch1 {
+            background-color: rgb(255, 191, 0);
+            transition-duration: .2s;
+        }
+    }
+}

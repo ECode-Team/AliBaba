@@ -1,0 +1,131 @@
+@import '../../styles/general.scss';
+
+@mixin navbar-styles($gap) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: $gap;
+}
+
+@mixin navbar-item-styles {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.header {
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    right: 0;
+    margin: 0;
+    margin-top: 0;
+    height: 65px;
+    background-color: white;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+    z-index: 1;
+
+    .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        width: 1500px;
+        transition: all 0.5s ease-in-out;
+
+        .navbar-right {
+            .navbar-right-items {
+                @include navbar-styles(0px);
+            }
+
+            .navbar-right-item {
+                @include navbar-item-styles;
+                border-radius: 6px;
+                padding: 4px 12px;
+                transition: background-color 0.15s ease, box-shadow 0.2s ease;
+            }
+
+            .navbar-right-item:hover {
+                background-color: $hover-color;
+                cursor: pointer;
+            }
+
+            .navbar-right-item:active {
+                box-shadow: inset 0 0px 6px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+
+            .navbar-logo {
+                display: flex;
+                align-items: center;
+
+                &.fa {
+                    margin-right: 0;
+                    margin-left: 0px;
+                }
+
+                .logo-text {
+                    font-size: 28px;
+                    font-weight: 500;
+                    position: relative;
+                    top: 5px;
+                    color: $title-color;
+                }
+
+                .logo {
+                    width: 50px;
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+            }
+
+            .navbar-left-items {
+                @include navbar-styles(0px);
+
+                .navbar-left-item {
+                    @include navbar-item-styles;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 6px;
+                    padding: 4px 12px;
+                    transition: background-color 0.15s ease, box-shadow 0.2s ease;
+                }
+
+                .navbar-left-item:hover {
+                    background-color: $hover-color;
+                    cursor: pointer;
+                }
+
+                .navbar-left-item:active {
+                    box-shadow: inset 0 0px 6px rgba(0, 0, 0, 0.3);
+                }
+
+                .navbar-left-item:first-child {
+                    border-right: none;
+                }
+            }
+        }
+
+        .icon {
+            width: 18px;
+            filter: invert($icon-color);
+        }
+
+        .icon.user {
+            width: 22px;
+        }
+    }
+}
