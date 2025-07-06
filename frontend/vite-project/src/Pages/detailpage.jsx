@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/mainpage/detailpage.scss";
 
-// =======================================================================
-// === SVG ICON COMPONENTS ===
-// =======================================================================
-
 const ShareIcon = ({ className }) => (
   <svg
     className={className}
@@ -422,10 +418,6 @@ const VerifiedIcon = ({ className }) => (
   </svg>
 );
 
-// =======================================================================
-// === ACCORDION COMPONENT ===
-// =======================================================================
-
 const AccordionItem = ({ question, answer, isOpen, onClick }) => {
   const contentHeight = useRef();
   return (
@@ -452,12 +444,7 @@ const AccordionItem = ({ question, answer, isOpen, onClick }) => {
   );
 };
 
-// =======================================================================
-// === MAIN APP COMPONENT ===
-// =======================================================================
-
 export default function App() {
-  // --- STATE MANAGEMENT ---
   const [review, setReview] = useState("");
   const [isLoadingReview, setIsLoadingReview] = useState(false);
   const [reviewError, setReviewError] = useState(null);
@@ -471,7 +458,6 @@ export default function App() {
   const dropdownRef = useRef(null);
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
-  // --- DATA OBJECTS ---
   const galleryImages = [
     "https://placehold.co/800x600/334155/ffffff?text=Hotel+View+1",
     "https://placehold.co/600x400/334155/ffffff?text=Bedroom",
@@ -706,13 +692,8 @@ export default function App() {
     "هتل های مشهد",
   ];
 
-  // --- HANDLER FUNCTIONS ---
-  const handleGenerateReview = async () => {
-    /* ... (logic to be implemented) ... */
-  };
-  const handleSuggestItinerary = async () => {
-    /* ... (logic to be implemented) ... */
-  };
+  const handleGenerateReview = async () => {};
+  const handleSuggestItinerary = async () => {};
 
   useEffect(() => {
     const handleClickOutside = (event) => {
