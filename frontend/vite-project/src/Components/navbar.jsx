@@ -5,86 +5,136 @@ import travelsIcon from "../assets/icons/luggage.png";
 import supportIcon from "../assets/icons/question.png";
 import dropdownIcon from "../assets/icons/down-arrow.png";
 import logo from "../assets/icons/logo.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dropdown from "./mainpage/dropdown";
+import i18n from "../i18n";
+import { useTranslation } from "react-i18next";
+import { Languages, ChevronDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
-    const [persian, setPersian] = useState(false);
-    const ticketDropdownEn = ["Domestic flight", "Foreign flight", "Train", "Bus"];
-    const ticketDropdownFa = ["پرواز داخلی", "پرواز خارجی", "قطار", "اتوبوس"]; 
-    const residenceDropdown = [
-        { en: "Hotel", fa: "هتل" },
-        { en: "Villa and residence", fa: "ویلا و اقامتگاه" }
-    ];
-    const moreDropdown = [
-        { en: "Alibaba plus", fa: "علی‌بابا پلاس" },
-        { en: "Alibaba Magazine", fa: "مجله علی‌بابا" },
-        { en: "Travel insurance", fa: "بیمه مسافرتی" },
-        { en: "Installment travel", fa: "سفر اقساطی" }
-    ];
+    const [rtlLang, setRtl] = useState(false);
+    const { t } = useTranslation();
+    const languageDropdown = ['en', 'de', 'fr', 'es', 'zh', 'fa', 'ar'];
+    const [showDropdown, setShowDropdown] = useState(null);
+    const navigate = useNavigate();
+
+    // Route path for dropdown items
+    const englishTicketItems = ["DomesticFlight", "InternationalFlight", "Train", "Bus"];
+    const englishResidenceItems = ["Hotel", "Villas&Apartments"];
+    const englishMoreItems = ["AlibabaMagazine", "TravelInsurance"];
+    const englishUserItems = ["Account Information", "Notifications", "Request Support", "Log Out of Account"];
+
+    // Hide the dropdown when clicking anywhere
+    useEffect(() => {
+        if (showDropdown === null) return;
+
+        const handleClickAnywhere = () => {
+            setShowDropdown(null);
+        }
+        window.addEventListener('click', handleClickAnywhere);
+        return () => {
+            window.removeEventListener('click', handleClickAnywhere);
+        }
+    }, [showDropdown]);
+
+    // Change language
+    const handleLanguageSelect = (language) => {
+        i18n.changeLanguage(language);
+        setRtl(language === 'fa' || language === 'ar');
+    }
 
     return (
         <div className="header">
-            <Dropdown items={persian ? ticketDropdownFa : ticketDropdownEn} />
-            <div className="navbar-container" style={{ flexDirection: persian ? 'row-reverse' : 'row' }}>
-                <div className="navbar-left" dir={persian ? 'rtl' : 'ltr'}>
-                    <div className={persian ? 'navbar-logo fa' : 'navbar-logo'} dir={persian ? 'rtl' : 'rtl'}>
+            <div className="navbar-container" style={{ flexDirection: rtlLang ? 'row' : 'row-reverse' }}>
+                <div className="navbar-left" dir={rtlLang ? 'rtl' : 'ltr'}>
+                    <div className="navbar-logo">
                         <span className="logo-text">alibaba</span>
                         <img className="logo" src={logo} alt="logo" />
                     </div>
-                    <div className={persian ? "navbar-left-items fa" : "navbar-left-items"}>
-                        <div className="navbar-left-item ticket">
-                            <span>{persian ? 'بلیط' : 'Ticket'}</span>
-                            <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
+                    <div className={rtlLang ? "navbar-left-items fa" : "navbar-left-items"}>
+                        <div>
+                            <div className="navbar-left-item ticket" onClick={(e) => {
+                                e.stopPropagation();
+                                setShowDropdown(showDropdown === 'ticket' ? null : 'ticket')
+                            }}>
+                                <span>{t('ticket')}</span>
+                                <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
+                            </div>
+                            <Dropdown items={t('dropdown:ticketDropdown', { returnObjects: true })} path={englishTicketItems} open={showDropdown === 'ticket'} />
                         </div>
-                        <div className="navbar-left-item residence">
-                            <span>{persian ? 'اقامت' : 'Residence'}</span>
-                            <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
+                        <div>
+                            <div className="navbar-left-item residence" onClick={(e) => {
+                                e.stopPropagation();
+                                setShowDropdown(showDropdown === 'residence' ? null : 'residence')
+                            }}>
+                                <span>{t('residence')}</span>
+                                <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
+                            </div>
+                            <Dropdown items={t('dropdown:residence', { returnObjects: true })} path={englishResidenceItems} open={showDropdown === 'residence'} />
                         </div>
-                        <div className="navbar-left-item tour">
-                            <span>{persian ? 'تور' : 'Tour'}</span>
+                        <div className="navbar-left-item tour" onClick={() => {
+                            navigate('/tour');
+                        }}>
+                            <span>{t('tour')}</span>
                         </div>
-                        <div className="navbar-left-item visa">
-                            <span>{persian ? 'ویزا' : 'Visa'}</span>
+                        <div className="navbar-left-item visa" onClick={() => {
+                            navigate('/visa');
+                        }}>
+                            <span>{t('visa')}</span>
                         </div>
                         <div className="navbar-left-item agency">
-                            <span>{persian ? 'پنل آژانسی' : 'Agency Panel'}</span>
+                            <span>{t('agency_panel')}</span>
                         </div>
-                        <div className="navbar-left-item more">
-                            <span>{persian ? 'بیشتر' : 'More'}</span>
-                            <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
+                        <div>
+                            <div className="navbar-left-item more" onClick={(e) => {
+                                e.stopPropagation();
+                                setShowDropdown(showDropdown === 'more' ? null : 'more')
+                            }}>
+                                <span>{t('more')}</span>
+                                <img className="icon dropdown" src={dropdownIcon} alt="dropdown" />
+                            </div>
+                            <Dropdown items={t('dropdown:more', { returnObjects: true })} path={englishMoreItems} open={showDropdown === 'more'} />
                         </div>
                     </div>
                 </div>
-                <div className="navbar-right" dir={persian ? 'rtl' : 'ltr'}>
+                <div className="navbar-right" dir={rtlLang ? 'rtl' : 'ltr'}>
                     <div className="navbar-right-items" >
                         <div className="navbar-right-item support" >
-                            <span>{persian ? 'مرکز پشتیبانی آنلاین' : 'Support Center'}</span>
+                            <span>{t('support_center')}</span>
                             <img className="icon support" src={supportIcon} alt="support" />
                         </div>
                         <div className="navbar-right-item my-travels" >
-                            <span>{persian ? 'سفر های من' : 'My Travels'}</span>
+                            <span>{t('my_travels')}</span>
                             <img className="icon travels" src={travelsIcon} alt="travels" />
                         </div>
-                        <div className="navbar-right-item user" >
-                            <span>{persian ? 'ورود یا ثبت نام' : 'Login or Register'}</span>
-                            <img className="icon user" src={userIcon} alt="user" />
+                        <div>
+                            <div className="navbar-right-item user" onClick={(e) => {
+                                e.stopPropagation();
+                                setShowDropdown(showDropdown === 'user' ? null : 'user')
+                            }}>
+                                <span>{t('login_or_register')}</span>
+                                <img className="icon user" src={userIcon} alt="user" />
+                            </div>
+                            <Dropdown items={t('dropdown:user', { returnObjects: true })} path={englishUserItems} open={showDropdown === 'user'} />
                         </div>
-                        <div className="navbar-right-item toggle" style={{ marginRight: persian ? '-20px' : '2px', marginLeft: persian ? '2px' : '-20px' }}>
+                        <div>
+                            <div className="navbar-right-item language" onClick={(e) => {
+                                e.stopPropagation();
+                                setShowDropdown(showDropdown === 'language' ? null : 'language')
+                            }}>
+                                <Languages size={20} />
+                                <ChevronDown size={20} />
+                            </div>
+                            <Dropdown items={languageDropdown} open={showDropdown === 'language'} select={handleLanguageSelect} isLangDropdown={true} />
+                        </div>
+                        <div className="navbar-right-item toggle">
                             <div className="darkmode-toggle">
                                 <input type="checkbox" id="checkboxInput1" />
                                 <label htmlFor="checkboxInput1" className="toggleSwitch1"></label>
                             </div>
-                            <div className="language-toggle">
-                                <input type="checkbox" id="checkboxInput2" onChange={() => setPersian(!persian)} />
-                                <label htmlFor="checkboxInput2" className="toggleSwitch2"></label>
-                            </div>
                         </div>
                     </div>
-                    {/* <div className="language-toggle">
-                        <span>light/dark</span>
-                        <span>en/fa</span>
-                    </div> */}
                 </div>
             </div>
         </div>
