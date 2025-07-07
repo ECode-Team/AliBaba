@@ -56,6 +56,8 @@
 }
 
 .alibaba-logo {
+  // You might want to add specific styles for your image logo here
+  // For example, to control its size if the SVG doesn't have explicit dimensions
   width: 135px;
   height: 40px;
   display: block;
@@ -75,23 +77,22 @@
   line-height: 1.6;
 }
 
-// ========================================================
 .nav-columns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   width: 100%;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1000px) {
     grid-template-columns: repeat(3, 1fr);
-    width: 80%;
-    margin-left: 12rem;
+    width: 70%;
     gap: 2rem;
+    margin-left: auto;
   }
 }
 
 .nav-column {
-  text-align: left;
+  text-align: right;
 }
 
 .column-heading {
@@ -101,26 +102,13 @@
   margin-bottom: 1rem;
 }
 
-// .nav-list {
-//   list-style: none;
-//   padding: 0;
-//   margin: 0;
-//
-//   li {
-//     margin-bottom: 0.5rem;
-//
-//     &:last-child {
-//       margin-bottom: 0;
-//     }
-//   }
-
 .nav-list {
   list-style: none;
   padding: 0;
   margin: 0;
 
   li {
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.2rem;
 
     &:last-child {
       margin-bottom: 0;
@@ -145,17 +133,17 @@
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
-  // margin-top: 3rem;
+  margin-top: 1.5rem;
 }
 
 .trust-icon {
-  height: 2rem;
+  height: 35px;
   opacity: 0.7;
   filter: grayscale(50%);
 }
 
 .popular-destinations {
-  font-size: 0.7rem;
+  font-size: 0.8125rem;
   color: #757575;
   width: 100%;
   display: flex;

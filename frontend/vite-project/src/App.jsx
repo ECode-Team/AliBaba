@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "./Components/footer";
+import { Footer } from "./Components/footer";
 import { Navbar } from "./Components/navbar";
 import { Bus } from "./Pages/bookingpage/bus/bus";
 import { Flights } from "./Pages/bookingpage/flights/flights";
 import { Hotel } from "./Pages/bookingpage/hotel/hotel";
 import { International } from "./Pages/bookingpage/international/international";
 import { Vila } from "./Pages/bookingpage/vila/vila";
-import { Detail } from "./Pages/detailpage";
+import Detail from "./Pages/detailpage";
 import { Homepage } from "./Pages/homepage";
 import { Payment } from "./Pages/paymentpage";
 import { Userpage } from "./Pages/userpage";
