@@ -14,6 +14,7 @@ import { Train } from "./Pages/bookingpage/train/train";
 import { FetchAPI } from "./Components/fetch";
 import "../src/styles/general.scss";
 import { useEffect } from "react";
+import { Accordion } from "./Components/mainpage/accordion";
 
 function App() {
   useEffect(() => {

@@ -24,7 +24,7 @@
     border: 5px solid white;
 }
 
-@mixin toggle-checked {
+@mixin toggle-checked (){
     transform: translateX(150%);
     transition-duration: .2s;
     background-color: white;
