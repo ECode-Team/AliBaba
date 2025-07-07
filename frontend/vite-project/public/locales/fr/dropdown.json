@@ -1,0 +1,10 @@
+{
+    "ticketDropdown": ["Vol intérieur", "Vol international", "Train", "Bus"],
+    "residence": ["Hôtel", "Villas et Appartements"],
+<<<<<<< HEAD
+    "more": ["Magazine Alibaba", "Assurance voyage"],
+=======
+    "more": ["Alibaba Plus", "Magazine Alibaba", "Assurance voyage", "Voyage en plusieurs fois"],
+>>>>>>> dab572146449dc5590aa05fccbb0939f3bf509fa
+    "user": ["Informations du compte", "Notifications", "Demander de l’aide", "Se déconnecter du compte"]
+}  

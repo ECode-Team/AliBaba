@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import '../../styles/general.scss';
 
 @mixin navbar-styles($gap) {
     display: flex;
@@ -33,16 +33,28 @@
         flex-direction: row;
         align-items: center;
         height: 100%;
-        width: 1400px;
+        width: 1500px;
         transition: all 0.5s ease-in-out;
 
         .navbar-right {
             .navbar-right-items {
-                @include navbar-styles(34px);
+                @include navbar-styles(0px);
             }
 
             .navbar-right-item {
                 @include navbar-item-styles;
+                border-radius: 6px;
+                padding: 4px 12px;
+                transition: background-color 0.15s ease, box-shadow 0.2s ease;
+            }
+
+            .navbar-right-item:hover {
+                background-color: $hover-color;
+                cursor: pointer;
+            }
+
+            .navbar-right-item:active {
+                box-shadow: inset 0 0px 6px rgba(0, 0, 0, 0.3);
             }
         }
 
@@ -53,11 +65,10 @@
             .navbar-logo {
                 display: flex;
                 align-items: center;
-                margin-right: 15px;
 
                 &.fa {
                     margin-right: 0;
-                    margin-left: 5px;
+                    margin-left: 0px;
                 }
 
                 .logo-text {
@@ -81,35 +92,29 @@
             }
 
             .navbar-left-items {
-                @include navbar-styles(22px);
+                @include navbar-styles(0px);
 
                 .navbar-left-item {
                     @include navbar-item-styles;
-                    padding-left: 15px;
-                    margin-right: -5px;
-                    margin-left: 0px;
-                    border-left: 1px solid $border-color;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 6px;
+                    padding: 4px 12px;
+                    transition: background-color 0.15s ease, box-shadow 0.2s ease;
+                }
+
+                .navbar-left-item:hover {
+                    background-color: $hover-color;
+                    cursor: pointer;
+                }
+
+                .navbar-left-item:active {
+                    box-shadow: inset 0 0px 6px rgba(0, 0, 0, 0.3);
                 }
 
                 .navbar-left-item:first-child {
                     border-right: none;
-                }
-
-                &.fa {
-                    .navbar-left-item {
-                        padding-left: 20px;
-                        padding-right: 0;
-                        margin-right: 0;
-                    }
-
-                    .navbar-left-item:last-child {
-                        border-left: none;
-                    }
-
-                    .navbar-left-item:first-child {
-                        border-right: 1px solid $border-color;
-                        padding-right: 20px;
-                    }
                 }
             }
         }
