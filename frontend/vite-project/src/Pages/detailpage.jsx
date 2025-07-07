@@ -265,6 +265,39 @@ const ChevronDown = ({ className }) => (
     <path d="m6 9 6 6 6-6" />
   </svg>
 );
+const ChevronLeft = ({ className }) => (
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="m15 18-6-6 6-6" />
+  </svg>
+);
+
+const ChevronRight = ({ className }) => (
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="m9 18 6-6-6-6" />
+  </svg>
+);
 const Plus = ({ className }) => (
   <svg
     className={className}
@@ -385,6 +418,32 @@ const VerifiedIcon = ({ className }) => (
   </svg>
 );
 
+const AccordionItem = ({ question, answer, isOpen, onClick }) => {
+  const contentHeight = useRef();
+  return (
+    <div className="faq-item">
+      <button className="faq-question" onClick={onClick}>
+        <span className={`faq-icon ${isOpen ? "open" : ""}`}>?</span>
+        {question}
+        <div className={`arrow-icon ${isOpen ? "open" : ""}`}>
+          <ChevronDown />
+        </div>
+      </button>
+      <div
+        ref={contentHeight}
+        className="faq-answer"
+        style={
+          isOpen
+            ? { height: contentHeight.current.scrollHeight }
+            : { height: "0px" }
+        }
+      >
+        <p>{answer}</p>
+      </div>
+    </div>
+  );
+};
+
 export default function App() {
   const [review, setReview] = useState("");
   const [isLoadingReview, setIsLoadingReview] = useState(false);
@@ -397,6 +456,7 @@ export default function App() {
   const [isItineraryLoading, setIsItineraryLoading] = useState(false);
   const [itineraryError, setItineraryError] = useState(null);
   const dropdownRef = useRef(null);
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
   const galleryImages = [
     "https://placehold.co/800x600/334155/ffffff?text=Hotel+View+1",
@@ -570,12 +630,70 @@ export default function App() {
     ],
   };
 
-  const handleGenerateReview = async () => {
-    /* ...felan hichi... */
-  };
-  const handleSuggestItinerary = async () => {
-    /* ...felan hichi... */
-  };
+  const faqData = [
+    {
+      question: "هزینه رزرو هتل مدینه الرضا مشهد چقدر است؟",
+      answer:
+        "برای رزرو اتاق در هتل مدینه الرضا، با توجه به نوع و امکانات واحدی که از میان ۳۲۰ اتاق این هتل انتخاب می‌کنید، باید هزینه متفاوتی بپردازید. ارزان‌ترین اتاق این هتل، اتاق یک‌تخته استاندارد است که صبحانه را در وعده سرو می‌کند. برای مشاهده قیمت اتاق های هتل به سایت علی بابا مراجعه کنید.",
+    },
+    {
+      question: "آیا امکان رزرو آنلاین هتل مدینه الرضا مشهد وجود دارد؟",
+      answer:
+        "بله، برای رزرو آنلاین هتل مدینه الرضا، می‌توانید به وب‌سایت علی بابا مراجعه کنید. با بررسی امکانات و نظرات، بهترین واحد را انتخاب و رزروتان را نهایی کنید. با رزرو از علی بابا از تخفیف ویژه و پشتیبانی ۲۴ ساعته بهره‌مند شوید.",
+    },
+    {
+      question: "هتل مدینه الرضا مشهد چند ستاره است؟",
+      answer:
+        "هتل مدینه الرضا مشهد، یک هتل پنج ستاره با خدمات و امکانات مناسب است و در میان هتل‌های برتر پنج ستاره مشهد قرار گرفته است. برای اطلاعات بیشتر می‌توانید به سایت علی بابا مراجعه کنید.",
+    },
+    {
+      question:
+        "هتل مدینه الرضا در کدام منطقه مشهد قرار دارد و موقعیت جغرافیایی آن کجاست؟",
+      answer:
+        "ساختمان زیبای هتل مدینه الرضا در مشهد، رأس خیابان شیرازی، نبش شارستان رضوی بنا گردیده است. این هتل نسبت به سایر هتل های پنج ستاره مشهد، در فاصله کمتری از حرم واقع شده است؛ بنابراین شما با کمتر از ۵ دقیقه پیاده‌روی به ورودی باب‌الرضا خواهید رسید.",
+    },
+    {
+      question: "زمان های ورود و خروج هتل مدینه الرضا مشهد چگونه است؟",
+      answer:
+        "در هتل مدینه الرضا، ساعت تحویل اتاق (ورود) از ساعت ۱۴:۰۰ و ساعت تخلیه اتاق (خروج) تا ساعت ۱۲:۰۰ ظهر می‌باشد.",
+    },
+    {
+      question: "امکانات هتل مدینه الرضا مشهد چیست؟",
+      answer:
+        "این هتل امکانات متنوعی از جمله سالن بازی (شامل آمفی قایق، بازی‌های کامپیوتری و زمین بازی کودک)، مجموعه آبی در محوطه باز و باغ‌های سرسبز را برای میهمانان فراهم کرده است.",
+    },
+    {
+      question: "فاصله نزدیک‌ترین فرودگاه به هتل مدینه الرضا مشهد چقدر است؟",
+      answer:
+        "هتل مدینه الرضا مشهد از نزدیک‌ترین هتل‌ها به فرودگاه است. در زمان‌های اوج سفر و ترافیک، می‌توانید با پرداخت هزینه تاکسی به راحتی خود را به هتل برسانید.",
+    },
+    {
+      question: "کدام هتل‌ها مشابه هتل مدینه الرضا مشهد هستند؟",
+      answer:
+        "در مشهد هتل‌های پنج ستاره متعددی وجود دارند. هتل‌هایی مانند هتل قصر طلایی با معماری لوکس و هتل قصر بین المللی با اتاق‌های مجلل، از گزینه‌های مشابه و باکیفیت هستند که می‌توانید آن‌ها را نیز بررسی کنید.",
+    },
+  ];
+
+  const relatedLinksData = [
+    "هتل سی نور مشهد",
+    "هتل الماس ۲",
+    "هتل الماس ۱",
+    "هتل سارینا مشهد",
+    "هتل درویشی مشهد",
+    "هتل قصر طلایی مشهد",
+    "هتل مدینه الرضا",
+    "هتل قصر مشهد",
+    "هتل قصرالضیافه مشهد",
+    "هتل اطلس مشهد",
+    "هتل رز درویشی",
+    "هتل جواد مشهد",
+    "هتل سایه مشهد",
+    "هتل رضویه مشهد",
+    "هتل های مشهد",
+  ];
+
+  const handleGenerateReview = async () => {};
+  const handleSuggestItinerary = async () => {};
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -603,6 +721,14 @@ export default function App() {
       </div>
     </div>
   );
+
+  const handleFaqToggle = (index) => {
+    if (openFaqIndex === index) {
+      setOpenFaqIndex(null);
+    } else {
+      setOpenFaqIndex(index);
+    }
+  };
 
   return (
     <>
@@ -741,221 +867,17 @@ export default function App() {
                 </div>
               </div>
 
-              <div class="facilities">
+              <div className="facilities">
                 <h3>امکانات و ویژگی ها</h3>
-                <div class="facilities-grid">
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M5 12.55a8 8 0 0 1 14.08 0" />
-                      <path d="M1.42 9a16 16 0 0 1 21.16 0" />
-                      <path d="M8.53 16.11a4 4 0 0 1 6.95 0" />
-                      <line x1="12" x2="12.01" y1="20" y2="20" />
-                    </svg>
-                    <span>خدمات اینترنت بی‌سیم (Wifi)</span>
-                  </div>
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                    </svg>
-                    <span>پذیرش شبانه‌روزی</span>
-                  </div>
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.5 12a4.5 4.5 0 0 1 9 0" />
-                      <path d="M12 12a4.5 4.5 0 0 1-4.5-4.5c0-2.48 2.02-4.5 4.5-4.5s4.5 2.02 4.5 4.5A4.5 4.5 0 0 1 12 12z" />
-                    </svg>
-                    <span>امکانات ویژه برای معلولان</span>
-                  </div>
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z" />
-                      <path d="M12 2L12 12L22 12" />
-                    </svg>
-                    <span>خدمات اینترنت</span>
-                  </div>
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M6 20h0a2 2 0 0 0-2-2V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h0" />
-                      <path d="M8 18V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v14" />
-                      <path d="M10 20h4" />
-                    </svg>
-                    <span>انبارنگهداری</span>
-                  </div>
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M12 3v18M9 6l-4 4 4 4" />
-                      <path d="M15 18l4-4-4-4" />
-                    </svg>
-                    <span>آسانسور</span>
-                  </div>
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M2 22h20" />
-                      <path d="M4 18V8.34a1 1 0 0 1 .5-.87l6-3.46a1 1 0 0 1 1 0l6 3.46a1 1 0 0 1 .5.87V18" />
-                      <path d="M8 18V12c0-2.21 1.79-4 4-4s4 1.79 4 4v6" />
-                    </svg>
-                    <span>نمازخانه</span>
-                  </div>
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M21 17s0-2-2-2-2 2-2 2H7s0-2-2-2-2 2-2 2" />
-                      <path d="M19 17V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v11" />
-                      <path d="M3 14h18" />
-                      <circle cx="7.5" cy="10.5" r=".5" />
-                      <circle cx="16.5" cy="10.5" r=".5" />
-                    </svg>
-                    <span>تاکسی سرویس</span>
-                  </div>
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                    <span>خدمات تماس</span>
-                  </div>
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M12 2a2.83 2.83 0 0 1 2 5 2.83 2.83 0 0 1-4 0 2.83 2.83 0 0 1 2-5zM22 12a2.83 2.83 0 0 1-5 2 2.83 2.83 0 0 1 0-4 2.83 2.83 0 0 1 5 2zM12 22a2.83 2.83 0 0 1-2-5 2.83 2.83 0 0 1 4 0 2.83 2.83 0 0 1-2 5zM2 12a2.83 2.83 0 0 1 5-2 2.83 2.83 0 0 1 0 4 2.83 2.83 0 0 1-5-2zM17 17l-1.06-1.06M8.06 8.06L7 7" />
-                      <path d="M17 7l-1.06 1.06M8.06 15.94L7 17" />
-                    </svg>
-                    <span>تهویه مطبوع</span>
-                  </div>
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                      <path d="M22 4L12 14.01l-3-3" />
-                    </svg>
-                    <span>سرویس بهداشتی</span>
-                  </div>
-                  <div class="facility-item">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M3.8 2.3c.2-.2.5-.3.8-.3h14.8c.3 0 .6.1.8.3.2.2.3.5.3.8v11.2c0 .3-.1.6-.3.8-.2.2-.5.3-.8.3H4.6c-.3 0-.6-.1-.8-.3-.2-.2-.3-.5-.3-.8V3.1c0-.3.1-.6.3-.8z" />
-                      <path d="M8 18h8" />
-                      <path d="M12 15v3" />
-                    </svg>
-                    <span>سرویس بهداشتی</span>
-                  </div>
+                <div className="facilities-grid">
+                  {facilityList.map((facility, index) => (
+                    <div key={index} className="facility-item">
+                      {facility.icon}
+                      <span>{facility.text}</span>
+                    </div>
+                  ))}
                 </div>
-                <button class="view-all-link">مشاهده همه امکانات</button>
+                <button className="view-all-link">مشاهده همه امکانات</button>
               </div>
 
               <div className="rooms-and-reviews-section">
@@ -1156,6 +1078,32 @@ export default function App() {
                 <h4>{hotelDescription.facilitiesInfo.title}</h4>
                 <p>{hotelDescription.facilitiesInfo.text}</p>
               </div>
+
+              <section className="faq-section">
+                <h3>پرسش‌های پرتکرار</h3>
+                <div className="faq-list">
+                  {faqData.map((faq, index) => (
+                    <AccordionItem
+                      key={index}
+                      question={faq.question}
+                      answer={faq.answer}
+                      isOpen={openFaqIndex === index}
+                      onClick={() => handleFaqToggle(index)}
+                    />
+                  ))}
+                </div>
+              </section>
+
+              <section className="related-links-section">
+                <div className="related-links-grid">
+                  {relatedLinksData.map((link, index) => (
+                    <a href="#" key={index} className="related-link-btn">
+                      <span>{link}</span>
+                      <ChevronLeft />
+                    </a>
+                  ))}
+                </div>
+              </section>
             </main>
           </div>
         </div>

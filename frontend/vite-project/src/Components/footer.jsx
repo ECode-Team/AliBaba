@@ -1,7 +1,7 @@
 import React from "react";
 import { Linkedin, Instagram, Twitter, Youtube, Send } from "lucide-react";
 import "../styles/mainpage/footer.scss";
-import alibaba_footer from "../../public/alibaba_footer.svg";
+import alibaba_footer from "/alibaba_footer.svg";
 
 export const Footer = () => {
   return (
