@@ -51,7 +51,8 @@
                 display: flex;
                 gap: 45px;
                 margin-right: 70px;
-                margin-top: 25px;
+                margin-top: 15px;
+                height: 55px;
 
                 li {
                     display: flex;
@@ -59,10 +60,27 @@
                     justify-content: center;
                     align-items: center;
                     width: 100px;
-                    height: 50px;
+                    height: 70px;
                     white-space: nowrap;
                     cursor: pointer;
+
+                    .search-icon {
+                        width: 36px;
+                        height: 36px;
+                        fill: $icon-color;
+                    }
                 }
+            }
+
+            .dynamic-underline {
+                position: absolute;
+                width: 120px;
+                height: 5px;
+                top: 82px;
+                transform: translateX(-99px);
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+                background-color: #0077DB;
             }
         }
 
