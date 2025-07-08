@@ -140,21 +140,19 @@ const sections = [
 ];
 
 const RenderSections = ({ sections, editStates, toggleEdit, gender, setGender }) => (
-    <>
-        {sections.map(({ key, title, icon, editIcon, renderEdit, renderView }) => (
-            <UserContentHelperComponent
-                key={key}
-                title={title}
-                icon={icon}
-                editIcon={editIcon}
-                isContent="content"
-                isEdit={() => toggleEdit(key)}
-                isEditing={editStates[key]}
-            >
-                {editStates[key] ? renderEdit(() => toggleEdit(key), gender, setGender) : renderView()}
-            </UserContentHelperComponent>
-        ))}
-    </>
+    sections.map(({ key, title, icon, editIcon, renderEdit, renderView }) => (
+        <UserContentHelperComponent
+            key={key}
+            title={title}
+            icon={icon}
+            editIcon={editIcon}
+            isContent="content"
+            isEdit={() => toggleEdit(key)}
+            isEditing={editStates[key]}
+        >
+            {editStates[key] ? renderEdit(() => toggleEdit(key), gender, setGender) : renderView()}
+        </UserContentHelperComponent>
+    ))
 );
 
 const DesktopDashboard = () => {
@@ -169,7 +167,7 @@ const DesktopDashboard = () => {
     });
 
     const toggleEdit = (key) => {
-        setEditStates((prev) => ({ ...prev, [key]: !prev[key] }));
+        setEditStates(prev => ({ ...prev, [key]: !prev[key] }));
     };
 
     const openModal = (config) => {
