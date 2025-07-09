@@ -793,13 +793,6 @@ export default function App() {
                     onFocus={(e) => (e.target.type = "date")}
                     onBlur={(e) => (e.target.type = "text")}
                   />
-                  <input
-                    type="text"
-                    placeholder="تاریخ خروج"
-                    className="date-input"
-                    onFocus={(e) => (e.target.type = "date")}
-                    onBlur={(e) => (e.target.type = "text")}
-                  />
                 </div>
                 <div style={{ position: "relative" }}>
                   <button
@@ -866,9 +859,9 @@ export default function App() {
                   </div>
                 </div>
               </div>
-
               <div className="facilities">
                 <h3>امکانات و ویژگی ها</h3>
+                <button className="view-all-link"> مشاهده همه امکانات</button>
                 <div className="facilities-grid">
                   {facilityList.map((facility, index) => (
                     <div key={index} className="facility-item">
@@ -877,9 +870,7 @@ export default function App() {
                     </div>
                   ))}
                 </div>
-                <button className="view-all-link">مشاهده همه امکانات</button>
               </div>
-
               <div className="rooms-and-reviews-section">
                 <h3 className="section-title">اتاق‌های هتل مدینه الرضا مشهد</h3>
                 <div className="info-boxes">
@@ -921,7 +912,9 @@ export default function App() {
                     </div>
                   ))}
                 </div>
-                <button className="show-more-btn">مشاهده اتاق‌های بیشتر</button>
+                <div class="show-more-container">
+                  <button class="show-more-btn">Show More</button>
+                </div>
                 <div className="user-reviews">
                   <div className="reviews-header">
                     <h4>نظرات کاربران</h4>
@@ -968,7 +961,6 @@ export default function App() {
                   </div>
                 </div>
               </div>
-
               <div className="latest-reviews">
                 <div className="latest-reviews-header">
                   <h3>{latestReviewsData.title}</h3>
@@ -1002,35 +994,6 @@ export default function App() {
                   ))}
                 </div>
               </div>
-
-              <div className="hotel-rules">
-                <h3>{hotelRulesData.title}</h3>
-                <div className="check-in-out">
-                  <div className="time-item">
-                    <Clock />
-                    <span>ساعت ورود</span>
-                    <strong>{hotelRulesData.notes.checkIn}</strong>
-                  </div>
-                  <div className="time-item">
-                    <Clock />
-                    <span>ساعت خروج</span>
-                    <strong>{hotelRulesData.notes.checkOut}</strong>
-                  </div>
-                </div>
-                <h4>نکات ضروری</h4>
-                <ul>
-                  {hotelRulesData.notes.points.map((point, index) => (
-                    <li key={index}>{point}</li>
-                  ))}
-                </ul>
-                <h4>{hotelRulesData.extraCosts.title}</h4>
-                <ul>
-                  {hotelRulesData.extraCosts.points.map((point, index) => (
-                    <li key={index}>{point}</li>
-                  ))}
-                </ul>
-              </div>
-
               <div className="suggested-hotels">
                 <div className="suggested-hotels-header">
                   <h3>{suggestedHotelsData.title}</h3>
@@ -1066,8 +1029,43 @@ export default function App() {
                 </div>
               </div>
 
+              <h3>{hotelRulesData.title}</h3>
+              <div className="hotel-rules">
+                {/* Right Column */}
+                <div className="hotel-rules-sidebar">
+                  <div className="check-in-out">
+                    <div className="time-item">
+                      <Clock />
+                      <span>ساعت ورود</span>
+                      <strong>{hotelRulesData.notes.checkIn}</strong>
+                    </div>
+                    <div className="time-item">
+                      <Clock />
+                      <span>ساعت خروج</span>
+                      <strong>{hotelRulesData.notes.checkOut}</strong>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Left Column (with vertical separator) */}
+                <div className="hotel-rules-main-content">
+                  <h4>نکات ضروری</h4>
+                  <ul>
+                    {hotelRulesData.notes.points.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
+                  <h4>{hotelRulesData.extraCosts.title}</h4>
+                  <ul>
+                    {hotelRulesData.extraCosts.points.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <h3>{hotelDescription.title}</h3>
               <div className="hotel-description">
-                <h3>{hotelDescription.title}</h3>
                 {hotelDescription.paragraphs.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
@@ -1078,7 +1076,6 @@ export default function App() {
                 <h4>{hotelDescription.facilitiesInfo.title}</h4>
                 <p>{hotelDescription.facilitiesInfo.text}</p>
               </div>
-
               <section className="faq-section">
                 <h3>پرسش‌های پرتکرار</h3>
                 <div className="faq-list">
@@ -1093,7 +1090,6 @@ export default function App() {
                   ))}
                 </div>
               </section>
-
               <section className="related-links-section">
                 <div className="related-links-grid">
                   {relatedLinksData.map((link, index) => (
