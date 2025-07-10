@@ -1,0 +1,55 @@
+.flights {
+  display: flex;
+  position: relative;
+  justify-content: center;
+
+  .container {
+    display: flex;
+    padding: 20px;
+
+    .right-section {
+      width: 300px;
+      height: 1000px;
+      background-color: white;
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      margin: 5px;
+    }
+    
+    .left-section {
+        
+        .up {
+            
+            .topic {
+                width: 800px;
+                height: 300px;
+                background-color: white;
+                border: 1px solid #dee2e6;
+                border-radius: 10px ;
+                margin: 5px;
+            }
+        }
+        
+        .down {
+            display: flex;
+            flex-direction: row;
+            
+            .specific {
+                width: 550px;
+                height: 170px;
+                background-color: white;
+                border: 1px solid #dee2e6;
+                border-radius: 0px 10px 10px 0px ;
+            }
+    
+          .buy {
+            width: 250px;
+            height: 170px;
+            background-color: white;
+            border: 1px solid #dee2e6;
+            border-radius: 10px 0px 0px 10px ;
+        }
+      }
+    }
+  }
+}

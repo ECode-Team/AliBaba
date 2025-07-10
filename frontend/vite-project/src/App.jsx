@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { Footer } from "./Components/footer";
 import { Navbar } from "./Components/navbar";
-import { Bus } from "./Pages/bookingpage/bus/bus";
-import { Flights } from "./Pages/bookingpage/flights/flights";
-import { Hotel } from "./Pages/bookingpage/hotel/hotel";
-import { International } from "./Pages/bookingpage/international/international";
-import { Vila } from "./Pages/bookingpage/vila/vila";
+import { Bus } from "./Pages/bookingpage/bus";
+import { Innerflight } from "./Pages/bookingpage/innerflight";
+import { Hotel } from "./Pages/bookingpage/hotel";
+import { Foreignflight } from "./Pages/bookingpage/foreignflight";
+import { Vila } from "./Pages/bookingpage/vila";
 import Detail from "./Pages/detailpage";
 import { Homepage } from "./Pages/homepage";
-import { Payment } from "./Pages/paymentpage";
+import { Payment } from "./Pages/paymentpage"; 
 import { Userpage } from "./Pages/userpage";
-import { Train } from "./Pages/bookingpage/train/train";
+import { Train } from "./Pages/bookingpage/train";
 import { FetchAPI } from "./Components/fetch";
 import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -28,8 +28,8 @@ const AnimatedRoutes = () => {
           <Route path="/Booking/bus" element={<Bus />} />
           <Route path="/Booking/train" element={<Train />} />
           <Route path="/Booking/hotel" element={<Hotel />} />
-          <Route path="/Booking/flights" element={<Flights />} />
-          <Route path="/Booking/international" element={<International />} />
+          <Route path="/Booking/innerflight" element={<Innerflight />} />
+          <Route path="/Booking/foreignflight" element={<Foreignflight />} />
           <Route path="/Booking/vila" element={<Vila />} />
           <Route path="/DetailPage" element={<Detail />} />
           <Route path="/Payment" element={<Payment />} />
