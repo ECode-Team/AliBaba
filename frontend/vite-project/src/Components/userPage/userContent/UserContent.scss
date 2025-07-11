@@ -1,0 +1,332 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.user-content-container{
+  width: clamp(864px , 864px , 400px);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.content-section{
+  margin: 20px 0;
+}
+
+
+.user-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background: #fff;
+
+  .account-balance {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    margin-left: 90px;
+
+    p {
+      margin: 0;
+      line-height: 1.2;
+
+      &:first-child {
+        margin-bottom: 5px;
+      }
+    }
+
+    a {
+      margin-top: 10px;
+    }
+  }
+
+  .avatar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 10px;
+
+    h4 {
+      margin: 0 0 5px 0;
+      font-size: 1em;
+    }
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid $border-color;
+    }
+  }
+}
+
+.user-detail-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.user-number{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+}
+
+.user-email{
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.detail{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap;
+}
+
+.section{
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 130px;
+}
+
+.number-edit-add,
+.email-edit-add {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  color: $link-color;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 50px;
+  transition: 200ms;
+
+  &:hover {
+    border-color: lighten($link-color, 40%);
+    background: lighten($link-color, 55%);
+  }
+
+  & img {
+    margin: 0 5px;
+  }
+}
+
+
+.password-edit-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  outline: $link-color;
+  border: 2px solid $link-color;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: $link-color;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 200ms;
+  &:hover{
+    background: lighten($link-color , 55%);
+  }
+  & img{
+    margin-left: 5px;
+  }
+}
+
+
+a {
+  color: $link-color !important;
+  text-decoration: none;
+}
+
+li > a {
+  color: initial !important;
+}
+
+.mobile-dashboard {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 16px;
+  gap: 16px;
+
+  .user-card {
+    width: 100%;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+
+    .user-phone{
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 10px;
+    }
+
+    .edit-details{
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}
+
+  .account-balance-card {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+    .balance{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      align-items: center;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 10px;
+
+      .amount{
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        gap: 5px;
+        span{
+          color: forestgreen;
+        }
+      }
+    }
+
+    .balance-item{
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      flex-direction: row-reverse;
+      gap: 10px;
+    }
+
+  }
+
+  .plus-card {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row-reverse;
+    gap: 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-align: right;
+
+    img{
+      width: 30px;
+      height: 30px;
+    }
+
+  }
+  .personal-edit-form{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    .edit-personal-inputs{
+      display: flex;
+      gap: 15px;
+      flex-direction: row-reverse;
+      align-items: start;
+
+      .emergency-number{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        span{
+          text-align: right;
+          font-size: 10px;
+          color: #666;
+          line-height: 1.4;
+        }
+      }
+
+    }
+
+  .date-inputs {
+    display: flex;
+  }
+}
+
+.bank-edit-form{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+
+  .bank-edit-inputs{
+    display: flex;
+    gap: 40px;
+  }
+}
+
+.edit-footer{
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  margin-top: 30px;
+
+  .confirm-edit , .cancel-edit{
+    background: transparent;
+    width: 180px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 18px;
+    transition: 100ms;
+  }
+
+  .confirm-edit{
+    background: $link-color;
+    color: white;
+
+    &:hover{
+      background: darken($link-color , 10%);
+    }
+  }
+
+  .cancel-edit{
+    color: $link-color;
+    border: 3px solid $link-color;
+  }
+
+}
+
+.password-fields{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+
+  ~ label{
+    margin-right: 35px;
+  }
+
+}
+
+
+

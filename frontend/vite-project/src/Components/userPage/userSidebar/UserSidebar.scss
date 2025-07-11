@@ -1,0 +1,58 @@
+@import "../../../styles/variables";
+
+.parent-sidebar{
+  width: 286px;
+  padding: 0 15px;
+  list-style: none;
+  border: 1px solid $border-color;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+  background: #fff;
+  flex-shrink: 0;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.sidebar-item {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  justify-content: end;
+  text-align: right;
+  width: calc(100% + 20px);
+  margin-left: -10px;
+  padding: 10px 5px;
+  box-sizing: border-box;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $border-color !important;
+  }
+
+  & img{
+    width: 20px;
+    height: 20px;
+  }
+
+  & span {
+    margin-right: 10px;
+    color: $text-color;
+    cursor: pointer;
+  }
+}
+
+
+
+.mobile-sidebar{
+  width: 100%;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 0 16px;
+
+  ul{
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+

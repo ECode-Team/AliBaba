@@ -1,0 +1,103 @@
+//@import "../../../styles/variables";
+//
+//
+//.user-content-template {
+//  //width: 900px;
+//  border: 1px solid $border-color;
+//  border-radius: 10px;
+//  padding: 20px;
+//  background: #fff;
+//}
+//
+//.user-content {
+//  display: flex;
+//  gap: 20px;
+//
+//  .children-wrapper{
+//    display: flex;
+//    justify-content: center;
+//    align-items: center;
+//  }
+//
+//  & > .edit-title,
+//  & > .title {
+//    flex: 1;
+//    display: flex;
+//    flex-direction: column;
+//    justify-content: space-between;
+//  }
+//
+//  & .title {
+//    align-items: flex-end;
+//  }
+//
+//  & .edit-title-icon,
+//  & .title-icon {
+//    display: flex;
+//    align-items: center;
+//    gap: 8px;
+//    height: 40px;
+//  }
+//
+//  //& .edit-title > div:last-child,
+//  //& .title > div:last-child {
+//  //  margin-top: auto;
+//  //}
+//}
+
+@import "../../../../../styles/variables";
+
+
+.user-content-template {
+  //width: 900px;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+
+
+  .titles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -20px;
+
+    .edit-title {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .edit-title-icon {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
+      }
+
+      button{
+        position: absolute;
+        bottom: 30px;
+      }
+    }
+
+    .title-icon {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+}
+
+.user-content {
+  display: flex;
+  gap: 20px;
+  justify-content: end;
+}
+
+.no-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+

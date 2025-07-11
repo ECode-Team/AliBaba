@@ -1,0 +1,32 @@
+@import "../../../../../styles/variables";
+
+
+.container{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid $border-color;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 20;
+
+  .mobile-content-helper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+
+
+    .title{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-direction: row-reverse;
+
+      img{
+        cursor: pointer;
+      }
+
+    }
+  }
+}
+
+

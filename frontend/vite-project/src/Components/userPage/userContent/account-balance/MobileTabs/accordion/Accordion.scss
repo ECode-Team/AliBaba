@@ -1,0 +1,119 @@
+@import "../../../../../../styles/variables";
+
+
+.accordion {
+  border-bottom: 1px solid #ddd;
+
+  .accordion-header {
+    border: none;
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 5px 10px;
+    background: lighten(#e3e3e3, 8%);
+
+    img {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      padding: 2px;
+      background: white;
+    }
+
+  }
+
+}
+
+.transaction-filter{
+  flex-direction: row-reverse;
+  display: flex;
+}
+
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-inner {
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+
+  .input-container-date , .input-container-transaction{
+    display: flex;
+    justify-content: center;
+
+    input{
+      text-align: right;
+      padding: 5px 10px;
+      border: 1px solid $border-color;
+      outline: none;
+      border-radius: 8px;
+      position: relative;
+
+      &:first-child{
+        border-top-right-radius: 0px ;
+        border-bottom-right-radius: 0px ;
+      }
+      &:last-child{
+        border-top-left-radius: 0px ;
+        border-bottom-left-radius: 0px ;
+      }
+    }
+  }
+
+  .input-container-transaction {
+    .input-item {
+      display: flex;
+      position: relative;
+      flex-direction: row-reverse;
+
+      &:last-child{
+        input{
+          border-radius: 8px;
+          border-top-left-radius: 0px ;
+          border-bottom-left-radius: 0px ;
+        }
+      }
+
+      span {
+        position: absolute;
+        left: 10px;
+        top: 3px;
+        opacity: 0.6;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      input {
+        width: 100%;
+      }
+
+
+      input:focus + span {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+.remove-filter-button{
+  color: $link-color ;
+  border: none;
+  background: transparent;
+  font-weight: bold;
+  padding: 2px;
+  transition: 300ms;
+  border-radius: 8px;
+
+  &:active {
+    border: 1px solid lighten($link-color , 60%);
+    background: lighten($link-color , 55%);
+  }
+
+}
