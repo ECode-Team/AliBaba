@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { Footer } from "./Components/footer";
 import { Navbar } from "./Components/navbar";
-import { Bus } from "./Pages/bookingpage/bus/bus";
-import { Flights } from "./Pages/bookingpage/flights/flights";
-import { Hotel } from "./Pages/bookingpage/hotel/hotel";
-import { International } from "./Pages/bookingpage/international/international";
-import { Vila } from "./Pages/bookingpage/vila/vila";
+import { Bus } from "./Pages/bookingpage/bus";
+import { Innerflight } from "./Pages/bookingpage/innerflight";
+import { Hotel } from "./Pages/bookingpage/hotel";
+import { Foreignflight } from "./Pages/bookingpage/foreignflight";
+import { Vila } from "./Pages/bookingpage/vila";
 import Detail from "./Pages/detailpage";
 import { Homepage } from "./Pages/homepage";
 import { Payment } from "./Pages/paymentpage";
