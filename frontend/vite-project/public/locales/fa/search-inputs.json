@@ -1,0 +1,17 @@
+{
+    "origin": "مبدا (شهر)",
+    "origin_airport": "مبدا (شهر، فرودگاه)",
+    "origin_bus": "مبدا (شهر، ترمینال)",
+    "destination": "مقصد (شهر)",
+    "destination_airport": "مقصد (شهر، فرودگاه)",
+    "destination_bus": "مقصد (شهر، ترمینال)",
+    "destination_hotel": "مقصد یا هتل",
+    "destination_villa": "مقصد یا نوع اقامت",
+    "departure_date": "تاریخ رفت",
+    "return_date": "تاریخ برگشت",
+    "passengers": "مسافران",
+    "search": "جستجو",
+    "support_center": "مرکز پشتیبانی",
+    "my_travels": "سفرهای من",
+    "login_or_register": "ورود یا ثبت‌نام"
+}

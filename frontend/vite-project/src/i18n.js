@@ -11,7 +11,7 @@ i18n
     lng: 'en', //ِDefault language
     fallbackLng: 'en', //If language is not found
     debug: true,
-    ns: ['navbar', 'dropdown'],
+    ns: ['navbar', 'dropdown', 'search-inputs', 'search-items'],
     defaultNS: 'navbar',
     interpolation: {
       escapeValue: false,

@@ -1,12 +1,12 @@
 import {createContext, use, useEffect, useState} from "react";
 
-
 export const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
 
     const [activeSection, setActiveSection] = useState("user-dashboard")
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+    const [rtlLang, setRtl] = useState(false)
 
     useEffect(() => {
         const handleResize = () => {
@@ -21,7 +21,9 @@ export const AppProvider = ({ children }) => {
         <AppContext value={{
             activeSection ,
             setActiveSection,
-            isMobile
+            isMobile,
+            rtlLang,
+            setRtl
         }}>
             {children}
         </AppContext>

@@ -5,15 +5,15 @@ import travelsIcon from "../assets/icons/luggage.png";
 import supportIcon from "../assets/icons/question.png";
 import dropdownIcon from "../assets/icons/down-arrow.png";
 import logo from "../assets/icons/logo.png";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import Dropdown from "./mainpage/dropdown";
 import { useTranslation } from "react-i18next";
 import { Languages, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "../App";
+import { useGlobalContext } from "../context/Context";
 
 export const Navbar = () => {
-    const { rtlLang } = useContext(AppContext);
+    const { rtlLang } = useGlobalContext();
     const { t } = useTranslation();
     const languageDropdown = ['en', 'de', 'fr', 'es', 'zh', 'fa', 'ar'];
     const [showDropdown, setShowDropdown] = useState(null);

@@ -1,12 +1,11 @@
 import "../../styles/mainpage/dropdown.scss"
 import { useNavigate } from "react-router-dom";
 import i18n from "../../i18n";
-import { useContext } from "react";
-import { AppContext } from "../../App";
+import { useGlobalContext } from "../../context/Context";
 
 const Dropdown = (props) => {
     // Change language
-    const { setRtl } = useContext(AppContext);
+    const { setRtl } = useGlobalContext();
     const handleLanguageSelect = (language) => {
         i18n.changeLanguage(language);
         setRtl(language === 'fa' || language === 'ar');

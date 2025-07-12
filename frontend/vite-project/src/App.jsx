@@ -12,12 +12,11 @@ import { Payment } from "./Pages/paymentpage";
 // import { Userpage } from "./Pages/userpage";
 import { Train } from "./Pages/bookingpage/train/train";
 import { FetchAPI } from "./Components/fetch";
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Accordion } from "./Components/mainpage/accordion";
 import "../src/styles/general.scss";
 
-export const AppContext = createContext(null);
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -41,21 +40,16 @@ const AnimatedRoutes = () => {
 }
 
 function App() {
-
-  const [rtlLang, setRtl] = useState(false);
-
   useEffect(() => {
     FetchAPI();
   }, []);
 
   return (
-    <AppContext.Provider value={{ rtlLang, setRtl }}>
-      <Router>
-        <Navbar />
-        <AnimatedRoutes />
-        <Footer />
-      </Router>
-    </AppContext.Provider>
+    <Router>
+      <Navbar />
+      <AnimatedRoutes />
+      <Footer />
+    </Router>
   );
 }
 

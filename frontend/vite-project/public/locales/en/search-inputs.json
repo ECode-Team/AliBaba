@@ -1,0 +1,17 @@
+{
+    "origin": "Origin(city)",
+    "origin_airport": "Origin(city, airport)",
+    "origin_bus": "Origin(city, terminal)",
+    "destination": "Destination(city)",
+    "destination_airport": "Destination(city, airport)",
+    "destination_bus": "Destination(city, terminal)",
+    "destination_hotel": "Destination or hotel",
+    "destination_villa": "Destination or type of accommodation",
+    "departure_date": "Departure date",
+    "return_date": "Return date",
+    "passengers": "Passengers",
+    "search": "Search",
+    "support_center": "Support Center",
+    "my_travels": "My Travels",
+    "login_or_register": "Login or Register"
+}

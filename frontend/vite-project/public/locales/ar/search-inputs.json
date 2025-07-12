@@ -1,0 +1,17 @@
+{
+  "origin": "الانطلاق (المدينة)",
+  "origin_airport": "الانطلاق (المدينة، المطار)",
+  "origin_bus": "الانطلاق (المدينة، المحطة)",
+  "destination": "الوجهة (المدينة)",
+  "destination_airport": "الوجهة (المدينة، المطار)",
+  "destination_bus": "الوجهة (المدينة، المحطة)",
+  "destination_hotel": "الوجهة أو الفندق",
+  "destination_villa": "الوجهة أو نوع السكن",
+  "departure_date": "تاريخ المغادرة",
+  "return_date": "تاريخ العودة",
+  "passengers": "الركاب",
+  "search": "بحث",
+  "support_center": "مركز الدعم",
+  "my_travels": "رحلاتي",
+  "login_or_register": "تسجيل الدخول أو التسجيل"
+}

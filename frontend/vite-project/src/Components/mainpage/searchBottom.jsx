@@ -2,10 +2,10 @@ import SearchOptions from "./searchOptions";
 import InputGroup from "../input/InputGroup";
 import { useParams } from "react-router-dom";
 import "../../styles/mainpage/searchBottom.scss";
-import i18n from "../../i18n";
 import { useTranslation } from "react-i18next";
 
 const SearchOptionsGroup = () => {
+    const { t } = useTranslation();
     const { mode } = useParams();
     switch (mode) {
         case 'DomesticFlight':
@@ -42,6 +42,7 @@ const SearchOptionsGroup = () => {
 }
 
 const SearchInputGroup = () => {
+    const { t } = useTranslation();
     const { mode } = useParams();
     switch (mode) {
         case 'DomesticFlight':
@@ -52,15 +53,30 @@ const SearchInputGroup = () => {
             return (
                 <>
                     <div className="input-group destination">
-                        <InputGroup label={"مبدا(شهر)"} isDropdown={true} options={["تهران", "مشهد", "اصفهان"]} borderLeft="0" width={"230px"} />
-                        <InputGroup label={"مقصد(شهر)"} isDropdown={true} options={["شیراز", "تبریز", "اهواز"]} borderRight="0" width={"230px"} />
+                        <InputGroup
+                            label={t("search-inputs:origin")}
+                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
+                            borderLeft="0" width={"230px"} />
+                        <InputGroup
+                            label={t("search-inputs:destination")}
+                            isDropdown={true} options={["شیراز", "تبریز", "اهواز"]}
+                            borderRight="0" width={"230px"} />
                     </div>
                     <div className="input-group date">
-                        <InputGroup label={"تاریخ رفت"} isDropdown={true} options={["تهران", "مشهد", "اصفهان"]} borderLeft="0" width={"140px"} />
-                        <InputGroup label={"تاریخ برگشت"} isDropdown={true} options={["شیراز", "تبریز", "اهواز"]} borderRight="0" width={"140px"} />
+                        <InputGroup
+                            label={t("search-inputs:departure_date")}
+                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
+                            borderLeft="0" width={"140px"} />
+                        <InputGroup
+                            label={t("search-inputs:return_date")}
+                            isDropdown={true} options={["شیراز", "تبریز", "اهواز"]}
+                            borderRight="0" width={"140px"} />
                     </div>
                     <div className="input-group date">
-                        <InputGroup label={"مسافران"} isDropdown={true} options={["تهران", "مشهد", "اصفهان"]} width={"180px"} />
+                        <InputGroup
+                            label={t("search-inputs:passengers")}
+                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
+                            width={"180px"} />
                     </div>
                 </>
             )
@@ -68,11 +84,20 @@ const SearchInputGroup = () => {
             return (
                 <>
                     <div className="input-group destination">
-                        <InputGroup label={"مبدا(شهر,پایانه)"} isDropdown={true} options={["تهران", "مشهد", "اصفهان"]} borderLeft="0" width={"280px"} />
-                        <InputGroup label={"مقصد(شهر,پایانه)"} isDropdown={true} options={["شیراز", "تبریز", "اهواز"]} borderRight="0" width={"280px"} />
+                        <InputGroup
+                            label={t("search-inputs:origin_bus")}
+                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
+                            borderLeft="0" width={"280px"} />
+                        <InputGroup
+                            label={t("search-inputs:destination_bus")}
+                            isDropdown={true} options={["شیراز", "تبریز", "اهواز"]}
+                            borderRight="0" width={"280px"} />
                     </div>
                     <div className="input-group date">
-                        <InputGroup label={"تاریخ حرکت"} isDropdown={true} options={["تهران", "مشهد", "اصفهان"]} width={"370px"} />
+                        <InputGroup
+                            label={t("search-inputs:departure_date")}
+                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
+                            width={"370px"} />
                     </div>
                 </>
             )
@@ -82,17 +107,30 @@ const SearchInputGroup = () => {
                 <>
                     <div className="input-group destination">
                         <InputGroup
-                            label={mode === 'Hotel' ? "مقصد یا هتل(داخلی و خارجی)" : "مقصد یا نوع اقامتگاه"}
+                            label={mode === 'Hotel' ? t("search-inputs:destination_hotel") : t("search-inputs:destination_villa")}
                             isDropdown={true}
                             options={["تهران", "مشهد", "اصفهان"]}
                             width={"360px"} />
                     </div>
                     <div className="input-group date">
-                        <InputGroup label={"تاریخ رفت"} isDropdown={true} options={["تهران", "مشهد", "اصفهان"]} borderLeft="0" width={"170px"} />
-                        <InputGroup label={"تاریخ برگشت"} isDropdown={true} options={["شیراز", "تبریز", "اهواز"]} borderRight="0" width={"170px"} />
+                        <InputGroup
+                            label={t("search-inputs:departure_date")}
+                            isDropdown={true}
+                            options={["تهران", "مشهد", "اصفهان"]}
+                            borderLeft="0"
+                            width={"170px"} />
+                        <InputGroup
+                            label={t("search-inputs:return_date")}
+                            isDropdown={true}
+                            options={["شیراز", "تبریز", "اهواز"]}
+                            borderRight="0"
+                            width={"170px"} />
                     </div>
                     <div className="input-group date">
-                        <InputGroup label={"مسافران"} isDropdown={true} options={["تهران", "مشهد", "اصفهان"]} width={"220px"} />
+                        <InputGroup
+                            label={t("search-inputs:passengers")}
+                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
+                            width={"220px"} />
                     </div>
                 </>
             )
@@ -100,14 +138,15 @@ const SearchInputGroup = () => {
 }
 
 const SearchBottom = () => {
+    const { t } = useTranslation();
     return (
-        <div className="search-bottom">
+        <div className="search-bottom" dir="ltr">
             <div className="search-options-container">
                 <SearchOptionsGroup />
             </div>
             <div className="input-group-container" >
                 <SearchInputGroup />
-                <button className="search-button">جستجو</button>
+                <button className="search-button">{t("search-inputs:search")}</button>
             </div>
         </div>
     )
