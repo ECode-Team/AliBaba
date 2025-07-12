@@ -5,15 +5,15 @@ import travelsIcon from "../assets/icons/luggage.png";
 import supportIcon from "../assets/icons/question.png";
 import dropdownIcon from "../assets/icons/down-arrow.png";
 import logo from "../assets/icons/logo.png";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Dropdown from "./mainpage/dropdown";
-import i18n from "../i18n";
 import { useTranslation } from "react-i18next";
 import { Languages, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../App";
 
 export const Navbar = () => {
-    const [rtlLang, setRtl] = useState(false);
+    const { rtlLang } = useContext(AppContext);
     const { t } = useTranslation();
     const languageDropdown = ['en', 'de', 'fr', 'es', 'zh', 'fa', 'ar'];
     const [showDropdown, setShowDropdown] = useState(null);
@@ -37,12 +37,6 @@ export const Navbar = () => {
             window.removeEventListener('click', handleClickAnywhere);
         }
     }, [showDropdown]);
-
-    // Change language
-    const handleLanguageSelect = (language) => {
-        i18n.changeLanguage(language);
-        setRtl(language === 'fa' || language === 'ar');
-    }
 
     return (
         <div className="header">
@@ -126,7 +120,7 @@ export const Navbar = () => {
                                 <Languages size={20} />
                                 <ChevronDown size={20} />
                             </div>
-                            <Dropdown items={languageDropdown} open={showDropdown === 'language'} select={handleLanguageSelect} isLangDropdown={true} />
+                            <Dropdown items={languageDropdown} open={showDropdown === 'language'} isLangDropdown={true} />
                         </div>
                         <div className="navbar-right-item toggle">
                             <div className="darkmode-toggle">

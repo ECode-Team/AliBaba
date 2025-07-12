@@ -1,10 +1,3 @@
-// $innerflight: url("../../assets/icons/innerflight.svg");
-// @import "../../assets/icons/foreignflight.svg";
-// @import "../../assets/icons/train.svg";
-// @import "../../assets/icons/bus.svg";
-// @import "../../assets/icons/hotel.svg";
-// @import "../../assets/icons/tour.svg";
-// @import "../../assets/icons/villa.svg";
 @import "../variables.scss";
 
 .container {
@@ -81,58 +74,6 @@
                 border-top-left-radius: 15px;
                 border-top-right-radius: 15px;
                 background-color: $link-color;
-            }
-        }
-
-        .search-bottom {
-            flex: 2;
-            height: 100%;
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-
-            .search-options-container {
-                display: flex;
-                flex-direction: row;
-                width: 100%;
-                height: 50px;
-                padding: 10px;
-                margin-top: 20px;
-                gap: 10px;
-            }
-
-            .input-group-container {
-                display: flex;
-                flex-direction: row;
-                gap: 7px;
-                align-items: center;
-
-                .input-group {
-                    display: flex;
-                    flex-direction: row;
-                    height: 80px;
-                }
-
-                .input-group.destination {
-                    margin-right: 32px;
-                }
-
-                .search-button {
-                    margin-left: auto;
-                    width: 190px;
-                    height: 48px;
-                    background-color: $button-color;
-                    color: black;
-                    font-size: 18px;
-                    border: 1px solid rgb(184, 129, 0);
-                    border-radius: 8px;
-                    cursor: pointer;
-                    transition: background-color 0.2s ease;
-
-                    &:hover {
-                        background-color: darken($button-color, 8%);
-                    }
-                }
             }
         }
     }
