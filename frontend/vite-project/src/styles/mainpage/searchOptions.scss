@@ -1,0 +1,26 @@
+@import "../../styles/variables.scss";
+
+.search-options {
+
+    .option-button {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        padding-right: 5px;
+        border: 1px solid $border-color;
+        border-radius: 25px;
+        width: auto;
+        padding: 15px;
+        height: 30px;
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        transition: border-color 0.2s;
+
+        &:active {
+            border-color: $link-color;
+        }
+    }
+
+}

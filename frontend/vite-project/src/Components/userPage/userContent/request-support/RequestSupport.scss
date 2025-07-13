@@ -1,0 +1,64 @@
+@import "../../../../styles/variables";
+
+.Req-support-container{
+  width: 864px;
+}
+
+.no-request-support {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $link-color;
+    color: white;
+    gap: 5px;
+    border-radius: 10px;
+    padding: 5px 50px;
+    font-size: 20px;
+    border: none;
+
+    img{
+      width: 30px;
+      height: 30px;
+    }
+
+  }
+}
+
+.empty-message-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  p{
+    opacity: 0.7;
+  }
+
+}
+
+.request-btn{
+  color: $link-color;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+  gap: 5px;
+  cursor: pointer;
+
+  img{
+    width: 20px;
+    height: 20px;
+  }
+
+}
+

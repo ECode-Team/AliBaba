@@ -1,0 +1,29 @@
+@import "./variables";
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: $breakpoint-xs) { @content; }
+  } @else if $breakpoint == sm {
+    @media (max-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: $breakpoint-lg) { @content; }
+  }
+}
+
+@mixin input-base-style($width: fit-content){
+  width: $width;
+  font-size: 16px;
+  padding: 7px 15px;
+  border: 2px solid $border-color;
+  text-align: right;
+  background-color: transparent;
+  outline: 2px solid transparent;
+  border-radius: 7px;
+
+  &:focus{
+    border-color: #000 !important;
+  }
+
+}

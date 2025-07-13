@@ -1,0 +1,148 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/general";
+
+input::placeholder {
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+
+input::-webkit-input-placeholder {
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+
+input::-moz-placeholder {
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+
+input:-ms-input-placeholder {
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+
+input:-moz-placeholder {
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+
+
+
+.my-trips-container{
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 10px;
+
+   .trip-inputs{
+     display: flex;
+     flex-direction: row-reverse;
+     justify-content: space-between;
+     align-items: center;
+     padding-bottom: 30px;
+     border-bottom: 1px solid $border-color;
+
+     .inputs{
+       display: flex;
+       flex-direction: column;
+       margin: 20px;
+       text-align: right;
+       direction: rtl;
+
+       .with-icon{
+         padding-left: 30px;
+         background-image: url("../../../../../public/icons/search.png");
+         background-repeat: no-repeat;
+         background-position: right 8px center;
+         background-size: 20px;
+
+         &::placeholder{
+           padding-right: 25px;
+         }
+
+       }
+
+       & > select {
+         font-family: "Noto Sans Arabic", sans-serif;
+         appearance: none;
+         -webkit-appearance: none;
+         -moz-appearance: none;
+         font-size: 18px;
+         padding: 10px 40px 10px 10px;
+         width: 231px;
+         height: 42px;
+         border-radius: 5px;
+         border: 1px solid $border-color;
+         background-image: url('../../../../../public/icons/arrow-down.png');
+         background-repeat: no-repeat;
+         background-position: left 8px center;
+         background-size: 24px;
+         box-sizing: border-box;
+         line-height: 1;
+         direction: rtl;
+         text-align: right;
+         overflow: hidden;
+         white-space: nowrap;
+         text-overflow: ellipsis;
+       }
+
+
+
+       & > label{
+         margin-bottom: 8px;
+       }
+
+       & > input,
+       & > select,
+       input[placeholder="از"],
+       input[placeholder="تا"] {
+         padding: 0 10px;
+         border-radius: 5px;
+         font-size: 18px;
+         width: 231px;
+         border: 1px solid $border-color;
+         outline: $border-color;
+       }
+
+       input[placeholder="از"],
+       input[placeholder="تا"] {
+         width: calc(231px / 2);
+       }
+
+       input[placeholder="تا"] {
+         outline: none;
+         border-right: none;
+         border-top-right-radius: 0;
+         border-bottom-right-radius: 0;
+       }
+
+       input[placeholder="از"] {
+         outline: none;
+         border-top-left-radius: 0;
+         border-bottom-left-radius: 0;
+       }
+     }
+
+   }
+
+    .orders{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 91px;
+      .no-ticket{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        justify-content: center;
+
+
+
+        .delete-filter-btn{
+          background: transparent;
+          border: none;
+          color: $link-color;
+          cursor: pointer;
+          font-size: 16px;
+          font-family: "Noto Sans Arabic", sans-serif;
+        }
+
+      }
+    }
+
+}

@@ -1,0 +1,17 @@
+{
+    "origin": "Abfahrtsort (Stadt)",
+    "origin_airport": "Abfahrtsort (Stadt, Flughafen)",
+    "origin_bus": "Abfahrtsort (Stadt, Busbahnhof)",
+    "destination": "Zielort (Stadt)",
+    "destination_airport": "Zielort (Stadt, Flughafen)",
+    "destination_bus": "Zielort (Stadt, Busbahnhof)",
+    "destination_hotel": "Ziel oder Hotel",
+    "destination_villa": "Ziel oder Unterkunftstyp",
+    "departure_date": "Abreisedatum",
+    "return_date": "Rückreisedatum",
+    "passengers": "Passagiere",
+    "search": "Suchen",
+    "support_center": "Supportzentrum",
+    "my_travels": "Meine Reisen",
+    "login_or_register": "Anmelden oder Registrieren"
+}

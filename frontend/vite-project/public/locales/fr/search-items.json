@@ -1,0 +1,9 @@
+{
+    "domesticflight": "Vol intérieur",
+    "internationalflight": "Vol international",
+    "train": "Train",
+    "bus": "Bus",
+    "tour": "Circuit",
+    "hotel": "Hôtel",
+    "villa": "Villa et Résidence"
+}

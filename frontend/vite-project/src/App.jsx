@@ -8,34 +8,34 @@ import { Foreignflight } from "./Pages/bookingpage/foreignflight";
 import { Vila } from "./Pages/bookingpage/vila";
 import Detail from "./Pages/detailpage";
 import { Homepage } from "./Pages/homepage";
-import { Payment } from "./Pages/paymentpage"; 
-import { Userpage } from "./Pages/userpage";
-import { Train } from "./Pages/bookingpage/train";
+import { Payment } from "./Pages/paymentpage";
+// import { Userpage } from "./Pages/userpage";
+import { Train } from "./Pages/bookingpage/train/train";
 import { FetchAPI } from "./Components/fetch";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Accordion } from "./Components/mainpage/accordion";
-
 import "../src/styles/general.scss";
+
 
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
     <AnimatePresence>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/:mode" element={<Homepage />} />
-          <Route path="/Booking/bus" element={<Bus />} />
-          <Route path="/Booking/train" element={<Train />} />
-          <Route path="/Booking/hotel" element={<Hotel />} />
-          <Route path="/Booking/innerflight" element={<Innerflight />} />
-          <Route path="/Booking/foreignflight" element={<Foreignflight />} />
-          <Route path="/Booking/vila" element={<Vila />} />
-          <Route path="/DetailPage" element={<Detail />} />
-          <Route path="/Payment" element={<Payment />} />
-          <Route path="/UserPage" element={<Userpage />} />
-        </Routes>
-      </AnimatePresence>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/:mode" element={<Homepage />} />
+        <Route path="/Booking/bus" element={<Bus />} />
+        <Route path="/Booking/train" element={<Train />} />
+        <Route path="/Booking/hotel" element={<Hotel />} />
+        <Route path="/Booking/flights" element={<Flights />} />
+        <Route path="/Booking/international" element={<International />} />
+        <Route path="/Booking/vila" element={<Vila />} />
+        <Route path="/DetailPage" element={<Detail />} />
+        <Route path="/Payment" element={<Payment />} />
+        {/* <Route path="/UserPage" element={<Userpage />} /> */}
+      </Routes>
+    </AnimatePresence >
   )
 }
 

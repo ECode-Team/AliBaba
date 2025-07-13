@@ -1,0 +1,111 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/mixins";
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem 9.5rem;
+  border-radius: 12px;
+  //min-width: 450px;
+  position: relative;
+  max-width: 90vw;
+  direction: rtl;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  &.slide-up {
+    animation: slideUp 0.35s ease-out forwards;
+  }
+
+  &.slide-down {
+    animation: slideDown 0.35s ease-in forwards;
+  }
+
+  .modal-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    position: relative;
+    justify-content: center;
+
+  }
+
+  p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-top: -1rem;
+  }
+
+  input {
+    @include input-base-style(100%);
+
+    &:focus {
+      border-color: #999;
+    }
+  }
+
+  img[src="/icons/close.png"] {
+    position: absolute;
+    top: 0;
+    left: -120px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+}
+
+.modal-button {
+  margin-top: 1rem;
+  background-color: $link-color;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  transition: 300ms;
+
+  &:hover {
+    background: darken($link-color, 5%);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
