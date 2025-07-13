@@ -1,0 +1,156 @@
+@import "../../variables.scss";
+
+.list-container {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  position: relative;
+
+  .specific {
+    display: flex;
+    width: 620px;
+    height: 150px;
+    background-color: white;
+    border: 1px solid $border-color;
+    border-radius: 0px 10px 10px 0px;
+    padding: 16px 16px 0px 16px;
+    flex-direction: column;
+
+    .upcontainer {
+      display: flex;
+      .piccontainer {
+        display: flex;
+        width: 50px;
+        height: 90px;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 8px;
+
+        .piccompany {
+          width: 35px;
+          height: 35px;
+          background: linear-gradient(45deg, rgb(87, 91, 95), rgb(2, 141, 255));
+
+          border: none;
+          border-radius: 50%;
+        }
+
+        .namecompany {
+          font-size: 12px;
+          font-weight: bold;
+        }
+      }
+
+      .class-type {
+        height: 25px;
+        font-size: 11.5px;
+        font-weight: bold;
+
+        .class-type,
+        span {
+          margin-left: 4px;
+          padding: 0px 8px;
+          border-radius: 20px;
+          background-color: rgb(226, 230, 233);
+        }
+      }
+
+      .aboutcontainer {
+        width: 100%;
+        padding: 0px 16px;
+        .place-time {
+          display: flex;
+          width: 400px;
+          padding: 8px 16px;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+
+          .line {
+            width: 60px;
+            height: 1px;
+            background-color: $border-color;
+          }
+
+          .place {
+            display: flex;
+            width: 134px;
+            font-size: 14px;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            color: black;
+
+            .time {
+              font-size: 17px;
+              font-weight: 800;
+              color: black;
+            }
+          }
+        }
+      }
+    }
+    .downcontainer {
+      position: absolute;
+      bottom: 8px;
+      right: 0px;
+      .rules {
+        .rules,span {
+          font-size: 13px;
+          padding: 8px 16px;
+          color: rgb(0, 153, 255);
+
+        }
+      }
+    }
+  }
+
+  .buy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 230px;
+    height: 150px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #dee2e6;
+    border-radius: 10px 0px 0px 10px;
+    padding: 16px 24px;
+
+    .select-flight {
+      width: 180px;
+      height: 40px;
+      background-color: rgb(0, 119, 219);
+      color: white;
+      border: solid 0.5px rgb(0, 60, 255);
+      border-radius: 8px;
+    }
+    .price-container {
+      display: flex;
+      width: 170px;
+      height: 25px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 8px;
+
+      .priceprice {
+        font-size: 20px;
+        font-weight: 800;
+        color: rgb(0, 119, 219);
+      }
+
+      .unit {
+        font-size: 13px;
+        color: gray;
+        margin-right: 5px;
+      }
+    }
+
+    .rate {
+      font-size: 14px;
+      font-weight: 900;
+      margin: 5px 0px;
+    }
+  }
+}
