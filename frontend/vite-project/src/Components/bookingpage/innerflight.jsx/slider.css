@@ -1,0 +1,52 @@
+.custom-slider {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  margin: 10px 0;
+}
+
+.custom-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+
+.custom-track.custom-track-1 {
+  background: rgb(0, 119, 219);
+}
+
+.custom-thumb {
+  height: 20px;
+  width: 20px;
+  background: white;
+  border: 1px solid #007fc8;
+  border-radius: 50%;
+  cursor: grab;
+  top: -6px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.custom-thumb:hover {
+  border-color: #00a8e8;
+}
+
+.price-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-top: 8px;
+  font-weight: 500;
+  direction: rtl;
+}
+
+.custom-thumb:focus,
+.custom-thumb:active {
+  outline: none;
+  border-color: #00a8e8;
+  background-color: white;
+}

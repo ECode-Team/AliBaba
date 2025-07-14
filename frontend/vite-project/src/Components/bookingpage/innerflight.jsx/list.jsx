@@ -3,7 +3,7 @@ import { FetchAPI } from "../../../Components/fetch";
 import "../../../styles/bookingpage/innerflight/list.scss";
 import Goflight from "../../../assets/icons/goflight.svg?react";
 
-export const Downcontainer = () => {
+export const  Listcontainer = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const Downcontainer = () => {
   }, []);
 
   return (
-    <div className="flights">
+    <div className="down">
       {data.map((data, index) => (
         <div key={index} className="list-container">
           <div className="specific">

@@ -3,13 +3,13 @@
 .list-container {
   display: flex;
   flex-direction: row;
-  margin: 10px;
+  margin-bottom: 16px;
   position: relative;
 
   .specific {
     display: flex;
     width: 620px;
-    height: 150px;
+    height: 153px;
     background-color: white;
     border: 1px solid $border-color;
     border-radius: 0px 10px 10px 0px;
@@ -30,7 +30,6 @@
           width: 35px;
           height: 35px;
           background: linear-gradient(45deg, rgb(87, 91, 95), rgb(2, 141, 255));
-
           border: none;
           border-radius: 50%;
         }
@@ -112,7 +111,7 @@
     justify-content: center;
     position: relative;
     width: 230px;
-    height: 150px;
+    height: 153px;
     background-color: rgb(255, 255, 255);
     border: 1px solid #dee2e6;
     border-radius: 10px 0px 0px 10px;
