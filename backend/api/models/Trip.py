@@ -7,7 +7,7 @@ TRANSFER_TYPES = [
     ("Train", "Train"),
     ("Bus", "Bus"),
     ("Flight", "Flight"),
-    ("Domestic Flight", "Domestic Flight")
+    ("Domestic Flight", "Domestic")
 ]
 
 PASSENGERS_TYPES = [
@@ -75,9 +75,18 @@ class TripSerializer(serializers.ModelSerializer):
                 data.get('transfer_type') != "Flight":
             raise exceptions.ParseError('Britain transfer can only be via airport')
 
+    @classmethod
+    def validate_domestic_flight(cls, data):
+        """
+        If Flight within Iran, make transfer domestic
+        """
+
+        if data.get('arrive_country') == data.get("depart_country") == "Iran" and data.get('transfer_type') == "Flight":
+            data['transfer_type'] = "Domestic Flight"
 
     def create(self, validated_data):
         self.validate_britain(validated_data)
+        self.validate_domestic_flight(validated_data)
         self.validate_city(validated_data)
         self.validate_airport(validated_data)
 
