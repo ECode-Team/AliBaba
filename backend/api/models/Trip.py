@@ -27,7 +27,7 @@ class Trip(models.Model):
     arrive = models.CharField(choices=[(item, item) for item in geo.geos_cities], max_length=30)
     arrive_country = models.CharField(choices=[(item, item) for item in geo.geos.keys()], max_length=30)
 
-    logo = models.CharField(max_length=30)
+    logo = models.CharField(max_length=255)
 
     depart_time = models.TimeField()
     arrive_time = models.TimeField()
@@ -58,7 +58,7 @@ class TripSerializer(serializers.ModelSerializer):
         """
 
         if data.get('transfer_type') == "Domestic Flight" and \
-                "Iran" in (data.get('depart_country'), data.get('arrive_country')):
+                (data.get('depart_country') != "Iran" or data.get('arrive_country') != "Iran"):
             raise exceptions.ParseError('Domestic Flight has different country destination')
 
         if data.get('transfer_type') == "Flight" and \

@@ -27,7 +27,8 @@ geos:
 
 airports:
   Germany: [
-    "Duseldorf",
+    "Dortmund",
+    "Dusseldorf",
     "Frankfurt",
     "Hamburg",
     "Essen"
