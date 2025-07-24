@@ -1,32 +1,20 @@
 from django.db import models
 from django.db.models import JSONField
 from rest_framework import serializers, exceptions, response
+from .. import geo
+
 
 HOTEL_TYPES = [
     ("Vila", "Vila"),
     ("Hotel", "Hotel")
-]
-CITIES = [
-    ("Tehran", "Tehran"),
-    ("Shiraz", "Shiraz"),
-    ("Mashhad", "Mashhad"),
-    ("Gheshm", "Gheshm"),
-    ("London", "London"),
-    ("Dortmund", "Dortmund"),
-    ("Gamburg", "Gamburg"),
-]
-COUNTRIES = [
-    ("Iran", "Iran"),
-    ("Britain", "Britain"),
-    ("Germany", "Germany"),
 ]
 
 class Hotel(models.Model):
     name = models.CharField(max_length=50)
     type = models.CharField(max_length=10, choices=HOTEL_TYPES)
     phone = models.CharField(max_length=15, blank=True, null=True)
-    country = models.CharField(max_length=50, choices=COUNTRIES)
-    city = models.CharField(max_length=50, choices=CITIES)
+    country = models.CharField(max_length=50, choices=[(item, item) for item in geo.geos.keys()])
+    city = models.CharField(max_length=50, choices=[(item, item) for item in geo.geos_cities])
     street = models.CharField(max_length=50)
     # geolocation = models.CharField(max_length=50)
 
@@ -54,8 +42,22 @@ class HotelSerializer(serializers.ModelSerializer):
         model = Hotel
         fields = '__all__'
 
+    @classmethod
+    def validate_city(cls, data):
+        """
+        Validate city in country
+        """
 
-    def create_room(self, hotel, validated_data):
+        if data.get('depart') not in geo.geos.get(data.get('depart_country')) or \
+                data.get('arrive') not in geo.geos.get(data.get('arrive_country')):
+            raise exceptions.ParseError('City and Country error')
+
+    @classmethod
+    def create_room(cls, hotel, validated_data):
+        """
+        For Villa hotel create room immediately
+        """
+
         from . import RoomSerializer
 
         room_serializer = RoomSerializer(data={"hotel": hotel.id, **validated_data})
@@ -65,10 +67,10 @@ class HotelSerializer(serializers.ModelSerializer):
             hotel.delete()
             raise exceptions.ParseError(room_serializer.errors)
 
-
     def create(self, validated_data):
-        room_data = validated_data.pop('room')
+        self.validate_city(validated_data)
 
+        room_data = validated_data.pop('room')
         hotel = super().create(validated_data)
 
         if room_data:
