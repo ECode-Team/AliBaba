@@ -1,5 +1,9 @@
+@import "../../mixins" ;
+
+
 .title {
   padding: 16px 20px;
+  @include infoflex();
   .title,
   p {
     margin: 0;
@@ -11,14 +15,10 @@
   }
 }
 .sidebar {
-  display: flex;
-  flex-direction: column;
+  @include infoflex($flexD: column);
   height: 100%;
   .summary {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    @include infoflex($flexD: row, $justify: space-between ,$align: center);
     padding: 8px 16px;
     font-size: 14.5px;
     .summary,span{
@@ -26,47 +26,37 @@
     }
   }
   .slidercontainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
+    @include infoflex($flexD: column, $justify: end);
     width: 100%;
     height: auto;
     padding: 0px 16px;
-
+    
     .time-range-labels {
-      display: flex;
-      justify-content: space-between;
+      @include infoflex($justify: space-between);
       font-size: 13px;
     }
   }
 }
 
 .checkboxcontainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
+  @include infoflex($flexD: row, $align: center);
+  
   .checkbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include infoflex($justify: center, $align: center);
   }
-
+  
   .comcontainer {
-    display: flex;
     width: 100%;
-    flex-direction: row;
-    align-items: center;
     column-gap: 5px;
+    @include infoflex($flexD: row, $align: center);
+
     .comcontainer,
     h4 {
       width: 180px;
     }
 
     .parentcomphoto {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include infoflex($justify: center,$align:center);
 
       .compho {
         width: 23px;
@@ -78,8 +68,7 @@
     }
     .comcontainer,
     small {
-      display: flex;
-      flex-direction: row;
+      @include infoflex($flexD: row);
       font-size: 12px;
       color: gray;
     }
@@ -101,10 +90,7 @@ ul {
 
 li {
   padding: 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-items: center;
+  @include infoflex($align: center, $flexD: row);
 }
 
 input {
@@ -131,13 +117,11 @@ a {
 }
 
 button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include infoflex($justify:center ,$align:center);
   width: 33px;
   height: 33px;
   border-radius: 50%;
   border: none;
   padding: 0;
-background-color:rgb(242, 249, 255);
+  background-color:rgb(242, 249, 255);
 }

@@ -27,3 +27,10 @@
   }
 
 }
+
+@mixin infoflex($flexD: none, $align: none, $justify: none) {
+  display: flex;
+  flex-direction: $flexD;
+  align-items: $align;
+  justify-content: $justify;
+}

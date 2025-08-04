@@ -1,3 +1,10 @@
+@mixin innerflight ($display: block) {
+  display: $display;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+}
+
 .flights {
   display: flex;
   position: relative;
@@ -9,11 +16,9 @@
     padding: 20px;
 
     .right-section {
+      @include innerflight();
       width: 300px;
       height: 100%;
-      background-color: white;
-      border: 1px solid #dee2e6;
-      border-radius: 10px;
       margin-left: 16px;
     }
 
@@ -22,9 +27,7 @@
         .topic {
           width: 845px;
           height: 340px;
-          background-color: white;
-          border: 1px solid #dee2e6;
-          border-radius: 10px;
+          @include innerflight();
           margin-bottom: 15px;
         }
       }

@@ -1,4 +1,21 @@
 @import "../../variables.scss";
+@import "../../mixins";
+
+@mixin list(
+  $borderR: none,
+  $display: inline,
+  $fonts: 14,
+  $color: white,
+  $back: white
+) {
+  display: $display;
+  color: $color;
+  background-color: $back;
+  font-size: $fonts;
+  border-radius: $borderR;
+}
+
+
 
 .list-container {
   display: flex;
@@ -7,10 +24,9 @@
   position: relative;
 
   .specific {
-    display: flex;
     width: 620px;
     height: 153px;
-    background-color: white;
+    @include list($display: flex, $color: white);
     border: 1px solid $border-color;
     border-radius: 0px 10px 10px 0px;
     padding: 16px 16px 0px 16px;
@@ -19,11 +35,9 @@
     .upcontainer {
       display: flex;
       .piccontainer {
-        display: flex;
         width: 50px;
         height: 90px;
-        flex-direction: column;
-        align-items: center;
+        @include infoflex($flexD: column, $align: center);
         row-gap: 8px;
 
         .piccompany {
@@ -35,22 +49,25 @@
         }
 
         .namecompany {
-          font-size: 12px;
+          @include list($fonts: 12);
           font-weight: bold;
         }
       }
 
       .class-type {
         height: 25px;
-        font-size: 11.5px;
+        @include list($fonts: 11.5px);
         font-weight: bold;
 
         .class-type,
         span {
           margin-left: 4px;
           padding: 0px 8px;
-          border-radius: 20px;
-          background-color: rgb(226, 230, 233);
+          @include list(
+            $borderR: 20px,
+            $back: rgb(226, 230, 233),
+            $color: $text-color
+          );
         }
       }
 
@@ -61,9 +78,11 @@
           display: flex;
           width: 400px;
           padding: 8px 16px;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
+          @include infoflex(
+            $flexD: row,
+            $justify: space-between,
+            $align: center
+          );
 
           .line {
             width: 60px;
@@ -72,18 +91,18 @@
           }
 
           .place {
-            display: flex;
             width: 134px;
-            font-size: 14px;
-            justify-content: space-between;
-            flex-direction: row;
-            align-items: center;
-            color: black;
+            @include infoflex(
+              $flexD: row,
+              $justify: space-between,
+              $align: center
+            );
+            @include list($color: black, $fonts: 14px, $display: flex);
 
             .time {
-              font-size: 17px;
               font-weight: 800;
-              color: black;
+              font-weight: 800;
+              @include list($color: black, $fonts: 17px);
             }
           }
         }
@@ -94,25 +113,21 @@
       bottom: 8px;
       right: 0px;
       .rules {
-        .rules,span {
-          font-size: 13px;
-          padding: 8px 16px;
-          color: rgb(0, 153, 255);
-
+        .rules,
+        span {
+          margin: 8px 16px;
+          @include list($color: rgb(0, 153, 255), $fonts: 13px);
         }
       }
     }
   }
 
   .buy {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include infoflex($flexD: column, $justify: center, $align: center);
     position: relative;
     width: 230px;
     height: 153px;
-    background-color: rgb(255, 255, 255);
+    @include list($back: rgb(255, 255, 255), $display: flex);
     border: 1px solid #dee2e6;
     border-radius: 10px 0px 0px 10px;
     padding: 16px 24px;
@@ -120,29 +135,23 @@
     .select-flight {
       width: 180px;
       height: 40px;
-      background-color: rgb(0, 119, 219);
-      color: white;
       border: solid 0.5px rgb(0, 60, 255);
-      border-radius: 8px;
+      @include list($back: $link-color, $color: white, $borderR: 8px);
     }
     .price-container {
-      display: flex;
       width: 170px;
       height: 25px;
-      justify-content: center;
-      align-items: center;
+      @include infoflex($justify: center, $align: center);
       margin-top: 8px;
 
       .priceprice {
-        font-size: 20px;
         font-weight: 800;
-        color: rgb(0, 119, 219);
+        @include list($color: $link-color, $fonts: 20px);
       }
 
       .unit {
-        font-size: 13px;
-        color: gray;
         margin-right: 5px;
+        @include list($color: gray, $fonts: 13px);
       }
     }
 
