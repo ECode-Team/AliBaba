@@ -26,6 +26,7 @@ export const Sidebar = ({ data }) => {
           <ul>
             {group.items.map((item, i) => (
               <li key={i}>
+                
                 {item.type === "checkbox" && (
                   <a >
                     <input

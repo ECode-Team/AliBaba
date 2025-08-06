@@ -1,0 +1,126 @@
+@import "../../mixins";
+@import "../../variables.scss";
+
+.pricecalendar {
+  @include infoflex($flexD: column);
+  width: 850px;
+  height: auto;
+  // border: 1px solid rgb(194, 194, 194);
+
+  .pricetimecontainer {
+    background-color: white;
+    width: 850px;
+    height: 65px;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    margin: 0px 0px 8px;
+
+    .parent {
+      @include infoflex($flexD: row, $justify: space-between);
+      width: 100%;
+      height: 100%;
+
+      .timemove {
+        @include infoflex();
+        width: 100%;
+        height: 100%;
+
+        .valuesbtn {
+          @include infoflex($flexD: column);
+          padding: 10px 0px;
+          width: 114px;
+          height: auto;
+          border-radius: 0%;
+          background-color: white;
+        }
+
+        .vallabel {
+          @include infoflex($justify: center, $align: center);
+          border-left: 1px solid $border-color;
+          width: 100%;
+          height: auto;
+          font-size: 13px;
+          height: 20px;
+          color: $text-color;
+        }
+        .valprice {
+          @include infoflex($justify: center, $align: center);
+          border-left: 1px solid $border-color;
+          width: 100%;
+          height: 25px;
+          font-size: 17px;
+        }
+      }
+
+      .pricetime {
+        width: 100%;
+        height: auto;
+        border-radius: 0%;
+        background-color: rgb(248, 250, 251);
+      }
+      .pricetime.right {
+        border-radius: 0px 5px 5px 0px;
+      }
+      .pricetime.left {
+        border-radius: 5px 0px 0px 5px;
+      }
+    }
+  }
+
+  .sorting {
+    @include infoflex($flexD: row, $align: center);
+    // width: auto;
+    height: 35px;
+    margin: 16px 0px;
+
+    .sorting,
+    b {
+      margin-left: 16px;
+      @include infoflex($flexD: row, $align: center);
+      font-size: 17px;
+      font-weight: 400;
+    }
+
+    .empty-sort {
+    }
+
+    .sort-ul {
+      @include infoflex();
+      height: 38px;
+      border-radius: 100px;
+      border: 1px solid $border-color;
+      background-color: white;
+    }
+
+    .sort-ul,
+    li {
+      padding: 0;
+      .sort-ul,
+      a {
+        @include infoflex($align: center);
+        padding: 8px 32px;
+        height: 37px;
+        font-size: 14px;
+      }
+
+      .sort-ul,
+      li::after {
+        content: "";
+        border-left: 1px solid $border-color;
+        height: 20px;
+      }
+    }
+  }
+
+  .mark {
+    margin-bottom: 8px;
+    .mark-item {
+      @include infoflex($flexD: row, $align: center);
+      font-size: 14px;
+    }
+    .mark-item,span {
+      @include infoflex();
+      margin-left: 8px;
+    }
+  }
+}
