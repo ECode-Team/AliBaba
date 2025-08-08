@@ -19,7 +19,6 @@ export const Pricecalender = ({ data }) => {
                   <button className="pricetime right">
                     <Rigth />
                   </button>
-
                   <div className="timemove">
                     {item.values?.map((val, i) => (
                       <button key={i} className="valuesbtn">
@@ -54,6 +53,7 @@ export const Pricecalender = ({ data }) => {
               </div>
             );
 
+          // TYPE 3
           case "exclamationmark":
             return (
               <div className="mark" key={`exclamationmark-${index}`}>

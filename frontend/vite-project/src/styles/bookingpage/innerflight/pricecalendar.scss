@@ -113,12 +113,13 @@
   }
 
   .mark {
-    margin-bottom: 8px;
     .mark-item {
       @include infoflex($flexD: row, $align: center);
+      margin-bottom: 8px;
       font-size: 14px;
     }
-    .mark-item,span {
+    .mark-item,
+    span {
       @include infoflex();
       margin-left: 8px;
     }
