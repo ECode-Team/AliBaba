@@ -39,7 +39,7 @@ export const  Listcontainer = () => {
                     {data.depart}
                     <span className="time">{data.depart_time}</span>
                   </span>
-                  <Goflight style={{ fill: "gray" }} />
+                  <Goflight style={{ fill: "#c9c9c9ff" }} />
                   <span className="line"></span>
                   <span className="place">
                     {data.arrive}

@@ -121,7 +121,128 @@
     .mark-item,
     span {
       @include infoflex();
-      margin-left: 8px;
+    }
+    svg {
+      padding-left: 8px;
+      font-size: 25px;
+    }
+  }
+}
+
+.shortcut {
+  @include infoflex($justify: space-between, $flexD: column);
+  width: 850px;
+  height: 190px;
+  background: white;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+
+  .price-compairson {
+    @include infoflex($justify: space-between, $flexD: row, $align: center);
+
+    .comparison {
+      @include infoflex($justify: space-between, $flexD: row, $align: center);
+      width: 210px;
+      height: 32px;
+      font-size: 15px;
+      svg {
+        padding-top: 3px;
+        font-size: 28px;
+      }
+    }
+    .frontmark {
+      svg {
+        padding-top: 2px;
+        font-size: 15px;
+      }
+    }
+
+    .change-compairson {
+      @include infoflex($justify: space-between, $flexD: row, $align: center);
+      width: 280px;
+      padding: 0px 8px;
+
+      .cast-price {
+        @include infoflex($justify: center, $flexD: row, $align: center);
+
+        .cast-price,
+        span {
+          font-size: 10px;
+          margin-right: 4px;
+        }
+
+        svg {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .change-com {
+      @include infoflex($justify: space-between, $flexD: row, $align: center);
+      width: 73px;
+
+      .change-com,
+      button {
+        width: 32px;
+        height: 32px;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        background: none;
+
+        svg {
+          font-size: 23px;
+        }
+      }
+    }
+  }
+
+  .cover-box {
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    margin-left: 8px;
+  }
+
+  .price-com-container {
+    @include infoflex($justify: space-between, $flexD: row, $align: center);
+    height: auto;
+    .price-com-box {
+      @include infoflex($justify: space-between, $flexD: column);
+      width: 127px;
+      height: 119px;
+      padding: 4px 8px;
+      .name-berand {
+        @include infoflex($justify: space-between, $flexD: row, $align: center);
+
+        .pic-com {
+          width: 16px;
+          height: 16px;
+          background: linear-gradient(45deg, rgb(87, 91, 95), rgb(2, 141, 255));
+          border: none;
+          border-radius: 50%;
+        }
+
+        .nam-com {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .stop-stright-plusstop {
+      @include infoflex($flexD: column);
+
+      .stp-contaner {
+        @include infoflex($justify: space-between, $flexD: row, $align: center);
+
+        .time-name {
+          font-size: 10px;
+        }
+
+        .time-zon {
+          font-size: 12px;
+        }
+      }
     }
   }
 }

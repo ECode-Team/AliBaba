@@ -1,5 +1,4 @@
-@import "../../mixins" ;
-
+@import "../../mixins";
 
 .title {
   padding: 16px 20px;
@@ -18,10 +17,11 @@
   @include infoflex($flexD: column);
   height: 100%;
   .summary {
-    @include infoflex($flexD: row, $justify: space-between ,$align: center);
+    @include infoflex($flexD: row, $justify: space-between, $align: center);
     padding: 8px 16px;
     font-size: 14.5px;
-    .summary,span{
+    .summary,
+    span {
       display: flex;
     }
   }
@@ -30,7 +30,7 @@
     width: 100%;
     height: auto;
     padding: 0px 16px;
-    
+
     .time-range-labels {
       @include infoflex($justify: space-between);
       font-size: 13px;
@@ -40,11 +40,11 @@
 
 .checkboxcontainer {
   @include infoflex($flexD: row, $align: center);
-  
+
   .checkbox {
     @include infoflex($justify: center, $align: center);
   }
-  
+
   .comcontainer {
     width: 100%;
     column-gap: 5px;
@@ -56,7 +56,7 @@
     }
 
     .parentcomphoto {
-      @include infoflex($justify: center,$align:center);
+      @include infoflex($justify: center, $align: center);
 
       .compho {
         width: 23px;
@@ -74,6 +74,46 @@
     }
   }
 }
+.searchh-container {
+  @include infoflex($justify: center);
+  width: auto;
+  height: 40px;
+  padding: 0px 16px;
+  margin-top: 8px;
+  .border-box {
+    @include infoflex($justify: center,$flexD:row,$align: center);
+    padding: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    width: 270px;
+
+    .searchh {
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      font-size: 15px;
+      margin-right: 10px;
+      cursor: text;
+    }
+    
+    .searchh::placeholder {
+      color: rgb(163, 163, 163);
+    }
+    .search-icon {
+      width: 30px;
+      height: 34px;
+      svg {
+        font-size: 35px;
+        padding-top: 4px;
+      }
+    }
+  }
+}
+
+
 
 hr {
   margin: 0px;
@@ -98,7 +138,7 @@ input {
   height: 23px;
   accent-color: rgb(0, 119, 219);
   border-radius: 20px;
-  
+  cursor: pointer;
 }
 
 h4 {
@@ -117,11 +157,11 @@ a {
 }
 
 button {
-  @include infoflex($justify:center ,$align:center);
+  @include infoflex($justify: center, $align: center);
   width: 33px;
   height: 33px;
   border-radius: 50%;
   border: none;
   padding: 0;
-  background-color:rgb(242, 249, 255);
+  background-color: rgb(242, 249, 255);
 }

@@ -1,14 +1,15 @@
 import "../../../styles/bookingpage/innerflight/pricecalendar.scss";
 import Left from "../../../assets/icons/left.svg?react";
-import Rigth from "../../../assets/icons/right.svg?react";
+import Right from "../../../assets/icons/right.svg?react";
 import Mark from "../../../assets/icons/exclamationmark.svg?react";
+import Compairson from "../../../assets/icons/compairson.svg?react";
 
 export const Pricecalender = ({ data }) => {
   return (
     <div className="pricecalendar">
       {data.items.map((item, index) => {
         switch (item.type) {
-          // TYPE 1
+          // price time TYPE 1
           case "pricetime":
             return (
               <section
@@ -17,7 +18,7 @@ export const Pricecalender = ({ data }) => {
               >
                 <div className="parent">
                   <button className="pricetime right">
-                    <Rigth />
+                    <Right />
                   </button>
                   <div className="timemove">
                     {item.values?.map((val, i) => (
@@ -38,7 +39,7 @@ export const Pricecalender = ({ data }) => {
               </section>
             );
 
-          // TYPE 2
+          // sorting TYPE 2
           case "sorting":
             return (
               <div className="sorting" key={`sorting-${index}`}>
@@ -53,18 +54,83 @@ export const Pricecalender = ({ data }) => {
               </div>
             );
 
-          // TYPE 3
+          // exclamation mark TYPE 3
           case "exclamationmark":
             return (
               <div className="mark" key={`exclamationmark-${index}`}>
                 {item.values.map((val, i) => (
                   <div key={i} className="mark-item">
-                    <span className="">
-                      <Mark />
-                    </span>
-                    {val.label}
+                    <Mark />
+                    <span className="">{val.label}</span>
                   </div>
                 ))}
+              </div>
+            );
+
+          // shortcut TYPE 4
+          case "shortcutbox":
+            return (
+              <div className="shortcut" key={`shortcutbox-${index}`}>
+                <div className="price-compairson">
+                  {/* Comparison */}
+                  <div className="comparison">
+                    <Compairson />
+                    <span> مقایسه قیمت و توقف‌ها </span>
+                    <div className="frontmark">
+                      <Mark />
+                    </div>
+                  </div>
+
+                  <div className="change-compairson">
+                    <div className="cast-price">
+                      <Mark />
+                      <span>قیمت بر اساس میلیون تومان است</span>
+                    </div>
+                    <div className="change-com">
+                      <button>
+                        <Right />
+                      </button>
+                      <button>
+                        <Left />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Price-com-box */}
+                <div className="price-com-container">
+                  {item.values.map((val, i) => (
+                    <div className="cover-box">
+                      <div className="price-com-box">
+                        <div className="name-berand">
+                          <div className="pic-com"></div>
+                          <div className="nam-com">{val.label}</div>
+                        </div>
+
+                        <hr />
+
+                        <div className="stop-stright-plusstop">
+                          <div className="stp-contaner">
+                            <div className="time-name">
+                              مستقیم
+                            </div>
+                            <div className="time-zon">{val.time}</div>
+                          </div>
+                          <div className="stp-contaner">
+                            <div className="time-name">
+                              یک توقف
+                            </div>
+                            <div className="time-zon">{val.timeone}</div>
+                          </div>
+                          <div className="stp-contaner">
+                            <div className="time-name">{val.plus}</div>
+                            <div className="time-zon">{val.timeplus}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             );
 

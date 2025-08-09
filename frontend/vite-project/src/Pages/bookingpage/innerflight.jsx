@@ -14,6 +14,10 @@ export const Innerflight = () => {
         summary: "ساعت حرکت",
         items: [
           {
+            type: "searchbox",
+            label: "نام شرکت هواپیمایی",
+          },
+          {
             type: "range-slider",
             min: 1,
             max: 24,
@@ -40,14 +44,14 @@ export const Innerflight = () => {
           {
             type: "checkboxcom",
             label: "ماهان",
-            compic: <img src="mahan_logo.png" />,
+            // compic: <img src="mahan_logo.png" />,
             price: 100,
           },
           {
             type: "checkboxcom",
             label: "ایران ایرتور",
-            compic: <img src="iran_airtour_logo.png" />,
-            price: 120,
+            // compic: <img src="iran_airtour_logo.png" />,
+            price: "120",
           },
         ],
       },
@@ -78,17 +82,26 @@ export const Innerflight = () => {
       {
         type: "sorting",
         values: [
-          {label: "پیشنهاد علی‌بابا"},
-          {label: "زودترین"},
-          {label: "درترین"},
-          {label: "ارزان‌ترین"},
-          {label: "گرانترین"},
+          { label: "پیشنهاد علی‌بابا" },
+          { label: "زودترین" },
+          { label: "درترین" },
+          { label: "ارزان‌ترین" },
+          { label: "گرانترین" },
         ],
       },
       {
         type: "exclamationmark",
+        values: [{ label: " قیمت ها برای یک بزرگسال محاسبه شده است. " }],
+      },
+      {
+        type: "shortcutbox",
         values: [
-          {label: " قیمت ها برای یک بزرگسال محاسبه شده است. "}
+          { label: "AJET" ,time: "--", timeone: "12", timeplus: "--", plus: "۱+توقف"},
+          { label: "Caspian Airline" ,time: "--", timeone: "10", timeplus: "13", plus: "۱+توقف"},
+          { label: "Flightline" ,time: "11", timeone: "13", timeplus: "--", plus: "۱+توقف"},
+          { label: "Pegasus" ,time: "--", timeone: "15", timeplus: "13", plus: "۱+توقف"},
+          { label: "Turkish Airlines" ,time: "11", timeone: "18", timeplus: "--", plus: "۱+توقف"},
+          { label: "AJET" ,time: "19", timeone: "--", timeplus: "16", plus: "۱+توقف"},
         ],
       },
     ],

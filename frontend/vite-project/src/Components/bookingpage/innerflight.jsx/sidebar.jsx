@@ -1,7 +1,8 @@
 import ReactSlider from "react-slider";
 import "../../../styles/bookingpage/innerflight/sidebar.scss";
-import "./slider.css";
+import "../../../styles/bookingpage/innerflight/slider.scss";
 import Up from "../../../assets/icons/up.svg?react";
+import Search from "../../../assets/icons/search.svg?react";
 
 export const Sidebar = ({ data }) => {
   return (
@@ -24,10 +25,11 @@ export const Sidebar = ({ data }) => {
             </button>
           </summary>
 
-          {/*checkbox TYPE1 & checkboxcom TYPE2*/}
+          {/*checkbox TYPE 1 & checkboxcom TYPE 2 in ul*/}
           <ul>
             {group.items.map((item, i) => {
               switch (item.type) {
+
                 // 1
                 case "checkbox":
                   return (
@@ -42,6 +44,7 @@ export const Sidebar = ({ data }) => {
                       </a>
                     </li>
                   );
+
                 // 2
                 case "checkboxcom":
                   return (
@@ -60,7 +63,7 @@ export const Sidebar = ({ data }) => {
                           </div>
                           <h4>{item.label}</h4>
                           <small>
-                            <span>از</span> {item.price}
+                            <span>{item.price}</span> 
                           </small>
                         </div>
                       </div>
@@ -73,9 +76,10 @@ export const Sidebar = ({ data }) => {
             })}
           </ul>
 
-          {/* range-slider TYPE3*/}
+          {/* range-slider TYPE 3 &  searchbox TYPE 4 not in ul*/}
           {group.items.map((item, b) => {
             switch (item.type) {
+
               // 3
               case "range-slider":
                 return (
@@ -94,6 +98,23 @@ export const Sidebar = ({ data }) => {
                     <div className="time-range-labels">
                       <span>{item.maxValue}</span>
                       <span>{item.minValue}</span>
+                    </div>
+                  </div>
+                );
+
+              // TYPE 4
+              case "searchbox":
+                return (
+                  <div className="searchh-container">
+                    <div className="border-box">
+                      <div className="search-icon">
+                        <Search />
+                      </div>
+                      <input
+                        type="search"
+                        placeholder= {item.label}
+                        className="searchh"
+                      />
                     </div>
                   </div>
                 );
