@@ -48,12 +48,7 @@
   .comcontainer {
     width: 100%;
     column-gap: 5px;
-    @include infoflex($flexD: row, $align: center);
-
-    .comcontainer,
-    h4 {
-      width: 180px;
-    }
+    @include infoflex($flexD: row, $align: center, $justify: space-between);
 
     .parentcomphoto {
       @include infoflex($justify: center, $align: center);
