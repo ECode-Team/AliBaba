@@ -1,16 +1,18 @@
 @import "../../mixins";
 @import "../../variables.scss";
 
+// Container-----------
 .pricecalendar {
   @include infoflex($flexD: column);
   width: 850px;
   height: auto;
   // border: 1px solid rgb(194, 194, 194);
 
-  .pricetimecontainer {
+  // TYPE 1---------
+  .pricetime-container {
     background-color: white;
     width: 850px;
-    height: 65px;
+    // height: 65px;
     border: 1px solid $border-color;
     border-radius: 5px;
     margin: 0px 0px 8px;
@@ -27,7 +29,7 @@
 
         .valuesbtn {
           @include infoflex($flexD: column);
-          padding: 10px 0px;
+          padding: 12px 0px;
           width: 114px;
           height: auto;
           border-radius: 0%;
@@ -47,7 +49,8 @@
           @include infoflex($justify: center, $align: center);
           border-left: 1px solid $border-color;
           width: 100%;
-          height: 25px;
+          min-height: 0px;
+          max-height: 25px;
           font-size: 17px;
         }
       }
@@ -81,12 +84,20 @@
       font-weight: 400;
     }
 
-    .empty-sort {
+    sorting,
+    div {
+      font-size: 11px;
+      color: rgb(167, 167, 167);
+      min-height: 0px;
+      max-height: 30px;
     }
+
+    // .empty-sort {
+    // }
 
     .sort-ul {
       @include infoflex();
-      height: 38px;
+      // height: 38px;
       border-radius: 100px;
       border: 1px solid $border-color;
       background-color: white;
@@ -95,11 +106,14 @@
     .sort-ul,
     li {
       padding: 0;
+      .sort-btn {
+        @include infoflex($flexD: column, $align: center);
+      }
       .sort-ul,
       a {
         @include infoflex($align: center);
         padding: 8px 32px;
-        height: 37px;
+        height: 33px;
         font-size: 14px;
       }
 
@@ -242,6 +256,41 @@
         .time-zon {
           font-size: 12px;
         }
+      }
+    }
+  }
+}
+.pricetimebox-container {
+  width: auto;
+  height: 50px;
+  background-color: white;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+
+  .price-calendar-wrapper {
+    @include infoflex($flexD: row, $align: center);
+    font-size: 16px;
+    font-weight: 300;
+    height: 25px;
+    svg {
+      font-size: 25px;
+      margin-top: 2px;
+    }
+    b {
+      margin-right: 10px;
+    }
+    .mark-wrapper {
+      margin-top: 10px;
+      margin-right: 5px;
+    }
+    .btn-wrapper {
+      margin-right: 625px;
+      background-color: white;
+      font-size: 17px;
+      img {
+        width: 20px;
       }
     }
   }

@@ -13,10 +13,10 @@ export const Innerflight = () => {
       {
         summary: "ساعت حرکت",
         items: [
-          {
-            type: "searchbox",
-            label: "نام شرکت هواپیمایی",
-          },
+          // {
+          //   type: "searchbox",
+          //   label: "نام شرکت هواپیمایی",
+          // },
           {
             type: "range-slider",
             min: 1,
@@ -29,13 +29,17 @@ export const Innerflight = () => {
       },
       {
         summary: "نوع بلیط",
-        items: [{ type: "checkbox", label: "سیسمتی" }],
+        items: [
+          { type: "checkbox", label: "سیسمتی" },
+          { type: "checkbox", label: "چارتر" },
+        ],
       },
       {
         summary: "کلاس پروازی",
         items: [
           { type: "checkbox", label: "اکونومی" },
           { type: "checkbox", label: "بیزینس" },
+          { type: "checkbox", label: "پریمیوم اکونومی" },
         ],
       },
       {
@@ -45,15 +49,19 @@ export const Innerflight = () => {
             type: "checkboxcom",
             label: "ماهان",
             // compic: <img src="mahan_logo.png" />,
-            price: 100,
+            price: "از 4.750.230 ",
           },
           {
             type: "checkboxcom",
             label: "ایران ایرتور",
             // compic: <img src="iran_airtour_logo.png" />,
-            price: "120",
+            price: "از 7.870.540 ",
           },
         ],
+      },
+      {
+        summary: "پیشنهاد ویژه",
+        items: [{ type: "checkbox", label: "پیشنهاد ویژه" }],
       },
       {
         summary: "موارد دیگر",
@@ -93,17 +101,17 @@ export const Innerflight = () => {
         type: "exclamationmark",
         values: [{ label: " قیمت ها برای یک بزرگسال محاسبه شده است. " }],
       },
-      {
-        type: "shortcutbox",
-        values: [
-          { label: "AJET" ,time: "--", timeone: "12", timeplus: "--", plus: "۱+توقف"},
-          { label: "Caspian Airline" ,time: "--", timeone: "10", timeplus: "13", plus: "۱+توقف"},
-          { label: "Flightline" ,time: "11", timeone: "13", timeplus: "--", plus: "۱+توقف"},
-          { label: "Pegasus" ,time: "--", timeone: "15", timeplus: "13", plus: "۱+توقف"},
-          { label: "Turkish Airlines" ,time: "11", timeone: "18", timeplus: "--", plus: "۱+توقف"},
-          { label: "AJET" ,time: "19", timeone: "--", timeplus: "16", plus: "۱+توقف"},
-        ],
-      },
+      // {
+      //   type: "shortcutbox",
+      //   values: [
+      //     { label: "AJET" ,time: "--", timeone: "12", timeplus: "9", plus: "۱+توقف"},
+      //     { label: "Caspian Airline" ,time: "--", timeone: "10", timeplus: "13", plus: "۱+توقف"},
+      //     { label: "Flightline" ,time: "11", timeone: "13", timeplus: "4", plus: "۱+توقف"},
+      //     { label: "Pegasus" ,time: "--", timeone: "15", timeplus: "13", plus: "۱+توقف"},
+      //     { label: "Turkish Airlines" ,time: "11", timeone: "18", timeplus: "--", plus: "۱+توقف"},
+      //     { label: "AJET" ,time: "19", timeone: "--", timeplus: "16", plus: "۱+توقف"},
+      //   ],
+      // },
     ],
   };
 

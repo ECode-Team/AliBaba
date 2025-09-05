@@ -3,6 +3,8 @@ import Left from "../../../assets/icons/left.svg?react";
 import Right from "../../../assets/icons/right.svg?react";
 import Mark from "../../../assets/icons/exclamationmark.svg?react";
 import Compairson from "../../../assets/icons/compairson.svg?react";
+import Calendar from "../../../assets/icons/calendar.svg?react";
+import botton from "../../../assets/icons/down-arrow.png";
 
 export const Pricecalender = ({ data }) => {
   return (
@@ -14,7 +16,7 @@ export const Pricecalender = ({ data }) => {
             return (
               <section
                 key={`pricetime-${index}`}
-                className="pricetimecontainer"
+                className="pricetime-container"
               >
                 <div className="parent">
                   <button className="pricetime right">
@@ -39,22 +41,43 @@ export const Pricecalender = ({ data }) => {
               </section>
             );
 
-          // sorting TYPE 2
+          // price time box TYPE 2
+          case "pricetimebox":
+            return (
+              <div className="pricetimebox-container">
+                <div className="price-calendar-wrapper">
+                  <Calendar />
+                  <b>تقویم قیمتی</b>
+                  <div className="mark-wrapper">
+                    <Mark />
+                  </div>
+                  <button className="btn-wrapper">
+                    <span>مشاهده</span>
+                    <img src={botton} alt="dropdown" />
+                  </button>
+                </div>
+              </div>
+            );
+
+          // sorting TYPE 3
           case "sorting":
             return (
               <div className="sorting" key={`sorting-${index}`}>
                 <b className="">مرتب‌سازی:</b>
                 <ul className="sort-ul">
                   {item.values.map((val, i) => (
-                    <li key={i} className="sort-btn">
-                      <a>{val.label}</a>
+                    <li key={i}>
+                      <span className="sort-btn">
+                        <a>{val.label}</a>
+                        <div>{val.value}</div>
+                      </span>
                     </li>
                   ))}
                 </ul>
               </div>
             );
 
-          // exclamation mark TYPE 3
+          // exclamation mark TYPE 4
           case "exclamationmark":
             return (
               <div className="mark" key={`exclamationmark-${index}`}>
@@ -67,7 +90,7 @@ export const Pricecalender = ({ data }) => {
               </div>
             );
 
-          // shortcut TYPE 4
+          // shortcut TYPE 5
           case "shortcutbox":
             return (
               <div className="shortcut" key={`shortcutbox-${index}`}>
@@ -111,15 +134,11 @@ export const Pricecalender = ({ data }) => {
 
                         <div className="stop-stright-plusstop">
                           <div className="stp-contaner">
-                            <div className="time-name">
-                              مستقیم
-                            </div>
+                            <div className="time-name">مستقیم</div>
                             <div className="time-zon">{val.time}</div>
                           </div>
                           <div className="stp-contaner">
-                            <div className="time-name">
-                              یک توقف
-                            </div>
+                            <div className="time-name">یک توقف</div>
                             <div className="time-zon">{val.timeone}</div>
                           </div>
                           <div className="stp-contaner">

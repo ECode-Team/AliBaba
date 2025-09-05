@@ -7,6 +7,7 @@ import Search from "../../../assets/icons/search.svg?react";
 export const Sidebar = ({ data }) => {
   return (
     <div className="right-section">
+      {/* TITLE */}
       <div className="title">
         <p>
           <b></b>
@@ -16,8 +17,9 @@ export const Sidebar = ({ data }) => {
 
       <hr />
 
-      {data.groups.map((group, index) => (
-        <div key={index} className="sidebar">
+      {data.groups.map((group, gIndex) => (
+        <div key={gIndex} className="sidebar">
+          {/* SUMEERY NAME*/}
           <summary className="summary">
             <span>{group.summary}</span>
             <button className="dropdownbtn">
@@ -25,30 +27,34 @@ export const Sidebar = ({ data }) => {
             </button>
           </summary>
 
-          {/*checkbox TYPE 1 & checkboxcom TYPE 2 in ul*/}
-          <ul>
-            {group.items.map((item, i) => {
-              switch (item.type) {
-
-                // 1
-                case "checkbox":
-                  return (
-                    <li key={i}>
-                      <a>
+          {/* USE MAP TO ALL TYPE */}
+          {group.items.map((item, i) => {
+            switch (item.type) {
+              //  TYPE1 CHECKBOX
+              case "checkbox":
+                return (
+                  <ul key={i}>
+                    <li>
+                      <label>
                         <input
                           type="checkbox"
                           checked={item.checked}
                           onChange={item.onChange}
                         />
                         <h4>{item.label}</h4>
-                      </a>
+                        <small>
+                          <span>{item.price}</span>
+                        </small>
+                      </label>
                     </li>
-                  );
+                  </ul>
+                );
 
-                // 2
-                case "checkboxcom":
-                  return (
-                    <li key={i}>
+              //  TYPE2 CHECKBOX COMPANY
+              case "checkboxcom":
+                return (
+                  <ul key={i}>
+                    <li>
                       <div className="checkboxcontainer">
                         <div className="checkbox">
                           <input
@@ -59,31 +65,26 @@ export const Sidebar = ({ data }) => {
                         </div>
                         <div className="comcontainer">
                           <div className="parentcomphoto">
-                            <img className="compho" />
+                            {item.compic ? (
+                              item.compic
+                            ) : (
+                              <img className="compho" />
+                            )}
+                            <h4>{item.label}</h4>
                           </div>
-                          <h4>{item.label}</h4>
                           <small>
-                            <span>{item.price}</span> 
+                            <span>{item.price}</span>
                           </small>
                         </div>
                       </div>
                     </li>
-                  );
+                  </ul>
+                );
 
-                default:
-                  return null;
-              }
-            })}
-          </ul>
-
-          {/* range-slider TYPE 3 &  searchbox TYPE 4 not in ul*/}
-          {group.items.map((item, b) => {
-            switch (item.type) {
-
-              // 3
+              // TYPE3 RANGE SLIDER
               case "range-slider":
                 return (
-                  <div key={b} className="slidercontainer">
+                  <div key={i} className="slidercontainer">
                     <ReactSlider
                       className="custom-slider"
                       thumbClassName="custom-thumb"
@@ -96,23 +97,23 @@ export const Sidebar = ({ data }) => {
                       minDistance={10}
                     />
                     <div className="time-range-labels">
-                      <span>{item.maxValue}</span>
                       <span>{item.minValue}</span>
+                      <span>{item.maxValue}</span>
                     </div>
                   </div>
                 );
 
-              // TYPE 4
+              // TYPE4 SEARCH BOX
               case "searchbox":
                 return (
-                  <div className="searchh-container">
+                  <div key={i} className="searchh-container">
                     <div className="border-box">
                       <div className="search-icon">
                         <Search />
                       </div>
                       <input
                         type="search"
-                        placeholder= {item.label}
+                        placeholder={item.label}
                         className="searchh"
                       />
                     </div>

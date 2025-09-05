@@ -29,7 +29,7 @@
     @include infoflex($flexD: column, $justify: end);
     width: 100%;
     height: auto;
-    padding: 0px 16px;
+    padding: 20px 16px 0px 16px;
 
     .time-range-labels {
       @include infoflex($justify: space-between);
@@ -46,9 +46,14 @@
   }
 
   .comcontainer {
-    width: 100%;
+    width: 245px;
     column-gap: 5px;
     @include infoflex($flexD: row, $align: center, $justify: space-between);
+
+    .comcontainer,
+    h4 {
+      margin-right: 5px;
+    }
 
     .parentcomphoto {
       @include infoflex($justify: center, $align: center);
@@ -76,7 +81,7 @@
   padding: 0px 16px;
   margin-top: 8px;
   .border-box {
-    @include infoflex($justify: center,$flexD:row,$align: center);
+    @include infoflex($justify: center, $flexD: row, $align: center);
     padding: 8px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 8px;
@@ -93,7 +98,7 @@
       margin-right: 10px;
       cursor: text;
     }
-    
+
     .searchh::placeholder {
       color: rgb(163, 163, 163);
     }
@@ -107,8 +112,6 @@
     }
   }
 }
-
-
 
 hr {
   margin: 0px;
@@ -138,8 +141,9 @@ input {
 
 h4 {
   margin: 0;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
 }
 
 a {
@@ -158,5 +162,15 @@ button {
   border-radius: 50%;
   border: none;
   padding: 0;
-  background-color: rgb(242, 249, 255);
+  background-color: rgb(248, 250, 251);
+}
+
+label {
+  @include infoflex($align: center, $flexD: row, $justify: space-between);
+  width: 100%;
+
+  label,
+  h4 {
+    margin-left: auto;
+  }
 }
