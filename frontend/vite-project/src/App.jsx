@@ -6,7 +6,7 @@ import { Innerflight } from "./Pages/bookingpage/innerflight";
 import { Hotel } from "./Pages/bookingpage/hotel";
 import { Foreignflight } from "./Pages/bookingpage/foreignflight";
 import { Vila } from "./Pages/bookingpage/vila";
-import Detail from "./Pages/detailpage";
+import Detail from "./Pages/detailpage.jsx";
 import { Homepage } from "./Pages/homepage";
 import { Payment } from "./Pages/paymentpage"; 
 import { Userpage } from "./Pages/userpage";
