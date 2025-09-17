@@ -97,7 +97,7 @@ WSGI_APPLICATION = "backend.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'backend112$alibaba1',
+        'NAME': 'backend112$alibaba2',
         'HOST': 'backend112.mysql.pythonanywhere-services.com',
         'USER': 'backend112',
         'PASSWORD': 'qwerty911'
