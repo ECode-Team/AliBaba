@@ -1,5 +1,252 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+.footer-main {
+  background-color: #f7f7f7;
+  color: #5a5a5a;
+  font-family: "Inter", sans-serif;
+  padding: 2.5rem 1rem; // Adjusted padding for mobile
+  direction: ltr;
+}
+
 .footer-container {
-    background-color: lightgreen;
-    display: flex;
-    justify-content: center;
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-top-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.footer-left-column,
+.footer-right-column {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .footer-left-column {
+    width: 35%;
+    padding-right: 2rem;
+  }
+
+  .footer-right-column {
+    width: 65%;
+  }
+}
+
+.logo-contact-info {
+  margin-bottom: 2rem; // Reduced margin for mobile
+  text-align: right; // Adjusted for RTL on mobile
+
+  @media (min-width: 1024px) {
+    margin-bottom: 11rem;
+    text-align: left;
+  }
+}
+
+.alibaba-logo {
+  // You might want to add specific styles for your image logo here
+  // For example, to control its size if the SVG doesn't have explicit dimensions
+  width: 135px;
+  height: 40px;
+  display: block;
+  margin-bottom: 1.5rem;
+  margin-left: auto; // Center logo on mobile
+  margin-right: auto; // Center logo on mobile
+
+  @media (min-width: 1024px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.support-phone {
+  font-size: 0.8rem;
+  font-weight: 550;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.address-text {
+  font-size: 0.72rem;
+  color: #757575;
+  line-height: 1.6;
+}
+
+.nav-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; // Reduced gap
+  width: 100%;
+
+  @media (min-width: 1000px) {
+    grid-template-columns: repeat(3, 1fr);
+    width: 70%;
+    gap: 2rem;
+    margin-left: auto;
+  }
+}
+
+.nav-column {
+  text-align: center; // Centered text for mobile
+
+  @media (min-width: 1000px) {
+    text-align: right;
+  }
+}
+
+.column-heading {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: 0.2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    font-size: 0.7rem;
+    color: #5a5a5a;
+    text-decoration: none;
+    transition: color 150ms ease-in-out;
+
+    &:hover {
+      color: #007bff;
+    }
+  }
+}
+
+.trust-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; // Centered for mobile
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+
+  @media (min-width: 1024px) {
+    justify-content: flex-start;
+  }
+}
+
+.trust-icon {
+  height: 35px;
+  opacity: 0.7;
+  filter: grayscale(50%);
+}
+
+.popular-destinations {
+  font-size: 0.8125rem;
+  color: #757575;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; // Centered for mobile
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  line-height: 1.5;
+  margin-top: 2rem;
+
+  span {
+    white-space: nowrap;
+  }
+
+  @media (min-width: 1024px) {
+    justify-content: flex-start;
+  }
+}
+
+.separator {
+  color: #ccc;
+}
+
+.more-link {
+  color: #007bff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.more-arrow {
+  margin-left: 0.25rem;
+}
+
+.footer-bottom-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.social-icons {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1.25rem;
+  order: 1; // Show social icons first on mobile
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    order: 2;
+  }
+}
+
+.social-icon-link {
+  color: #757575;
+  transition: color 150ms ease-in-out;
+
+  &:hover {
+    color: #007bff;
+  }
+}
+
+.copyright-text {
+  font-size: 0.75rem;
+  color: #9e9e9e;
+  text-align: center;
+  order: 2; // Show copyright after icons on mobile
+  margin-top: 1rem; // Add some space above copyright on mobile
+
+  @media (min-width: 768px) {
+    text-align: left;
+    order: 1;
+    margin-top: 0;
+  }
 }
