@@ -1,5 +1,6 @@
 .qodo
 /backend/api/migrations/
+/backend/backend/settings.py
 /backend/db.sqlite3
 /.gitignore
 /.venv/
