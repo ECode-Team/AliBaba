@@ -1,0 +1,48 @@
+geos:
+  Germany: [
+    "Berlin",
+    "Hamburg",
+    "Munich",
+    "Frankfurt",
+    "Dusseldorf",
+    "Dortmund",
+    "Essen",
+    "Hanover",
+    "Hamburg",
+    "Bremen"
+  ]
+  Britain: [
+    "London",
+    "Manchester",
+    "York",
+    "Oxford",
+  ]
+  Iran: [
+    "Tehran",
+    "Mashhad",
+    "Shiraz",
+    "Arak",
+    "Sari",
+    "Karaj",
+    "Gheshm"
+  ]
+
+airports:
+  Germany: [
+    "Dortmund",
+    "Dusseldorf",
+    "Frankfurt",
+    "Hamburg",
+    "Essen"
+  ]
+  Britain: [
+    "London",
+    "Manchester",
+    "York",
+    "Oxford"
+  ]
+  Iran: [
+    "Arak",
+    "Karaj",
+    "Tehran",
+  ]
