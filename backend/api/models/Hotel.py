@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import JSONField
 from rest_framework import serializers, exceptions, response
-from .. import geo
+from .. import adds
 
 
 HOTEL_TYPES = [
@@ -13,8 +13,8 @@ class Hotel(models.Model):
     name = models.CharField(max_length=50)
     type = models.CharField(max_length=10, choices=HOTEL_TYPES)
     phone = models.CharField(max_length=15, blank=True, null=True)
-    country = models.CharField(max_length=50, choices=[(item, item) for item in geo.geos.keys()])
-    city = models.CharField(max_length=50, choices=[(item, item) for item in geo.geos_cities])
+    country = models.CharField(max_length=50, choices=[(item, item) for item in adds.geos.keys()])
+    city = models.CharField(max_length=50, choices=[(item, item) for item in adds.geos_cities])
     street = models.CharField(max_length=50)
     # geolocation = models.CharField(max_length=50)
 
@@ -43,14 +43,14 @@ class HotelSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     @classmethod
-    def validate_city(cls, data):
+    def validate_city(cls, city):
         """
         Validate city in country
         """
-
-        if data.get('depart') not in geo.geos.get(data.get('depart_country')) or \
-                data.get('arrive') not in geo.geos.get(data.get('arrive_country')):
+        if city not in adds.geos_cities:
             raise exceptions.ParseError('City and Country error')
+
+        return city
 
     @classmethod
     def create_room(cls, hotel, validated_data):
@@ -68,8 +68,6 @@ class HotelSerializer(serializers.ModelSerializer):
             raise exceptions.ParseError(room_serializer.errors)
 
     def create(self, validated_data):
-        self.validate_city(validated_data)
-
         room_data = validated_data.pop('room')
         hotel = super().create(validated_data)
 

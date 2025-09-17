@@ -8,6 +8,7 @@ geos:
     "Dortmund",
     "Essen",
     "Hanover",
+    "Hamburg",
     "Bremen"
   ]
   Britain: [
@@ -22,7 +23,8 @@ geos:
     "Shiraz",
     "Arak",
     "Sari",
-    "Karaj"
+    "Karaj",
+    "Gheshm"
   ]
 
 airports:
@@ -42,5 +44,5 @@ airports:
   Iran: [
     "Arak",
     "Karaj",
-    "Tehran"
+    "Tehran",
   ]
