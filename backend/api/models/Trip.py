@@ -26,7 +26,7 @@ class Trip(models.Model):
     arrive = models.CharField(choices=[(item, item) for item in adds.geos_cities], max_length=30)
     arrive_country = models.CharField(choices=[(item, item) for item in adds.geos.keys()], max_length=30)
 
-    company = models.CharField(choices=[(code, name) for code, name in adds.companies.items()])
+    company = models.CharField(choices=[(code, name) for code, name in adds.companies.items()], max_length=50)
     company_logo = models.CharField(max_length=255)
 
     depart_time = models.TimeField()
