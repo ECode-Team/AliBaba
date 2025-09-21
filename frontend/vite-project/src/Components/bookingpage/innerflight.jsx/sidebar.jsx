@@ -8,21 +8,21 @@ export const Sidebar = ({ data }) => {
   return (
     <div className="right-section">
       {/* TITLE */}
-      <div className="title">
+      <div className="B-title">
         <p>
           <b></b>
           <span>{data.title}</span>
         </p>
       </div>
 
-      <hr />
+      <hr className="divider" />
 
       {data.groups.map((group, gIndex) => (
-        <div key={gIndex} className="sidebar">
+        <div key={gIndex} className="B-sidebar">
           {/* SUMEERY NAME*/}
-          <summary className="summary">
+          <summary className="B-summary">
             <span>{group.summary}</span>
-            <button className="dropdownbtn">
+            <button className="B-button">
               <Up />
             </button>
           </summary>
@@ -31,17 +31,18 @@ export const Sidebar = ({ data }) => {
           {group.items.map((item, i) => {
             switch (item.type) {
               //  TYPE1 CHECKBOX
-              case "checkbox":
+              case "B-checkbox":
                 return (
-                  <ul key={i}>
-                    <li>
-                      <label>
+                  <ul key={i} className="B-ul">
+                    <li className="B-li">
+                      <label className="B-label">
                         <input
                           type="checkbox"
                           checked={item.checked}
                           onChange={item.onChange}
+                          className="B-input"
                         />
-                        <h4>{item.label}</h4>
+                        <h4 className="B-h4">{item.label}</h4>
                         <small>
                           <span>{item.price}</span>
                         </small>
@@ -51,16 +52,17 @@ export const Sidebar = ({ data }) => {
                 );
 
               //  TYPE2 CHECKBOX COMPANY
-              case "checkboxcom":
+              case "B-checkboxcom":
                 return (
-                  <ul key={i}>
-                    <li>
+                  <ul key={i} className="B-ul">
+                    <li className="B-li">
                       <div className="checkboxcontainer">
                         <div className="checkbox">
                           <input
                             type="checkbox"
                             checked={item.checked}
                             onChange={item.onChange}
+                            className="B-input"
                           />
                         </div>
                         <div className="comcontainer">
@@ -70,7 +72,7 @@ export const Sidebar = ({ data }) => {
                             ) : (
                               <img className="compho" />
                             )}
-                            <h4>{item.label}</h4>
+                            <h4 className="B-h4">{item.label}</h4>
                           </div>
                           <small>
                             <span>{item.price}</span>
@@ -124,10 +126,6 @@ export const Sidebar = ({ data }) => {
               case "star_rating":
                 return (
                   <div key={i} className="star-rating-container">
-                    {/* از map برای ساخت هر کدام از دکمه‌ها استفاده می‌کنیم.
-                  برای چیدمان دو ستونه می‌توانید از CSS Grid یا Flexbox استفاده کنید.
-                  مثال: .star-rating-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-                */}
                     {item.values.map((val, index) => (
                       <button key={index} className="star-option-btn">
                         <div className="star-label">{val.label}</div>
@@ -142,7 +140,7 @@ export const Sidebar = ({ data }) => {
             }
           })}
 
-          <hr />
+          <hr className="divider" />
         </div>
       ))}
     </div>

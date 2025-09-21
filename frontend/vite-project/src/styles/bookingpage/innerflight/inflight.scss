@@ -1,17 +1,17 @@
-@mixin innerflight ($display: block) {
+@mixin innerflight($display: block) {
   display: $display;
   background-color: white;
   border: 1px solid #dee2e6;
   border-radius: 10px;
 }
 
-.flights {
+.B-main {
   display: flex;
   position: relative;
   align-items: center;
   flex-direction: column;
 
-  .container {
+  .B-container {
     display: flex;
     padding: 20px;
 
@@ -22,26 +22,20 @@
       margin-left: 16px;
     }
 
-    .left-section {
-      .up {
-        
-        .topic {
+    .B-left-section {
+      .B-up {
+        .B-price-calendar {
           width: 845px;
           height: 340px;
           @include innerflight();
           margin-bottom: 15px;
         }
       }
-
-      .down {
-        width: auto;
-        height: auto;
-      }
     }
   }
 }
 
-.navebbrr {
+.B-navebr {
   width: 100%;
   height: 60px;
   background-color: rgb(255, 166, 0);

@@ -20,11 +20,11 @@ export const  Listcontainer = () => {
   }, []);
 
   return (
-    <div className="down">
+    <div className="B-list">
       {data.map((data, index) => (
-        <div key={index} className="list-container">
-          <div className="specific">
-            <div className="upcontainer">
+        <div key={index} className="B-list-container">
+          <div className="B-specific">
+            <div className="up-container">
               <div className="piccontainer">
                 <img className="piccompany">{}</img>
                 <span className="namecompany">name{data.company_name}</span>
@@ -55,8 +55,8 @@ export const  Listcontainer = () => {
               </div>
             </div>
           </div>
-          <div className="buy">
-            <div className="price-container">
+          <div className="B-buy">
+            <div className="B_price-container">
               <span className="priceprice">{data.price}</span>
               <span className="unit">تومان</span>
             </div>

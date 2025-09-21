@@ -27,7 +27,7 @@ export const Hotel = () => {
         summary: "انتخاب اتوبوسهای",
         items: [
           { type: "checkbox", label: "دارای ظرفیت", price: "8" },
-          { type: "checkbox", label: "با مقصد نهایی", price: "1"  },
+          { type: "checkbox", label: "با مقصد نهایی", price: "1" },
         ],
       },
       {
@@ -50,33 +50,31 @@ export const Hotel = () => {
   };
 
   const pricecalender = {
-  "items": [
-    {
-      "type": "sorting",
-      "values": [
-        { "label": "پیشنهاد علی‌بابا" },
-        { "label": "زودترین زمان حرکت" },
-        { "label": "کمترین قیمت" }
-      ],
-      "data": [
-        { "label": "روز قبل" },
-        { "label": "۱۴۰۴/۰۶/۲۳" },
-        { "label": "روز بعد" }
-      ]
-    }
-  ]
-}
-
-
+    items: [
+      {
+        type: "sorting",
+        values: [
+          { label: "پیشنهاد علی‌بابا" },
+          { label: "زودترین زمان حرکت" },
+          { label: "کمترین قیمت" },
+        ],
+        data: [
+          { label: "روز قبل" },
+          { label: "۱۴۰۴/۰۶/۲۳" },
+          { label: "روز بعد" },
+        ],
+      },
+    ],
+  };
 
   return (
-    <div className="flights">
-      <div className="navebbrr"></div>
-      <div className="container">
+    <div className="B-main">
+      <div className="B-navebr"></div>
+      <div className="B-container">
         <Sidebar data={sidebar} />
-        <div className="left-section">
-          <div className="topic">
-            <Pricecalender data={pricecalender} showDateContainer={pricecalender}/>
+        <div className="B-left-section">
+          <div className="B-price-calendar">
+            <Pricecalender data={pricecalender} />
           </div>
           {/* <Listcontainer /> */}
         </div>

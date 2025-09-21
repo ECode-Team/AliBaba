@@ -114,12 +114,12 @@ export const Train = () => {
   };
 
   return (
-    <div className="flights">
-      <div className="navebbrr"></div>
-      <div className="container">
+    <div className="B-main">
+      <div className="B-navebr"></div>
+      <div className="B-container">
         <Sidebar data={sidebar} />
-        <div className="left-section">
-          <div className="topic">
+        <div className="B-left-section">
+          <div className="B-price-calendar">
             <Pricecalender data={pricecalender} />
           </div>
           {/* <Listcontainer /> */}

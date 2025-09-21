@@ -6,7 +6,7 @@ import Compairson from "../../../assets/icons/compairson.svg?react";
 import Calendar from "../../../assets/icons/calendar.svg?react";
 import botton from "../../../assets/icons/down-arrow.png";
 
-export const Pricecalender = ({ data, showDateContainer }) => {
+export const Pricecalender = ({ data, Date }) => {
   return (
     <div className="pricecalendar">
       {data.items.map((item, index) => {
@@ -67,7 +67,7 @@ export const Pricecalender = ({ data, showDateContainer }) => {
                   <b className="">مرتب‌سازی:</b>
                   <ul className="sort-ul">
                     {item.values.map((val, i) => (
-                      <li key={i}>
+                      <li key={i} className="B-li">
                         <span className="sort-btn">
                           <a>{val.label}</a>
                           <div>{val.value}</div>
@@ -77,7 +77,7 @@ export const Pricecalender = ({ data, showDateContainer }) => {
                   </ul>
                 </div>
 
-                {showDateContainer && (
+                {Date && (
                   <div className="date-container">
                     {item.data.map((data, b) => (
                       <span key={b} className="date-spn">
@@ -122,7 +122,7 @@ export const Pricecalender = ({ data, showDateContainer }) => {
                       <span>قیمت بر اساس میلیون تومان است</span>
                     </div>
                     <div className="change-com">
-                      <button>
+                      <button >
                         <Right />
                       </button>
                       <button>

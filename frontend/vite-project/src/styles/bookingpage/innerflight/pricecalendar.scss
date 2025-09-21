@@ -32,8 +32,8 @@
           padding: 12px 0px;
           width: 114px;
           height: auto;
-          border-radius: 0%;
-          background-color: white;
+          border: none;
+          background-color: rgb(248, 250, 251);
         }
 
         .vallabel {
@@ -58,7 +58,8 @@
       .pricetime {
         width: 100%;
         height: auto;
-        border-radius: 0%;
+        border: none;
+        padding: 0;
         background-color: rgb(248, 250, 251);
       }
       .pricetime.right {
@@ -136,7 +137,7 @@
 
     .date-spn {
       padding: 0px 12px;
-      // border-left: 1px solid $border-color;@Crypto369.com  
+      // border-left: 1px solid $border-color;@Crypto369.com
     }
   }
   .mark {

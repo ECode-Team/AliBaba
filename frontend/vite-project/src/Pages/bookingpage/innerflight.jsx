@@ -1,4 +1,4 @@
-import "../../styles/bookingpage/innerflight/inflight.scss";
+// import "../../styles/bookingpage/innerflight/inflight.scss";
 import { Listcontainer } from "../../Components/bookingpage/innerflight.jsx/list";
 import { Sidebar } from "../../Components/bookingpage/innerflight.jsx/sidebar";
 import { useState } from "react";
@@ -30,29 +30,29 @@ export const Innerflight = () => {
       {
         summary: "نوع بلیط",
         items: [
-          { type: "checkbox", label: "سیسمتی" },
-          { type: "checkbox", label: "چارتر" },
+          { type: "B-checkbox", label: "سیسمتی" },
+          { type: "B-checkbox", label: "چارتر" },
         ],
       },
       {
         summary: "کلاس پروازی",
         items: [
-          { type: "checkbox", label: "اکونومی" },
-          { type: "checkbox", label: "بیزینس" },
-          { type: "checkbox", label: "پریمیوم اکونومی" },
+          { type: "B-checkbox", label: "اکونومی" },
+          { type: "B-checkbox", label: "بیزینس" },
+          { type: "B-checkbox", label: "پریمیوم اکونومی" },
         ],
       },
       {
         summary: "شرکت‌های هواپیمایی",
         items: [
           {
-            type: "checkboxcom",
+            type: "B-checkboxcom",
             label: "ماهان",
             // compic: <img src="mahan_logo.png" />,
             price: "از 4.750.230 ",
           },
           {
-            type: "checkboxcom",
+            type: "B-checkboxcom",
             label: "ایران ایرتور",
             // compic: <img src="iran_airtour_logo.png" />,
             price: "از 7.870.540 ",
@@ -61,13 +61,13 @@ export const Innerflight = () => {
       },
       {
         summary: "پیشنهاد ویژه",
-        items: [{ type: "checkbox", label: "پیشنهاد ویژه" }],
+        items: [{ type: "B-checkbox", label: "پیشنهاد ویژه" }],
       },
       {
         summary: "موارد دیگر",
         items: [
-          { type: "checkbox", label: "نمایش بلیط‌های تکراری" },
-          { type: "checkbox", label: "نمایش بلیط‌های موجود" },
+          { type: "B-checkbox", label: "نمایش بلیط‌های تکراری" },
+          { type: "B-checkbox", label: "نمایش بلیط‌های موجود" },
         ],
       },
     ],
@@ -116,15 +116,15 @@ export const Innerflight = () => {
   };
 
   return (
-    <div className="flights">
-      <div className="navebbrr"></div>
-      <div className="container">
+    <div className="B-main">
+      <div className="B-navebr"></div>
+      <div className="B-container">
         <Sidebar data={sidebar} />
-        <div className="left-section">
-          <div className="topic">
+        <div className="B-left-section">
+          <div className="B-price-calendar">
             <Pricecalender data={pricecalender} />
           </div>
-          {/* <Listcontainer /> */}
+          <Listcontainer />
         </div>
       </div>
     </div>

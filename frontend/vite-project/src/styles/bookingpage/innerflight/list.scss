@@ -15,15 +15,13 @@
   border-radius: $borderR;
 }
 
-
-
-.list-container {
+.B-list-container {
   display: flex;
   flex-direction: row;
   margin-bottom: 16px;
   position: relative;
 
-  .specific {
+  .B-specific {
     width: 620px;
     height: 153px;
     @include list($display: flex, $color: white);
@@ -32,7 +30,7 @@
     padding: 16px 16px 0px 16px;
     flex-direction: column;
 
-    .upcontainer {
+    .up-container {
       display: flex;
       .piccontainer {
         width: 50px;
@@ -122,7 +120,7 @@
     }
   }
 
-  .buy {
+  .B-buy {
     @include infoflex($flexD: column, $justify: center, $align: center);
     position: relative;
     width: 230px;
@@ -138,7 +136,7 @@
       border: solid 0.5px rgb(0, 60, 255);
       @include list($back: $link-color, $color: white, $borderR: 8px);
     }
-    .price-container {
+    .B-price-container {
       width: 170px;
       height: 25px;
       @include infoflex($justify: center, $align: center);

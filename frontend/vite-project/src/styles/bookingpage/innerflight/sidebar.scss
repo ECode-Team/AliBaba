@@ -1,26 +1,26 @@
 @import "../../mixins";
 
-.title {
+.B-title {
   padding: 16px 20px;
   @include infoflex();
-  .title,
+  .B-title,
   p {
     margin: 0;
   }
-  .title,
+  .B- title,
   p,
   span {
     font-size: 13px;
   }
 }
-.sidebar {
+.B-sidebar {
   @include infoflex($flexD: column);
   height: 100%;
-  .summary {
+  .B-summary {
     @include infoflex($flexD: row, $justify: space-between, $align: center);
     padding: 8px 16px;
     font-size: 14.5px;
-    .summary,
+    .B-summary,
     span {
       display: flex;
     }
@@ -41,7 +41,7 @@
 .checkboxcontainer {
   @include infoflex($flexD: row, $align: center);
 
-  .checkbox {
+  .B-checkbox {
     @include infoflex($justify: center, $align: center);
   }
 
@@ -113,25 +113,25 @@
   }
 }
 
-hr {
+.divider {
   margin: 0px;
   border: none;
   height: 1px;
   background-color: #dddddd;
 }
 
-ul {
+.B-ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li {
+.B-li {
   padding: 12px;
   @include infoflex($align: center, $flexD: row);
 }
 
-input {
+.B-input {
   width: 23px;
   height: 23px;
   accent-color: rgb(0, 119, 219);
@@ -139,7 +139,7 @@ input {
   cursor: pointer;
 }
 
-h4 {
+.B-h4 {
   margin: 0;
   font-size: 14px;
   font-weight: 400;
@@ -150,12 +150,12 @@ a {
   display: flex;
   column-gap: 6px;
   a,
-  h4 {
+  .B-h4 {
     font-size: 15.5px;
   }
 }
 
-button {
+.B-button {
   @include infoflex($justify: center, $align: center);
   width: 33px;
   height: 33px;
@@ -165,12 +165,12 @@ button {
   background-color: rgb(248, 250, 251);
 }
 
-label {
+.B-label {
   @include infoflex($align: center, $flexD: row, $justify: space-between);
   width: 100%;
 
-  label,
-  h4 {
+  .B-label,
+  .B-h4 {
     margin-left: auto;
   }
 }
