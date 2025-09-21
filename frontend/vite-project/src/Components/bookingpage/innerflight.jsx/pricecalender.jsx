@@ -6,7 +6,7 @@ import Compairson from "../../../assets/icons/compairson.svg?react";
 import Calendar from "../../../assets/icons/calendar.svg?react";
 import botton from "../../../assets/icons/down-arrow.png";
 
-export const Pricecalender = ({ data }) => {
+export const Pricecalender = ({ data, showDateContainer }) => {
   return (
     <div className="pricecalendar">
       {data.items.map((item, index) => {
@@ -63,17 +63,29 @@ export const Pricecalender = ({ data }) => {
           case "sorting":
             return (
               <div className="sorting" key={`sorting-${index}`}>
-                <b className="">مرتب‌سازی:</b>
-                <ul className="sort-ul">
-                  {item.values.map((val, i) => (
-                    <li key={i}>
-                      <span className="sort-btn">
-                        <a>{val.label}</a>
-                        <div>{val.value}</div>
+                <div className="sorting-container">
+                  <b className="">مرتب‌سازی:</b>
+                  <ul className="sort-ul">
+                    {item.values.map((val, i) => (
+                      <li key={i}>
+                        <span className="sort-btn">
+                          <a>{val.label}</a>
+                          <div>{val.value}</div>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {showDateContainer && (
+                  <div className="date-container">
+                    {item.data.map((data, b) => (
+                      <span key={b} className="date-spn">
+                        {data.label}
                       </span>
-                    </li>
-                  ))}
-                </ul>
+                    ))}
+                  </div>
+                )}
               </div>
             );
 

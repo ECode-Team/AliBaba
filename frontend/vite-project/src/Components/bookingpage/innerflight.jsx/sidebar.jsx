@@ -120,6 +120,23 @@ export const Sidebar = ({ data }) => {
                   </div>
                 );
 
+              // TYPE5 STAR RATING
+              case "star_rating":
+                return (
+                  <div key={i} className="star-rating-container">
+                    {/* از map برای ساخت هر کدام از دکمه‌ها استفاده می‌کنیم.
+                  برای چیدمان دو ستونه می‌توانید از CSS Grid یا Flexbox استفاده کنید.
+                  مثال: .star-rating-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+                */}
+                    {item.values.map((val, index) => (
+                      <button key={index} className="star-option-btn">
+                        <div className="star-label">{val.label}</div>
+                        <div className="star-price">{val.price}</div>
+                      </button>
+                    ))}
+                  </div>
+                );
+
               default:
                 return null;
             }

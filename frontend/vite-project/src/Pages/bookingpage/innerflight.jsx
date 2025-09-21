@@ -7,7 +7,7 @@ import { Pricecalender } from "../../Components/bookingpage/innerflight.jsx/pric
 export const Innerflight = () => {
   const [timemove, setTimemove] = useState([1, 24]);
 
-  const innerflightFilters = {
+  const sidebar = {
     title: "نتایج",
     groups: [
       {
@@ -119,12 +119,12 @@ export const Innerflight = () => {
     <div className="flights">
       <div className="navebbrr"></div>
       <div className="container">
-        <Sidebar data={innerflightFilters} />
+        <Sidebar data={sidebar} />
         <div className="left-section">
           <div className="topic">
             <Pricecalender data={pricecalender} />
           </div>
-          <Listcontainer />
+          {/* <Listcontainer /> */}
         </div>
       </div>
     </div>

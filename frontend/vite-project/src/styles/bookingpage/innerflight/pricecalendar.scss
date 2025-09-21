@@ -71,61 +71,74 @@
   }
 
   .sorting {
-    @include infoflex($flexD: row, $align: center);
+    @include infoflex($flexD: row, $align: center, $justify: space-between);
     // width: auto;
     height: 35px;
     margin: 16px 0px;
 
-    .sorting,
-    b {
-      margin-left: 16px;
-      @include infoflex($flexD: row, $align: center);
-      font-size: 17px;
-      font-weight: 400;
-    }
+    .sorting-container {
+      @include infoflex($flexD: row, $align: center, $justify: space-between);
 
-    sorting,
-    div {
-      font-size: 11px;
-      color: rgb(167, 167, 167);
-      min-height: 0px;
-      max-height: 30px;
-    }
-
-    // .empty-sort {
-    // }
-
-    .sort-ul {
-      @include infoflex();
-      // height: 38px;
-      border-radius: 100px;
-      border: 1px solid $border-color;
-      background-color: white;
-    }
-
-    .sort-ul,
-    li {
-      padding: 0;
-      .sort-btn {
-        @include infoflex($flexD: column, $align: center);
+      .sorting,
+      b {
+        margin-left: 16px;
+        @include infoflex($flexD: row, $align: center);
+        font-size: 17px;
+        font-weight: 400;
       }
-      .sort-ul,
-      a {
-        @include infoflex($align: center);
-        padding: 8px 32px;
-        height: 33px;
-        font-size: 14px;
+
+      sorting,
+      div {
+        font-size: 11px;
+        color: rgb(167, 167, 167);
+        min-height: 0px;
+        max-height: 30px;
+      }
+
+      .sort-ul {
+        @include infoflex();
+        // height: 38px;
+        border-radius: 100px;
+        border: 1px solid $border-color;
+        background-color: white;
       }
 
       .sort-ul,
-      li::after {
-        content: "";
-        border-left: 1px solid $border-color;
-        height: 20px;
+      li {
+        padding: 0;
+        .sort-btn {
+          @include infoflex($flexD: column, $align: center);
+        }
+        .sort-ul,
+        a {
+          @include infoflex($align: center);
+          padding: 8px 32px;
+          height: 33px;
+          font-size: 14px;
+        }
+
+        .sort-ul,
+        li::after {
+          content: "";
+          border-left: 1px solid $border-color;
+          height: 20px;
+        }
+        &:last-child::after {
+          display: none;
+        }
       }
     }
   }
+  .date-container {
+    border-radius: 100px;
+    border: 1px solid $border-color;
+    background-color: white;
 
+    .date-spn {
+      padding: 0px 12px;
+      // border-left: 1px solid $border-color;@Crypto369.com  
+    }
+  }
   .mark {
     .mark-item {
       @include infoflex($flexD: row, $align: center);
