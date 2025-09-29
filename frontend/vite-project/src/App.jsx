@@ -9,7 +9,7 @@ import { Vila } from "./Pages/bookingpage/vila";
 import Detail from "./Pages/detailpage.jsx";
 import { Homepage } from "./Pages/homepage";
 import { Payment } from "./Pages/paymentpage";
-// import { Userpage } from "./Pages/userpage";
+import { Userpage } from "./Pages/userpage";
 import { Train } from "./Pages/bookingpage/train";
 import { FetchAPI } from "./Components/fetch";
 import { useEffect, useState } from "react";
@@ -32,7 +32,7 @@ const AnimatedRoutes = () => {
         <Route path="/Booking/vila" element={<Vila />} />
         <Route path="/DetailPage" element={<Detail />} />
         <Route path="/Payment" element={<Payment />} />
-        {/* <Route path="/UserPage" element={<Userpage />} /> */}
+        <Route path="/UserPage" element={<Userpage />} />
       </Routes>
     </AnimatePresence >
   )

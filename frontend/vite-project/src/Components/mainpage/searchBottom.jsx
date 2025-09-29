@@ -140,7 +140,7 @@ const SearchInputGroup = () => {
 const SearchBottom = () => {
     const { t } = useTranslation();
     return (
-        <div className="search-bottom">
+        <div className="M-search-bottom">
             <div className="search-options-container">
                 <SearchOptionsGroup />
             </div>

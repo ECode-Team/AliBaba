@@ -58,7 +58,7 @@ export const Search = () => {
     }, [underlinePositionX]);
 
     return (
-        <div className="container">
+        <div className="M-container">
             <div className="background-container">
                 <div className="background-image" style={{ backgroundImage: `url(${imageMap[mode] || DomesticFlight})` }}></div>
             </div>
