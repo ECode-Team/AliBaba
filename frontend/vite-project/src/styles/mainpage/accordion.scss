@@ -1,7 +1,157 @@
+.promo-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 70%;
+  margin: 2rem auto 3rem auto;
+}
 
+.promo-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 17px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  direction: rtl;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.promo-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.promo-image-box {
+  height: 200px;
+}
+
+.promo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.promo-content-box {
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.promo-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #334;
+  margin-bottom: 12px;
+}
+
+.promo-desc {
+  font-size: 1rem;
+  color: #226;
+  margin-bottom: 20px;
+}
+
+.promo-btn {
+  background: #7c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+
+.promo-btn:hover {
+  background: #4c25d7;
+}
+
+.ticket-info {
+  max-width: 70%;
+  margin: 3rem auto;
+  font-family: 'Vazirmatn', sans-serif;
+  direction: rtl;
+  color: #223;
+}
+
+.main-title {
+  font-size: 2.1rem;
+  font-weight: bold;
+  margin-bottom: 13px;
+  text-align: right;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 23px;
+  margin-bottom: 9px;
+}
+
+.advantages {
+  margin: 15px 0 18px 0;
+  padding: 1 16px;
+  list-style: disc;
+  color: #676768;
+}
+
+.advantages li {
+  font-size: 1.2rem;
+  margin-bottom: 7px;
+}
 
 .accordion {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  max-width: 70%;
+  margin: 3rem auto;
+  background: #fff;
+  border-radius: 17px;
+  box-shadow: 1 4px 12px rgba(0,0,0,0.08);
+  padding: 25px 32px;
+  font-family: 'Vazirmatn', sans-serif;
+  direction: rtl;
+}
+
+.title {
+  font-size: 1.6rem;
+  color: #334;
+  margin-bottom: 2.5rem;
+  text-align: right;
+  font-weight: bold;
+}
+
+.content {
+  list-style: none;
+  padding: 1;
+  margin: 1;
+}
+
+.faq-item {
+  border-bottom: 2px solid #ececec;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.faq-question {
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  font-size: 2rem;
+  color: #7c63ff;
+  margin-left: 9px;
+}
+
+.faq-answer {
+  padding: 25px;
+  font-size: 1rem;
+  color: #445;
 }
