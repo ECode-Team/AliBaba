@@ -1,130 +1,35 @@
 import "../../styles/bookingpage/innerflight/inflight.scss";
-import { Listcontainer } from "../../Components/bookingpage/innerflight.jsx/list";
-import { Sidebar } from "../../Components/bookingpage/innerflight.jsx/sidebar";
-import { useState } from "react";
-import { Pricecalender } from "../../Components/bookingpage/innerflight.jsx/pricecalender";
+import { TrainAccordion } from "../../Components/bookingpage/train/TrainAccordion";
 
 export const Train = () => {
-  const [timemove, setTimemove] = useState([1, 24]);
-
-  const sidebar = {
-    title: "نتایج",
-    groups: [
-      {
-        summary: "ساعت حرکت",
-        items: [
-          {
-            type: "range-slider",
-            min: 1,
-            max: 24,
-            minValue: timemove[0],
-            maxValue: timemove[1],
-            onChange: (val) => setTimemove(val),
-          },
-        ],
-      },
-      {
-        summary: "نوع قطار",
-        items: [
-          { type: "checkbox", label: "کوپه ۶ نفره", price: "از 650.000 تومان" },
-          { type: "checkbox", label: "کوپه ۴ نفره", price: "از 1.990.000 تومان" },
-        ],
-      },
-      {
-        summary: "شرکت‌های ریلی",
-        items: [
-          {
-            type: "checkboxcom",
-            label: "بن ریل",
-            // compic: <img src="mahan_logo.png" />,
-          },
-          {
-            type: "checkboxcom",
-            label: "جوپار",
-            // compic: <img src="iran_airtour_logo.png" />,
-          },
-          {
-            type: "checkboxcom",
-            label: "ریل ترابر سبا",
-            // compic: <img src="mahan_logo.png" />,
-          },
-          {
-            type: "checkboxcom",
-            label: "مهتاب سیر جم",
-            // compic: <img src="iran_airtour_logo.png" />,
-          },
-          {
-            type: "checkboxcom",
-            label: "نورالرضا",
-            // compic: <img src="mahan_logo.png" />,
-          },
-        ],
-      },
-      {
-        summary: "موارد دیگر",
-        items: [{ type: "checkbox", label: "نمایش قطارهای موجود" }],
-      },
-    ],
-  };
-
-  const pricecalender = {
-    items: [
-      {
-        type: "pricetime",
-        values: [
-          { label: "پنج‌شنبه - 05/23" },
-          { label: "یکشنبه - 05/17" },
-          { label: "دوشنبه - 05/20" },
-          { label: "سه‌شنبه - 05/21" },
-          { label: "شنبه - 05/17" },
-          { label: "چهارشنبه - 05/22" },
-          { label: "جمعه - 05/24" },
-        ],
-      },
-      //   {
-      //     type: "pricetimebox",
-      //     values : [
-      //       {label: "data"}
-      //     ]
-      //   },
-      //   {
-      //     type: "shortcutbox",
-      //     values: [
-      //       { label: "AJET" ,time: "--", timeone: "12", timeplus: "9", plus: "۱+توقف"},
-      //       { label: "Caspian Airline" ,time: "--", timeone: "10", timeplus: "13", plus: "۱+توقف"},
-      //       { label: "Flightline" ,time: "11", timeone: "13", timeplus: "4", plus: "۱+توقف"},
-      //       { label: "Pegasus" ,time: "--", timeone: "15", timeplus: "13", plus: "۱+توقف"},
-      //       { label: "Turkish Airlines" ,time: "11", timeone: "18", timeplus: "--", plus: "۱+توقف"},
-      //       { label: "AJET" ,time: "19", timeone: "--", timeplus: "16", plus: "۱+توقف"},
-      //     ],
-      //   },
-      {
-        type: "sorting",
-        values: [
-          { label: "پیشنهاد علی‌بابا" },
-          { label: "زودترین زمان حرکت" },
-          { label: "کمترین قیمت" },
-        ],
-      },
-      {
-        type: "exclamationmark",
-        values: [{ label: " قیمت ها برای یک بزرگسال محاسبه شده است. " }],
-      },
-    ],
-  };
-
   return (
     <div className="B-main">
       <div className="B-navebr"></div>
       <div className="B-container">
-        <Sidebar data={sidebar} />
         <div className="B-left-section">
-          <div className="B-price-calendar">
-            <Pricecalender data={pricecalender} />
-          </div>
-          {/* <Listcontainer /> */}
+          <TrainAccordion />
+        </div>
+        <div className="B-right-section">
+          <h2>بلیط قطار</h2>
+          <p>
+            هر کسی که یک بار با قطار سفر کرده باشد می‌داند که قطار امن است و همین
+            موضوع آن را به یکی از مناسب‌ترین وسائل نقلیه برای سفر به مقاصد دور و
+            نزدیک تبدیل کرده. در سفر با قطار می‌توانید بدون نگرانی از نوسانات
+            شرایط جوی، کمبود سوخت، تصادفات و... لحظات آرامی را سپری کنید. در کنار
+            این موارد، موسیقی ریتمیک حرکت قطار روی ریل به خودی خود موجب آرامش
+            سرنشینان می‌شود؛ حتی بعضی از مسافran ادعا کرده‌اند که این ریتم منظم
+            موجب می‌شود تا خواب راحت‌تری در قطار داشته باشند. علاوه بر امنیت، سفر
+            با قطار مزایای دیگری هم دارد. قیمت مناسب، فضای صمیمی و راحت کوپه، صرف
+            غذا در بوفه و قدم زدن در راهرو باعث می‌شود تا سختیِ مسیرهای طولانی به
+            حداقل رسیده و خاطره خوشی از سفر در ذهن مسافر باقی بماند. بیش از 90
+            سال از احداث راه‌آهن و اولین سفر با قطار در ایران می‌گذرد، اما بسیاری
+            از مسافران با خدمات قطارهای شبکه‌ ریلی کشور آشنا نیستند. به همین
+            منظور قصد داریم شما را با امکانات و خدمات قطارهای ایران آشنا کنیم تا
+            هنگام خرید آنلاین بلیط قطار، انتخاب‌های بهتری داشته باشید.
+          </p>
         </div>
       </div>
     </div>
   );
 };
+

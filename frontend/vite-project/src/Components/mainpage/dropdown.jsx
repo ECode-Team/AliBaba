@@ -9,6 +9,7 @@ const Dropdown = (props) => {
     const handleLanguageSelect = (language) => {
         i18n.changeLanguage(language);
         setRtl(language === 'fa' || language === 'ar');
+        document.cookie = `language=${language};path=/`;
     }
     
     const navigate = useNavigate();

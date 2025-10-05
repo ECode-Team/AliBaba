@@ -8,9 +8,13 @@ i18n
   .use(HttpBackend)
   .use(initReactI18next)
   .init({
-    lng: 'en', //ِDefault language
     fallbackLng: 'en', //If language is not found
     debug: true,
+    detection: {
+      order: ['cookie', 'htmlTag', 'localStorage', 'path', 'subdomain'],
+      caches: ['cookie'],
+      lookupCookie: 'language',
+    },
     ns: ['navbar', 'dropdown', 'search-inputs', 'search-items'],
     defaultNS: 'navbar',
     interpolation: {

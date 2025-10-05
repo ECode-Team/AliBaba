@@ -1,0 +1,120 @@
+
+.stepper-container {
+  width: 100%;
+  margin: 20px auto;
+  font-family: sans-serif;
+  border: 2px solid red;
+}
+
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.step-button {
+  border: none;
+  background-color: #e0e0e0;
+  color: #000;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.step.active .step-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.step.completed .step-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.step-name {
+  font-size: 14px;
+  color: #666;
+}
+
+.step.active .step-name {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.step.completed .step-name {
+  color: #28a745;
+}
+
+.stepper::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #e0e0e0;
+  z-index: 0;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  height: 2px;
+  background-color: #007bff;
+  z-index: 0;
+  transition: width 0.3s ease;
+}
+
+.step-content {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.navigation-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.prev-button {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.next-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.prev-button:disabled,
+.next-button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}

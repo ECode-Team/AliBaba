@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../../styles/mainpage/accordion.scss";
+import { useLocation } from "react-router-dom";
 
 export const AccordionPage = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const location = useLocation();
 
   const faqs = [
     {
@@ -43,6 +45,10 @@ export const AccordionPage = () => {
         "انتخاب صندلی هنگام خرید بلیط هواپیما ممکن است وجود داشته باشد اما برخی ایرلاین‌ها این امکان را فراهم نمی‌کنند. در زمان خرید بلیط بخش چیدمان انتخاب صندلی، در صورت فعال بودن این مزیت، به شما نمایش داده خواهد شد.",
     },
   ];
+
+  if (location.pathname === "/train") {
+    return <div>hello world</div>;
+  }
 
   return (
     <div>
@@ -159,9 +165,13 @@ export const AccordionPage = () => {
                 <span>{faq.question}</span>
                 <span className="arrow">{openIndex === index ? "▲" : "▼"}</span>
               </div>
-              {openIndex === index && (
+              <div
+                className={`faq-answer-wrapper ${
+                  openIndex === index ? "open" : ""
+                }`}
+              >
                 <div className="faq-answer">{faq.answer}</div>
-              )}
+              </div>
             </li>
           ))}
         </ul>

@@ -56,8 +56,8 @@
 }
 
 .promo-btn {
-  background: #7c63ff;
-  color: #fff;
+  background: #FFC107;
+  color: #000;
   border: none;
   border-radius: 8px;
   font-size: 0.9rem;
@@ -67,7 +67,7 @@
 }
 
 .promo-btn:hover {
-  background: #4c25d7;
+  background: #d4a106;
 }
 
 .ticket-info {
@@ -154,4 +154,16 @@
   padding: 25px;
   font-size: 1rem;
   color: #445;
+}
+
+.faq-answer-wrapper {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.faq-answer-wrapper.open {
+  max-height: 200px; /* Adjust as needed */
+  opacity: 1;
 }
