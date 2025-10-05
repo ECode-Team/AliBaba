@@ -20,8 +20,8 @@ export const Navbar = () => {
     const navigate = useNavigate();
 
     // Route path for dropdown items
-    const englishTicketItems = ["DomesticFlight", "InternationalFlight", "Train", "Bus"];
-    const englishResidenceItems = ["Hotel", "Villas&Apartments"];
+    const englishTicketItems = ["info/Innerflight", "info/Foreignflight", "info/train", "info/Bus"];
+    const englishResidenceItems = ["info/Hotel", "Booking/Vila"];
     const englishMoreItems = ["AlibabaMagazine", "TravelInsurance"];
     const englishUserItems = ["Account Information", "Notifications", "Request Support", "Log Out of Account"];
 

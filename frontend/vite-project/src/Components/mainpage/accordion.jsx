@@ -46,10 +46,6 @@ export const AccordionPage = () => {
     },
   ];
 
-  if (location.pathname === "/train") {
-    return <div>hello world</div>;
-  }
-
   return (
     <div>
       <div className="promo-container">

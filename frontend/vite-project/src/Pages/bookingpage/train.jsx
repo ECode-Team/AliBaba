@@ -1,35 +1,13 @@
-import "../../styles/bookingpage/innerflight/inflight.scss";
-import { TrainAccordion } from "../../Components/bookingpage/train/TrainAccordion";
+import React from 'react';
+import { Search } from '../../Components/mainpage/search';
+import "../../styles/bookingpage/train.scss";
 
-export const Train = () => {
+const Train = () => {
   return (
-    <div className="B-main">
-      <div className="B-navebr"></div>
-      <div className="B-container">
-        <div className="B-left-section">
-          <TrainAccordion />
-        </div>
-        <div className="B-right-section">
-          <h2>بلیط قطار</h2>
-          <p>
-            هر کسی که یک بار با قطار سفر کرده باشد می‌داند که قطار امن است و همین
-            موضوع آن را به یکی از مناسب‌ترین وسائل نقلیه برای سفر به مقاصد دور و
-            نزدیک تبدیل کرده. در سفر با قطار می‌توانید بدون نگرانی از نوسانات
-            شرایط جوی، کمبود سوخت، تصادفات و... لحظات آرامی را سپری کنید. در کنار
-            این موارد، موسیقی ریتمیک حرکت قطار روی ریل به خودی خود موجب آرامش
-            سرنشینان می‌شود؛ حتی بعضی از مسافran ادعا کرده‌اند که این ریتم منظم
-            موجب می‌شود تا خواب راحت‌تری در قطار داشته باشند. علاوه بر امنیت، سفر
-            با قطار مزایای دیگری هم دارد. قیمت مناسب، فضای صمیمی و راحت کوپه، صرف
-            غذا در بوفه و قدم زدن در راهرو باعث می‌شود تا سختیِ مسیرهای طولانی به
-            حداقل رسیده و خاطره خوشی از سفر در ذهن مسافر باقی بماند. بیش از 90
-            سال از احداث راه‌آهن و اولین سفر با قطار در ایران می‌گذرد، اما بسیاری
-            از مسافران با خدمات قطارهای شبکه‌ ریلی کشور آشنا نیستند. به همین
-            منظور قصد داریم شما را با امکانات و خدمات قطارهای ایران آشنا کنیم تا
-            هنگام خرید آنلاین بلیط قطار، انتخاب‌های بهتری داشته باشید.
-          </p>
-        </div>
-      </div>
+    <div className="train-page-container" style={{ minHeight: '60vh' }}>
+      <Search />
+      <h1 className="train-page-title">صفحه رزرو بلیط قطار</h1>
     </div>
   );
 };
-
+export default Train;

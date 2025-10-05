@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import SearchBottom from "./searchBottom";
@@ -28,7 +28,20 @@ import VillaIcon from "../../assets/icons/villa.svg?react";
 
 export const Search = () => {
     const { t } = useTranslation();
-    const { mode } = useParams();
+    const params = useParams();
+    const location = useLocation();
+
+    // Determine mode from either params (e.g., /:mode) or path (e.g., /info/:page)
+    let mode = params.mode;
+    if (!mode && location.pathname.startsWith('/info/')) {
+        const page = location.pathname.split('/')[2];
+        // You might need to map your info page names to the mode names expected by this component
+        if (page === 'train') mode = 'Train';
+        if (page === 'bus') mode = 'Bus';
+        if (page === 'hotel') mode = 'Hotel';
+        if (page === 'innerflight' || page === 'foreignflight') mode = 'DomesticFlight'; // Or decide based on page
+    }
+
     const imageMap =
     {
         "DomesticFlight": DomesticFlight,
