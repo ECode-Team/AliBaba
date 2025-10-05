@@ -26,7 +26,7 @@ import {
   User,
   UserCircle,
   VerifiedIcon,
-} from "../components/icons.jsx";
+} from "../Components/icons.jsx";
 import {
   galleryImages,
   facilityList,

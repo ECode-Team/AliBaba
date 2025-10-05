@@ -15,6 +15,7 @@ import { FetchAPI } from "./Components/fetch";
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import "../src/styles/general.scss";
+import { Loginpage } from "./Pages/loginpage";
 
 
 const AnimatedRoutes = () => {
@@ -33,6 +34,7 @@ const AnimatedRoutes = () => {
         <Route path="/DetailPage" element={<Detail />} />
         <Route path="/Payment" element={<Payment />} />
         <Route path="/UserPage" element={<Userpage />} />
+        <Route path="/login" element={<Loginpage />} />
       </Routes>
     </AnimatePresence >
   )

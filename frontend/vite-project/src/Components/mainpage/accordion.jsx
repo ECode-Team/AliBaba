@@ -1,10 +1,308 @@
-import "../../styles/mainpage/accordion.scss"
+import React, { useState } from "react";
 
-export const Accordion = () => {
-    return <div className="accordion">
-        <h2 className="title">پرسش های شما</h2>
-        <ul className="content">
+export const AccordionPage = () => {
+  const [openIndex, setOpenIndex] = useState(null);
 
+  const faqs = [
+    {
+      question: "چند روز قبل از پرواز، بلیط هواپیما را بخریم؟",
+      answer:
+        "امکان رزرو بلیط هواپیما تا لحظات قبل از پرواز وجود دارد؛ اما اغلب اوقات قیمت بلیط هواپیما در روزهای نزدیک به پرواز افزایش می‌شود. بنابراین در صورتی که تعطیلات یا مناسبت خاصی در پیش دارید، توصیه می‌شود بلیط هواپیما را به صورت آنلاین و در زمان مناسب خرید کنید. اگر قصد سفر در ایام پرتردد مانند تعطیلات را دارید، باید هر چه زودتر رزرو بلیط هواپیما را انجام دهید.",
+    },
+    {
+      question: "در هر پرواز، میزان بار مجاز چقدر است؟",
+      answer:
+        "در بلیط‌های هواپیما میزان بار بین ۲۰ تا ۳۰ کیلوگرم و قوانین خاصی برای کالاهای پرواز وجود دارد. هنگام خرید آنلاین بلیط هواپیما می‌توانید میزان بار مجاز را در اطلاعات بلیط ببینید. طبیعتا بیشتر از میزان بار مجاز باید مبلغ بیشتری پرداخت کنید.",
+    },
+    {
+      question: "نرخ بلیط هواپیما برای نوزادان و کودکان زیر ۱۲ سال چگونه است؟",
+      answer:
+        "نرخ بلیط هواپیما برای نوزادان زیر دو سال و کودکان نرخ مخصوصی دارد. به صورت کلی، قیمت بلیط مسافر کودک (از ۲ تا ۱۲ سال) معادل ۵۰ الی ۱۰۰ درصد بلیط بزرگسال است و قیمت بلیط نوزاد زیر دو سال معمولا کمتر از ۱۰ درصد بلیط بزرگسال است. هنگام تهیه بلیط هواپیما به این نکته توجه داشته باشید.",
+    },
+    {
+      question: "رزرو آنلاین بلیط هواپیما هزینه بیشتری از خرید حضوری دارد؟",
+      answer:
+        "خیر! رزرو آنلاین بلیط هواپیما از مراکز و سایت‌های معتبر خرید بلیط هواپیما، نه تنها هزینه بیشتری بابت پرداخت نمی‌کنید، حتی ممکن است تخفیف هم بگیرید. ضمناً شما با خرید آنلاین بلیط هواپیما، از امکان مقایسه قیمت‌ها، انتخاب صندلی و خدمات بیشتری بهره‌مند می‌شوید.",
+    },
+    {
+      question: "آیا پس از خرید اینترنتی بلیط هواپیما استرداد آن وجود دارد؟",
+      answer:
+        "بله، در علی‌بابا امکان استرداد بلیط هواپیما برای کاربران فراهم است. قوانین استرداد هر بلیط با توجه به شرایط چارتر یا سیستمی بودن بلیط متفاوت است. برای استرداد وجه، به پنل کاربری یا پشتیبانی علی‌بابا مراجعه کنید.",
+    },
+    {
+      question:
+        "آیا پس از خرید بلیط هواپیما، امکان تغییر نام یا نام خانوادگی وجود دارد؟",
+      answer:
+        "در پروازهای داخلی امکان تغییر نام یا نام خانوادگی مسافر وجود دارد؛ اما پروازهای خارجی، به شرایط سیستمی و بیشتر نیاز به مجوز شرکت هواپیمایی دارند. اما در کل پیشنهاد می‌شود قبل از خرید اطلاعات را با دقت وارد کنید، زیرا این بازگرداندن‌ها شامل هزینه می‌شوند.",
+    },
+    {
+      question:
+        "هنگامی که از سایت خرید بلیط هواپیما رزرو بلیط را انجام می‌دهیم، امکان انتخاب صندلی مورد نظرتان وجود دارد؟",
+      answer:
+        "انتخاب صندلی هنگام خرید بلیط هواپیما ممکن است وجود داشته باشد اما برخی ایرلاین‌ها این امکان را فراهم نمی‌کنند. در زمان خرید بلیط بخش چیدمان انتخاب صندلی، در صورت فعال بودن این مزیت، به شما نمایش داده خواهد شد.",
+    },
+  ];
+
+  return (
+    <div>
+      <div className="promo-container">
+        <div className="promo-section">
+          <div className="promo-image-box">
+            <img
+              src="https://picsum.photos/400/220?random=1"
+              alt="تور گردشگری علی‌بابا"
+              className="promo-img"
+            />
+          </div>
+          <div className="promo-content-box">
+            <h3 className="promo-title">پیشنهاد ویژه: رزرو تور کیش</h3>
+            <p className="promo-desc">با غواصی و شاتل رایگان</p>
+            <button className="promo-btn">اطلاعات بیشتر</button>
+          </div>
+        </div>
+        <div className="promo-section">
+          <div className="promo-image-box">
+            <img
+              src="https://picsum.photos/400/220?random=2"
+              alt="تور گردشگری علی‌بابا"
+              className="promo-img"
+            />
+          </div>
+          <div className="promo-content-box">
+            <h3 className="promo-title">پیشنهاد ویژه: رزرو تور استانبول</h3>
+            <p className="promo-desc">با بهترین قیمت</p>
+            <button className="promo-btn">اطلاعات بیشتر</button>
+          </div>
+        </div>
+      </div>
+
+      <div className="ticket-info">
+        <h3 className="main-title">بلیط هواپیما</h3>
+        <p>
+          علی‌بابا، رتبه یک خرید اینترنتی بلیط سفر
+          <br />
+          علی‌بابا بزرگ‌ترین و معتبرترین وب‌سایت برای خرید اینترنتی بلیط
+          هواپیما، قطار و اتوبوس و رزرو هتل در ایران است.
+          <br />
+          خدمات علی‌بابا از خرید و صدور بلیط گرفته تا ارائه مشاوره و پشتیبانی پس
+          از سفر، آغاز شده و با ارائه تجربیات چند ساله خود، رضایت بسیاری از
+          کاربران را جذب کرده است.
+          <br />
+          در علی‌بابا امکان خرید انواع بلیط پرواز داخلی و خارجی و همچنین رزرو
+          هتل ایرانی و خارجی به راحتی و در کوتاه‌ترین زمان وجود دارد.
+          <br />
+          کافیست با ورود به وبسایت یا اپلیکیشن علی‌بابا، مقصد سفر و تاریخ
+          موردنظر را جستجو کنید، تا لیست پروازها، برنامه حرکت قطار و اتوبوس و
+          اقامتگاه‌های مقصد را مشاهده کنید. سپس مناسب‌ترین گزینه را با توجه به
+          نیازهای خود انتخاب و خریداری کنید.
+          <br />
+          پشتیبانی ۲۴ ساعته علی‌بابا آماده پاسخگویی به سوالات و مشکلات احتمالی و
+          در اختیار گذاشتن راهنمایی لازم برای سفر است.
+        </p>
+        <h4 className="section-title">
+          مزایای خرید اینترنتی بلیط هواپیما با علی‌بابا
+        </h4>
+        <p>
+          یکی از مهم‌ترین مزایای علی‌بابا، خرید آسان و سریع به صورت آنلاین است.
+          با استفاده از علی‌بابا می‌توانید با مقایسه قیمت‌های شرکت‌های هواپیمایی
+          مختلف، مناسب‌ترین بلیط را برای سفر خود رزرو کنید. همچنین امکان انتخاب
+          صندلی و مشاهده جزئیات پرواز به راحتی فراهم است.
+        </p>
+        <h4 className="section-title">تعریف انواع بلیط هواپیما</h4>
+        <p>
+          بلیط هواپیما دو نوع دارد: سیستمی و چارتر.
+          <br />
+          بلیط سیستمی توسط شرکت‌های هواپیمایی با قیمت مصوب ارائه می‌شود، اما
+          بلیط چارتر توسط شرکت‌های چارترکننده با قیمت‌های متغیر عرضه می‌گردد.
+        </p>
+        <h4 className="section-title">قوانین و شرایط خرید بلیط هواپیما</h4>
+        <p>
+          قبل از خرید اینترنتی بلیط هواپیما لازم است قوانین شرکت‌های هواپیمایی،
+          شرایط استرداد و تغییرات پرواز را بررسی کنید. همچنین، اطلاعات شخصی و
+          مدارک لازم را به دقت وارد نمایید تا از بروز مشکلات جلوگیری شود.
+        </p>
+        <ul className="advantages">
+          <li>پشتیبانی ۲۴ ساعته</li>
+          <li>خرید آسان و سریع</li>
+          <li>امکان مقایسه قیمت‌ها</li>
+          <li>انتخاب صندلی دلخواه</li>
+          <li>مشاهده جزئیات پرواز</li>
+          <li>رزرو هتل و اقامتگاه</li>
+          <li>اطمینان از معتبر بودن بلیط</li>
+          <li>خرید بلیط قطار و اتوبوس</li>
         </ul>
-    </div> 
-}
+        <h4 className="section-title">پرسش‌های متداول درباره بلیط هواپیما</h4>
+        <p>
+          در بخش پرسش‌های متداول می‌توانید پاسخ کامل به سوالات مهم و پرتکرار
+          کاربران را مشاهده کنید. مانند نحوه استرداد بلیط، تغییر اطلاعات و شرایط
+          خرید.
+        </p>
+        <h4 className="section-title">
+          خرید بلیط هواپیما به مقصدهای داخلی و خارجی
+        </h4>
+        <p>
+          با علی‌بابا می‌توانید برای تمامی پروازهای داخلی و خارجی بلیط تهیه کنید
+          و از خدمات کامل پشتیبانی بهره‌مند شوید.
+        </p>
+      </div>
+
+      <div className="accordion">
+        <h3 className="title">پرسش های شما</h3>
+        <ul className="content">
+          {faqs.map((faq, index) => (
+            <li key={index} className="faq-item">
+              <div
+                className="faq-question"
+                onClick={() => setOpenIndex(index === openIndex ? null : index)}
+              >
+                <span>{faq.question}</span>
+                <span className="arrow">{openIndex === index ? "▲" : "▼"}</span>
+              </div>
+              {openIndex === index && (
+                <div className="faq-answer">{faq.answer}</div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <style>{`
+        .promo-container {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          width: 70%;
+          margin: 2rem auto 3rem auto;
+        }
+        .promo-section {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          background: #fff;
+          border-radius: 17px;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+          overflow: hidden;
+          direction: rtl;
+          border: 1px solid #eee;
+          transition: all 0.3s ease;
+        }
+        .promo-section:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .promo-image-box {
+          height: 200px;
+        }
+        .promo-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .promo-content-box {
+          padding: 20px 25px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+        }
+        .promo-title {
+          font-size: 1.4rem;
+          font-weight: bold;
+          color: #334;
+          margin-bottom: 12px;
+        }
+        .promo-desc {
+          font-size: 1rem;
+          color: #226;
+          margin-bottom: 20px;
+        }
+        .promo-btn {
+          background: #7c63ff;
+          color: #fff;
+          border: none;
+          border-radius: 8px;
+          font-size: 0.9rem;
+          padding: 8px 20px;
+          cursor: pointer;
+          transition: background 0.18s;
+        }
+        .promo-btn:hover {
+          background: #4c25d7;
+        }
+        .ticket-info {
+          max-width: 70%;
+          margin: 3rem auto;
+          font-family: 'Vazirmatn', sans-serif;
+          direction: rtl;
+          color: #223;
+        }
+        .main-title {
+          font-size: 2.1rem;
+          font-weight: bold;
+          margin-bottom: 13px;
+          text-align: right;
+        }
+        .section-title {
+          font-size: 1.6rem;
+          font-weight: bold;
+          margin-top: 23px;
+          margin-bottom: 9px;
+        }
+        .advantages {
+          margin: 15px 0 18px 0;
+          padding: 1 16px;
+          list-style: disc;
+          color: #676768;
+        }
+        .advantages li {
+          font-size: 1.2rem;
+          margin-bottom: 7px;
+        }
+        .accordion {
+          max-width: 70%;
+          margin: 3rem auto;
+          background: #fff;
+          border-radius: 17px;
+          box-shadow: 1 4px 12px rgba(0,0,0,0.08);
+          padding: 25px 32px;
+          font-family: 'Vazirmatn', sans-serif;
+          direction: rtl;
+        }
+        .title {
+          font-size: 1.6rem;
+          color: #334;
+          margin-bottom: 2.5rem;
+          text-align: right;
+          font-weight: bold;
+        }
+        .content {
+          list-style: none;
+          padding: 1;
+          margin: 1;
+        }
+        .faq-item {
+          border-bottom: 2px solid #ececec;
+          margin-bottom: 10px;
+          padding:0;
+        }
+        .faq-question {
+          cursor: pointer;
+          font-size: 1.3rem;
+          padding-right: 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .arrow {
+          font-size: 2rem;
+          color: #7c63ff;
+          margin-left: 9px;
+        }
+        .faq-answer {
+          padding: 25px;
+          font-size: 1rem;
+          color: #445;
+        }
+      `}</style>
+    </div>
+  );
+};

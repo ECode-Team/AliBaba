@@ -9,23 +9,22 @@
     border-radius: 6px;
     box-shadow: 0 0px 12px rgba(0, 0, 0, 0.15);
     z-index: 100;
-    min-width: 40px;
+    min-width: 100px;
     animation: fadeIn 0.3s ease-in-out;
 
     .dropdown-menu {
         list-style: none;
         margin: 0;
-        padding: 4px;
+        padding: 2px;
         text-align: center;
 
         li {
-            padding: 2px 10px;
-            font-size: 14px;
+            padding: 1px 5px;
+            font-size: 12px;
             font-weight: 500;
             color: $text-color;
             cursor: pointer;
             border-radius: 4px;
-            border-bottom: 1px solid $border-color;
             transition: background-color 0.15s ease, box-shadow 0.2s ease;
 
             &:hover {
@@ -34,10 +33,6 @@
 
             &:active {
                 box-shadow: inset 0 0px 6px rgba(0, 0, 0, 0.2);
-            }
-
-            &:last-child {
-                border-bottom: none;
             }
         }
     }
