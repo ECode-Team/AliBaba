@@ -21,6 +21,7 @@ import { AnimatePresence } from "framer-motion";
 import { useParams } from "react-router-dom";
 import "../src/styles/general.scss";
 import { Loginpage } from "./Pages/loginpage";
+import HelpCenter from "./Pages/helpcenter";
 
 
 const AnimatedRoutes = () => {
@@ -41,6 +42,7 @@ const AnimatedRoutes = () => {
         <Route path="/Payment" element={<Payment />} />
         <Route path="/UserPage" element={<Userpage />} />
         <Route path="/login" element={<Loginpage />} />
+        <Route path="/help-center" element={<HelpCenter />} />
       </Routes>
     </AnimatePresence >
   )

@@ -94,7 +94,9 @@ export const Navbar = () => {
                 </div>
                 <div className="navbar-right" dir={rtlLang ? 'rtl' : 'ltr'}>
                     <div className="navbar-right-items" >
-                        <div className="navbar-right-item support" >
+                        <div className="navbar-right-item support" onClick={() => {
+                            navigate('/help-center');
+                        }} style={{ cursor: 'pointer' }}>
                             <span>{t('support_center')}</span>
                             <img className="icon support" src={supportIcon} alt="support" />
                         </div>
@@ -105,7 +107,16 @@ export const Navbar = () => {
                         <div>
                             <div className="navbar-right-item user" onClick={(e) => {
                                 e.stopPropagation();
-                                setShowDropdown(showDropdown === 'user' ? null : 'user')
+                                // Check if user is logged in by looking at user items
+                                // If the user is not logged in, navigate to login page
+                                // For now, we'll assume if dropdown is already open, user is logged in
+                                // Otherwise, navigate to login
+                                if (showDropdown === 'user') {
+                                    setShowDropdown(null);
+                                } else {
+                                    // Navigate to login if not logged in
+                                    navigate('/login');
+                                }
                             }}>
                                 <span>{t('login_or_register')}</span>
                                 <img className="icon user" src={userIcon} alt="user" />

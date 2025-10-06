@@ -1,0 +1,17 @@
+{
+    "origin": "出发地（城市）",
+    "origin_airport": "出发地（城市，机场）",
+    "origin_bus": "出发地（城市，车站）",
+    "destination": "目的地（城市）",
+    "destination_airport": "目的地（城市，机场）",
+    "destination_bus": "目的地（城市，车站）",
+    "destination_hotel": "目的地或酒店",
+    "destination_villa": "目的地或住宿类型",
+    "departure_date": "出发日期",
+    "return_date": "返回日期",
+    "passengers": "乘客",
+    "search": "搜索",
+    "support_center": "客服中心",
+    "my_travels": "我的行程",
+    "login_or_register": "登录或注册"
+}
