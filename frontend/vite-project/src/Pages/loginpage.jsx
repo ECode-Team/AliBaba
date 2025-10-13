@@ -1,216 +1,320 @@
 import React, { useState } from "react";
 import loginImageUrl from "../assets/login_image.svg";
+import "../styles/loginpage.scss";
 
 export const Loginpage = () => {
   const [mobile, setMobile] = useState("");
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
+    setLoading(true);
+    setError("");
+    
+    try {
+      const response = await fetch("http://localhost:8000/api/user/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: mobile,
+          password: password,
+        }),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        // Login successful
+        console.log("Login successful", data);
+        // Here you would typically save the user data and redirect
+        // For now, just show an alert
+        alert("ورود موفقیت آمیز بود!");
+      } else {
+        setError(data.detail || "خطا در ورود");
+      }
+    } catch (err) {
+      setError("مشکلی در ارتباط با سرور رخ داده است");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRegisterSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    
+    // Check if phone number is provided (required field)
+    if (!phone) {
+      setError("وارد کردن شماره تلفن الزامی است");
+      setLoading(false);
+      return;
+    }
+    
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      setError("رمز عبور و تکرار آن یکسان نیستند");
+      setLoading(false);
+      return;
+    }
+    
+    try {
+      const response = await fetch("http://localhost:8000/api/user/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          email: email || undefined, // Send email only if provided
+          phone,
+          password,
+        }),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        // Registration successful
+        console.log("Registration successful", data);
+        alert("ثبت نام موفقیت آمیز بود!");
+        // Switch to login form
+        setIsRegistering(false);
+      } else {
+        // Handle validation errors
+        if (data.username) {
+          setError(`نام کاربری: ${data.username[0]}`);
+        } else if (data.email) {
+          setError(`ایمیل: ${data.email[0]}`);
+        } else if (data.phone) {
+          setError(`تلفن: ${data.phone[0]}`);
+        } else if (data.password) {
+          setError(`رمز عبور: ${data.password[0]}`);
+        } else {
+          setError("خطا در ثبت نام");
+        }
+      }
+    } catch (err) {
+      setError("مشکلی در ارتباط با سرور رخ داده است");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.contentWrapper}>
-        {/* Left Section - Illustration */}
-        <div style={styles.leftSection}>
-          <div style={styles.illustrationWrapper}>
-            <img src={loginImageUrl} alt="Login" style={styles.loginImage} />
+    <div className="login-page__container">
+      <div className="login-page__content-wrapper">
+        <div className="login-page__left-section">
+          <div className="login-page__illustration-wrapper">
+            <img src={loginImageUrl} alt="Login" className="login-page__login-image" />
           </div>
-          <h2 style={styles.heading}> علی‌بابا رتبه یک سفر </h2>
-          <p style={styles.description}>
+          <h2 className="login-page__heading"> علی‌بابا رتبه یک سفر </h2>
+          <p className="login-page__description">
             برای خرید آسان و امن و مشاهده تخفیف‌های ویژه علی‌بابا، عضو شوید.
           </p>
         </div>
 
-        {/* Right Section - Form */}
-        <div style={styles.rightSection}>
-          <form onSubmit={handleSubmit} style={styles.form}>
-            <div style={styles.inputGroup}>
-              <label htmlFor="mobile" style={styles.label}>
-                شماره موبایل
-              </label>
-              <div style={styles.inputWrapper}>
-                <input
-                  type="tel"
-                  id="mobile"
-                  value={mobile}
-                  onChange={(e) => setMobile(e.target.value)}
-                  placeholder="۰۹۱ / "
-                  style={styles.input}
-                  dir="rtl"
-                />
+        <div className="login-page__right-section">
+          {!isRegistering ? (
+            <form onSubmit={handleSubmit} className="login-page__form">
+              <div className="login-page__input-group">
+                <label htmlFor="mobile" className="login-page__label">
+                  شماره موبایل
+                </label>
+                <div className="login-page__input-wrapper">
+                  <input
+                    type="tel"
+                    id="mobile"
+                    value={mobile}
+                    onChange={(e) => setMobile(e.target.value)}
+                    placeholder="۰۹۱ / "
+                    className="login-page__input"
+                    dir="rtl"
+                    required
+                  />
+                </div>
               </div>
-            </div>
+              
+              <div className="login-page__input-group">
+                <label htmlFor="password" className="login-page__label">
+                  رمز عبور
+                </label>
+                <div className="login-page__input-wrapper">
+                  <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="رمز عبور خود را وارد کنید"
+                    className="login-page__input"
+                    dir="rtl"
+                    required
+                  />
+                </div>
+              </div>
 
-            <div style={styles.termsWrapper}>
-              <span style={styles.infoIcon}>ⓘ</span>
-              <p style={styles.termsText}>
-                استفاده از علی‌بابا به معنی پذیرش{" "}
-                <a href="#" style={styles.link}>
-                  قوانین و مقررات
-                </a>{" "}
-                این سرویس است.
-              </p>
-            </div>
+              <div className="login-page__terms-wrapper">
+                <span className="login-page__info-icon">ⓘ</span>
+                <p className="login-page__terms-text">
+                  استفاده از علی‌بابا به معنی پذیرش {" "}
+                  <a href="#" className="login-page__link">
+                    قوانین و مقررات
+                  </a>{" "}
+                  این سرویس است.
+                </p>
+              </div>
+              
+              {error && <div className="login-page__error">{error}</div>}
+              
+              <button 
+                type="submit" 
+                className="login-page__submit-button"
+                disabled={loading}
+              >
+                {loading ? "در حال ارسال..." : "تایید و دریافت کد"}
+              </button>
 
-            <button type="submit" style={styles.submitButton}>
-              تایید و دریافت کد
-            </button>
+              <a href="#" className="login-page__password-link">
+                ورود با کلمه عبور
+              </a>
+              
+              <div className="login-page__no-account-container">
+                <p className="login-page__no-account-text">حساب کاربری ندارید؟</p>
+                <button 
+                  type="button" 
+                  onClick={() => setIsRegistering(true)}
+                  className="login-page__register-link"
+                >
+                  ثبت نام کنید
+                </button>
+              </div>
+            </form>
+          ) : (
+            <form onSubmit={handleRegisterSubmit} className="login-page__form">
+              <h2 className="login-page__register-heading">ثبت نام</h2>
+              
+              <div className="login-page__input-group">
+                <label htmlFor="regUsername" className="login-page__label">
+                  نام کاربری
+                </label>
+                <div className="login-page__input-wrapper">
+                  <input
+                    type="text"
+                    id="regUsername"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="نام کاربری خود را وارد کنید"
+                    className="login-page__input"
+                    dir="rtl"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div className="login-page__input-group">
+                <label htmlFor="regPhone" className="login-page__label">
+                  شماره تلفن *
+                </label>
+                <div className="login-page__input-wrapper">
+                  <input
+                    type="tel"
+                    id="regPhone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="شماره تلفن خود را وارد کنید"
+                    className="login-page__input"
+                    dir="rtl"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div className="login-page__input-group">
+                <label htmlFor="regEmail" className="login-page__label">
+                  ایمیل (اختیاری)
+                </label>
+                <div className="login-page__input-wrapper">
+                  <input
+                    type="email"
+                    id="regEmail"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="ایمیل خود را وارد کنید"
+                    className="login-page__input"
+                    dir="rtl"
+                  />
+                </div>
+              </div>
+              
+              <div className="login-page__input-group">
+                <label htmlFor="regPassword" className="login-page__label">
+                  رمز عبور
+                </label>
+                <div className="login-page__input-wrapper">
+                  <input
+                    type="password"
+                    id="regPassword"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="رمز عبور خود را وارد کنید"
+                    className="login-page__input"
+                    dir="rtl"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div className="login-page__input-group">
+                <label htmlFor="regConfirmPassword" className="login-page__label">
+                  تکرار رمز عبور
+                </label>
+                <div className="login-page__input-wrapper">
+                  <input
+                    type="password"
+                    id="regConfirmPassword"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="رمز عبور خود را تکرار کنید"
+                    className="login-page__input"
+                    dir="rtl"
+                    required
+                  />
+                </div>
+              </div>
+              
+              {error && <div className="login-page__error">{error}</div>}
+              
+              <button 
+                type="submit" 
+                className="login-page__submit-button"
+                disabled={loading}
+              >
+                {loading ? "در حال ثبت نام..." : "ثبت نام"}
+              </button>
 
-            <a href="#" style={styles.passwordLink}>
-              ورود با کلمه عبور
-            </a>
-          </form>
+              <div className="login-page__no-account-container">
+                <p className="login-page__no-account-text">قبلاً ثبت نام کرده‌اید؟</p>
+                <button 
+                  type="button" 
+                  onClick={() => setIsRegistering(false)}
+                  className="login-page__register-link"
+                >
+                  ورود
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#f5f5f5",
-    fontFamily: "Vazir, Tahoma, sans-serif",
-    padding: "70px",
-  },
-  contentWrapper: {
-    display: "flex",
-    maxWidth: "1100px",
-    width: "100%",
-    backgroundColor: "#fff",
-    borderRadius: "12px",
-    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
-    overflow: "hidden",
-    minHeight: "500px",
-    flexDirection: "row" /* Ensure horizontal layout */,
-  },
-  leftSection: {
-    flex: 1,
-    padding: "60px 50px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fafafa",
-  },
-  illustrationWrapper: {
-    marginBottom: "40px",
-    display: "flex",
-    justifyContent: "flex-start" /* Align to the left */,
-    alignItems: "center",
-  },
-  loginImage: {
-    width: "100%",
-    maxWidth: "500px",
-    maxHeight: "300px",
-  },
-  browserWindow: {
-    width: "280px",
-    backgroundColor: "#8a94a0",
-    borderRadius: "12px 12px 0 0",
-    overflow: "hidden",
-  },
-
-  heading: {
-    fontSize: "26px",
-    fontWeight: "bold",
-    color: "#2c3e50",
-    marginBottom: "15px",
-    textAlign: "center",
-    direction: "rtl",
-  },
-  description: {
-    fontSize: "15px",
-    color: "#666",
-    textAlign: "center",
-    lineHeight: "1.8",
-    direction: "rtl",
-  },
-  rightSection: {
-    flex: 1,
-    padding: "60px 50px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    direction: "rtl",
-  },
-  form: {
-    width: "100%",
-  },
-  inputGroup: {
-    marginBottom: "25px",
-  },
-  label: {
-    display: "block",
-    fontSize: "14px",
-    color: "#4a5568",
-    marginBottom: "8px",
-    textAlign: "right",
-  },
-  inputWrapper: {
-    position: "relative",
-  },
-  input: {
-    width: "100%",
-    padding: "14px 16px",
-    fontSize: "16px",
-    border: "1.5px solid #d1d5db",
-    borderRadius: "8px",
-    outline: "none",
-    transition: "border-color 0.3s",
-    boxSizing: "border-box",
-    textAlign: "right",
-  },
-  termsWrapper: {
-    display: "flex",
-    alignItems: "flex-start",
-    gap: "8px",
-    marginBottom: "25px",
-    padding: "12px",
-    backgroundColor: "#f9fafb",
-    borderRadius: "8px",
-    direction: "rtl",
-  },
-  infoIcon: {
-    color: "#6b7280",
-    fontSize: "16px",
-    marginTop: "2px",
-  },
-  termsText: {
-    fontSize: "13px",
-    color: "#4b5563",
-    margin: 0,
-    lineHeight: "1.6",
-    textAlign: "right",
-    flex: 1,
-  },
-  link: {
-    color: "#3b82f6",
-    textDecoration: "none",
-  },
-  submitButton: {
-    width: "100%",
-    padding: "12px",
-    fontSize: "16px",
-    fontWeight: "600",
-    color: "#fff",
-    backgroundColor: "#F3B808",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-    transition: "background-color 0.3s",
-    marginBottom: "16px",
-  },
-  passwordLink: {
-    display: "block",
-    textAlign: "center",
-    color: "#3b82f6",
-    fontSize: "14px",
-    textDecoration: "none",
-    fontWeight: "500",
-  },
 };

@@ -29,6 +29,7 @@ class UserView(viewsets.ModelViewSet):
 
         user = User.objects.filter(username=username)
         user = User.objects.filter(email=username) if len(user) == 0 else user
+        user = User.objects.filter(phone=username) if len(user) == 0 else user
 
         if len(user) == 0:
             return Response(
@@ -45,4 +46,3 @@ class UserView(viewsets.ModelViewSet):
             )
 
         return Response(UserSerializer(user).data, status=exceptions.status.HTTP_200_OK)
-

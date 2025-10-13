@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import "../styles/mainpage/accordion.scss";
 import { Search } from '../Components/mainpage/search';
-import "./bookingpage/train.scss"; // Reusing styles
+import "./bookingpage/train.scss";
 
 export const TrainInfoPage = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
-  // --- FAQ ---
+  
   const faqs = [
     {
       question: "چطور بلیط قطار را آنلاین بخریم؟",
@@ -26,7 +26,7 @@ export const TrainInfoPage = () => {
     }
   ];
 
-  // --- Companies Grid ---
+  
   const companystyle = {
     display: "grid",
     gridTemplateColumns: "repeat(4,1fr)",
@@ -67,7 +67,7 @@ export const TrainInfoPage = () => {
     { img: "https://picsum.photos/230/120?random=108", name: "قطارهای ریل سیر کوثر" }
   ];
 
-  // --- Blog Cards Section ---
+  
   const blogsection = {
     display: "flex",
     gap: "20px",
@@ -106,7 +106,7 @@ export const TrainInfoPage = () => {
     }
   ];
 
-  // --- Promo Cards ---
+  
   const cardSectionStyle = {
     display: 'flex',
     gap: '18px',
@@ -166,7 +166,7 @@ export const TrainInfoPage = () => {
     marginBottom: '18px'
   };
 
-  // --- Route/Textual section (from image) ---
+  
   const longTextSection = {
     background: "#fcfcfc",
     borderRadius: "16px",
@@ -182,7 +182,7 @@ export const TrainInfoPage = () => {
     lineHeight: "2.2"
   };
 
-  // Example content - based on OCR extraction and image summary
+  
   const longTextContent = (
     <>
       <h2 style={{fontWeight:"bold",marginBottom:"19px"}}>مسیرها و امکانات قطارهای ایران</h2>
@@ -232,7 +232,7 @@ export const TrainInfoPage = () => {
       <Search />
       <h1 className="train-page-title">بلیط قطار</h1>
       <p className="train-page-subtitle">ساده‌ترین راه برای خرید بلیط قطار</p>
-       {/* Companies grid */}
+       
       <div>
         <h2 style={{textAlign: "right", fontWeight: "bold", margin: "22px 0 6px 0"}}>شرکت های ریلی در ایران</h2>
         <div style={companystyle}>
@@ -245,12 +245,12 @@ export const TrainInfoPage = () => {
         </div>
       </div>
       
-      {/* New long-form section from image */}
+       
       <section style={longTextSection}>{longTextContent}</section>
       
      
       
-      {/* Promo cards section */}
+       
       <div style={cardSectionStyle}>
         <div style={cardStyle}>
           <img style={cardImageStyle} src="https://picsum.photos/340/180?random=81" alt="خرید گروهی" />
@@ -280,7 +280,7 @@ export const TrainInfoPage = () => {
       
 
       
-      {/* FAQ Accordion */}
+       
       <div className="accordion">
         <h3 className="title">پرسش‌های متداول بلیط قطار</h3>
         <ul className="content">
@@ -301,7 +301,7 @@ export const TrainInfoPage = () => {
         </ul>
       </div>
 
-            {/* Travel magazine cards section */}
+            
       <div>
         <h2 style={{textAlign:"right",fontWeight:"bold",margin:"40px 0 10px 0"}}>مجله سفر و گردشگری</h2>
         <div style={blogsection}>

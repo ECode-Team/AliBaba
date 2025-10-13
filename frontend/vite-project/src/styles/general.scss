@@ -7,6 +7,10 @@ button {
   color: $text-color;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Noto Sans Arabic", sans-serif;
@@ -14,5 +18,4 @@ body {
   font-weight: 500;
   color: $text-color;
   direction: rtl;
-  background-color: #f8f9fa;
 }

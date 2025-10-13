@@ -1,6 +1,5 @@
 @import "../../../../../../styles/variables";
 
-
 .accordion {
   border-bottom: 1px solid #ddd;
 
@@ -24,12 +23,10 @@
       padding: 2px;
       background: white;
     }
-
   }
-
 }
 
-.transaction-filter{
+.transaction-filter {
   flex-direction: row-reverse;
   display: flex;
 }
@@ -44,11 +41,12 @@
   display: flex;
   flex-direction: column;
 
-  .input-container-date , .input-container-transaction{
+  .input-container-date,
+  .input-container-transaction {
     display: flex;
     justify-content: center;
 
-    input{
+    input {
       text-align: right;
       padding: 5px 10px;
       border: 1px solid $border-color;
@@ -56,13 +54,13 @@
       border-radius: 8px;
       position: relative;
 
-      &:first-child{
-        border-top-right-radius: 0px ;
-        border-bottom-right-radius: 0px ;
+      &:first-child {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
       }
-      &:last-child{
-        border-top-left-radius: 0px ;
-        border-bottom-left-radius: 0px ;
+      &:last-child {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
       }
     }
   }
@@ -73,11 +71,11 @@
       position: relative;
       flex-direction: row-reverse;
 
-      &:last-child{
-        input{
+      &:last-child {
+        input {
           border-radius: 8px;
-          border-top-left-radius: 0px ;
-          border-bottom-left-radius: 0px ;
+          border-top-left-radius: 0px;
+          border-bottom-left-radius: 0px;
         }
       }
 
@@ -93,7 +91,6 @@
         width: 100%;
       }
 
-
       input:focus + span {
         opacity: 1;
       }
@@ -101,9 +98,8 @@
   }
 }
 
-
-.remove-filter-button{
-  color: $link-color ;
+.remove-filter-button {
+  color: $link-color;
   border: none;
   background: transparent;
   font-weight: bold;
@@ -112,8 +108,8 @@
   border-radius: 8px;
 
   &:active {
-    border: 1px solid lighten($link-color , 60%);
-    background: lighten($link-color , 55%);
+    border: 1px solid lighten($link-color, 60%);
+    background: lighten($link-color, 55%);
   }
-
 }
+

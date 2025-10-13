@@ -3,6 +3,7 @@ import InputGroup from "../input/InputGroup";
 import { useParams } from "react-router-dom";
 import "../../styles/mainpage/searchBottom.scss";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 const SearchOptionsGroup = () => {
     const { t } = useTranslation();
@@ -12,30 +13,30 @@ const SearchOptionsGroup = () => {
         default:
             return (
                 <>
-                    <SearchOptions label={"یک طرفه"} marginRight={"22px"} />
-                    <SearchOptions label={"کشور"} />
+                    <SearchOptions label={t("search-options:one_way")} marginRight={"22px"} />
+                    <SearchOptions label={t("search-options:country")} />
                 </>
             )
         case 'InternationalFlight':
             return (
                 <>
-                    <SearchOptions label={"یک طرفه"} marginRight={"22px"} />
-                    <SearchOptions label={"اکونومی"} />
+                    <SearchOptions label={t("search-options:one_way")} marginRight={"22px"} />
+                    <SearchOptions label={t("search-options:economy")} />
                 </>
             )
         case 'Train':
             return (
                 <>
-                    <SearchOptions label={"یک طرفه"} marginRight={"22px"} />
-                    <SearchOptions label={"دربست نمیخواهم"} />
-                    <SearchOptions label={"مسافرین عادی"} />
-                    <SearchOptions label={"حمل خودرو نمیخواهم"} />
+                    <SearchOptions label={t("search-options:one_way")} marginRight={"22px"} />
+                    <SearchOptions label={t("search-options:do_not_want_beds")} />
+                    <SearchOptions label={t("search-options:regular_passengers")} />
+                    <SearchOptions label={t("search-options:do_not_want_car_transport")} />
                 </>
             )
         case 'tour':
             return (
                 <>
-                    <SearchOptions label={"تور هتل + بلیط"} marginRight={"22px"} />
+                    <SearchOptions label={t("search-options:hotel_ticket_tour")} marginRight={"22px"} />
                 </>
             )
     }
@@ -44,6 +45,33 @@ const SearchOptionsGroup = () => {
 const SearchInputGroup = () => {
     const { t } = useTranslation();
     const { mode } = useParams();
+    
+    // State for dropdown values
+    const [originValue, setOriginValue] = useState("");
+    const [destinationValue, setDestinationValue] = useState("");
+    const [departureDateValue, setDepartureDateValue] = useState("");
+    const [returnDateValue, setReturnDateValue] = useState("");
+    const [passengerValue, setPassengerValue] = useState("");
+    const [originBusValue, setOriginBusValue] = useState("");
+    const [destinationBusValue, setDestinationBusValue] = useState("");
+    const [hotelDestinationValue, setHotelDestinationValue] = useState("");
+    
+    // Sample data for dropdowns
+    const cities = [
+        "تهران",
+        "مشهد",
+        "اصفهان",
+        "شیراز",
+        "تبریز",
+        "اهواز",
+        "کیش",
+        "قم",
+        "رشت",
+        "یزد",
+        "کرمان",
+        "ارومیه"
+    ];
+
     switch (mode) {
         case 'DomesticFlight':
         case 'InternationalFlight':
@@ -55,27 +83,46 @@ const SearchInputGroup = () => {
                     <div className="input-group destination">
                         <InputGroup
                             label={t("search-inputs:origin")}
-                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
-                            borderLeft="0" width={"230px"} />
+                            isDropdown={true} 
+                            options={cities}
+                            value={originValue}
+                            onChange={(val) => setOriginValue(val)}
+                            borderLeft="0" 
+                            width={"230px"} />
                         <InputGroup
                             label={t("search-inputs:destination")}
-                            isDropdown={true} options={["شیراز", "تبریز", "اهواز"]}
-                            borderRight="0" width={"230px"} />
+                            isDropdown={true} 
+                            options={cities}
+                            value={destinationValue}
+                            onChange={(val) => setDestinationValue(val)}
+                            borderRight="0" 
+                            width={"230px"} />
                     </div>
                     <div className="input-group date">
                         <InputGroup
                             label={t("search-inputs:departure_date")}
-                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
-                            borderLeft="0" width={"140px"} />
+                            isDropdown={true} 
+                            options={cities}
+                            value={departureDateValue}
+                            onChange={(val) => setDepartureDateValue(val)}
+                            borderLeft="0" 
+                            width={"140px"} />
                         <InputGroup
                             label={t("search-inputs:return_date")}
-                            isDropdown={true} options={["شیراز", "تبریز", "اهواز"]}
-                            borderRight="0" width={"140px"} />
+                            isDropdown={true} 
+                            options={cities}
+                            value={returnDateValue}
+                            onChange={(val) => setReturnDateValue(val)}
+                            borderRight="0" 
+                            width={"140px"} />
                     </div>
                     <div className="input-group date">
                         <InputGroup
                             label={t("search-inputs:passengers")}
-                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
+                            isDropdown={true} 
+                            options={cities}
+                            value={passengerValue}
+                            onChange={(val) => setPassengerValue(val)}
                             width={"180px"} />
                     </div>
                 </>
@@ -86,17 +133,28 @@ const SearchInputGroup = () => {
                     <div className="input-group destination">
                         <InputGroup
                             label={t("search-inputs:origin_bus")}
-                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
-                            borderLeft="0" width={"280px"} />
+                            isDropdown={true} 
+                            options={cities}
+                            value={originBusValue}
+                            onChange={(val) => setOriginBusValue(val)}
+                            borderLeft="0" 
+                            width={"280px"} />
                         <InputGroup
                             label={t("search-inputs:destination_bus")}
-                            isDropdown={true} options={["شیراز", "تبریز", "اهواز"]}
-                            borderRight="0" width={"280px"} />
+                            isDropdown={true} 
+                            options={cities}
+                            value={destinationBusValue}
+                            onChange={(val) => setDestinationBusValue(val)}
+                            borderRight="0" 
+                            width={"280px"} />
                     </div>
                     <div className="input-group date">
                         <InputGroup
                             label={t("search-inputs:departure_date")}
-                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
+                            isDropdown={true} 
+                            options={cities}
+                            value={departureDateValue}
+                            onChange={(val) => setDepartureDateValue(val)}
                             width={"370px"} />
                     </div>
                 </>
@@ -109,27 +167,36 @@ const SearchInputGroup = () => {
                         <InputGroup
                             label={mode === 'Hotel' ? t("search-inputs:destination_hotel") : t("search-inputs:destination_villa")}
                             isDropdown={true}
-                            options={["تهران", "مشهد", "اصفهان"]}
+                            options={cities}
+                            value={hotelDestinationValue}
+                            onChange={(val) => setHotelDestinationValue(val)}
                             width={"360px"} />
                     </div>
                     <div className="input-group date">
                         <InputGroup
                             label={t("search-inputs:departure_date")}
                             isDropdown={true}
-                            options={["تهران", "مشهد", "اصفهان"]}
+                            options={cities}
+                            value={departureDateValue}
+                            onChange={(val) => setDepartureDateValue(val)}
                             borderLeft="0"
                             width={"170px"} />
                         <InputGroup
                             label={t("search-inputs:return_date")}
                             isDropdown={true}
-                            options={["شیراز", "تبریز", "اهواز"]}
+                            options={cities}
+                            value={returnDateValue}
+                            onChange={(val) => setReturnDateValue(val)}
                             borderRight="0"
                             width={"170px"} />
                     </div>
                     <div className="input-group date">
                         <InputGroup
                             label={t("search-inputs:passengers")}
-                            isDropdown={true} options={["تهران", "مشهد", "اصفهان"]}
+                            isDropdown={true} 
+                            options={cities}
+                            value={passengerValue}
+                            onChange={(val) => setPassengerValue(val)}
                             width={"220px"} />
                     </div>
                 </>

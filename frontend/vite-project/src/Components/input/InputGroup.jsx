@@ -32,8 +32,8 @@ const InputGroup = (
     }, []);
 
     const handleSelect = option => {
-        onChange(option)
-        setIsOpen(false)
+        onChange(option);
+        setIsOpen(false);
     }
 
     return (
@@ -44,11 +44,11 @@ const InputGroup = (
                 className={type === "password" ? "password-fields" : ""}
                 name={name}
                 required
-                value={value}
-                onChange={onChange}
+                value={value || ""}
+                onChange={(e) => !isDropdown ? onChange(e) : {}}
                 maxLength={maxLength}
-                readOnly={readOnly}
-                onClick={() => setIsOpen(prev => !prev)}
+                readOnly={readOnly || isDropdown}
+                onClick={() => isDropdown && setIsOpen(prev => !prev)}
             />
             <label htmlFor={name}>
                 {label}
