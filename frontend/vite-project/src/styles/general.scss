@@ -1,15 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap");
 @import "./variables.scss";
 
-*, button {
-    font-family: "Noto Sans Arabic", sans-serif;
-    color: $text-color;
+*,
+button {
+  font-family: "Noto Sans Arabic", sans-serif;
+  color: $text-color;
 }
 
 body {
-    margin: 0;
-    font-family: "Noto Sans Arabic", sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    color: $text-color;
+  margin: 0;
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: $text-color;
+  direction: rtl;
+  background-color: #f8f9fa;
 }

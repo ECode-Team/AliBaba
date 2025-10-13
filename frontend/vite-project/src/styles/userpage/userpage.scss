@@ -5,6 +5,7 @@
   align-items: flex-start;
   justify-content: center;
   gap: 20px;
+  direction: ltr;
 
   @include respond-to(sm){
     flex-direction: column;
